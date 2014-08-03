@@ -1,0 +1,25 @@
+{
+	"port" : 8080,
+	"db": {
+		"name" : "ScienceToday"
+	},
+	"mongoose" :  {
+		"uri" : "mongodb://localhost/ScienceToday",
+		"options" : {
+			"server" : {
+				"socketOptions" : {
+					"keepAive" : 1
+				}
+			}
+		}
+	},
+	"session" : {
+		"secret" : "ScienceServerHuerver",
+		"key" : "sid",
+		"cookie" : {
+			"path" : "/",
+			"httpOnly" : true,
+			"maxAge" : null
+		}
+	}
+}

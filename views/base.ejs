@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title><%- blocks.title %></title>
+	<script src="/libs/angular/angular.min.js"></script>
+	<script src="/libs/angular-route/angular-route.min.js"></script>
+	<script src="/libs/jquery/dist/jquery.min.js"></script>
+	<script>
+		app = angular.module('science', ['ngRoute']);
+	</script>
+	<link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.css"></link>
+</head>
+<body ng-app="science">
+	<div class="container">
+		
+	<%- partial('header') %>	
+	<%- body %>
+	</div>
+
+	<style>
+	.container {
+		/*width: 1200px !important;*/
+		background-color: #eee;
+	}
+	</style>
+</body>
+</html>
