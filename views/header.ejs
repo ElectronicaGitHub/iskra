@@ -1,9 +1,64 @@
-<link href='http://fonts.googleapis.com/css?family=Lora:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Philosopher:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 <div class="logo">ИСКРА</div>
 <hr>
+<div class="tabs">
+	<div class="cntnr">
+		<div class = 'upper'><p>Фишка</p></div>
+		<div class = 'bottom'></div>
+	</div>
+	<div class="cntnr">
+		<div class = 'upper'><p>Темы</p></div>
+		<div class = 'bottom'></div>
+	</div>
+	<div class="cntnr">
+		<div class = 'upper'><p>Карусель</p></div>
+		<div class = 'bottom'></div>
+	</div>
+	<div class="cntnr">
+		<div class = 'upper'><p>О проекте</p></div>
+		<div class = 'bottom'></div>
+	</div>
+</div>
 <style>
+
+	.tabs{
+		width:100%;
+		height: 100px;
+		margin-top: 10px;
+
+	}
+	.cntnr {
+	    text-align: center;
+		float: left;
+	    height: 100%;
+	    width:25%;
+	    cursor:pointer;
+	}
+	.upper {
+	    color: black;
+	    width: 100%;
+	    height: 100%;
+	    transition: .6s;
+	    z-index: 10;
+	}
+	p {
+		line-height: 100px;
+	}
+	.bottom {
+	    margin-top: 5px;
+	    background-color: gold;
+	    height: 10%;
+	    width: 100%;
+	    opacity:0;
+	    bottom: 10px;
+	    left: 0;
+	    right: 0;
+	    transition: opacity .4s, bottom 0.5s;
+	}
+	.cntnr:hover .bottom{
+	    bottom: -15px;
+	    opacity:1;
+	}
 	.logo {
 		text-align: center;
 		font-size: 140px;
