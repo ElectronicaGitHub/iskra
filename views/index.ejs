@@ -1,15 +1,60 @@
 <%- layout('base.ejs') %>
 <% block('title', 'Главная страница') -%>
-
-
+<div class="tabs">
+	<div class="cntnr">
+		<div class = 'upper'><p>Фишка</p></div>
+		<div class = 'bottom'></div>
+	</div>
+	<div class="cntnr">
+		<div class = 'upper'><p>Темы</p></div>
+		<div class = 'bottom'></div>
+	</div>
+	<div class="cntnr">
+		<div class = 'upper'><p>Карусель</p></div>
+		<div class = 'bottom'></div>
+	</div>
+	<div class="cntnr">
+		<div class = 'upper'><p>О проекте</p></div>
+		<div class = 'bottom'></div>
+	</div>
+</div>
 <style>
-	
-	div[class*=col] {
-		height: 200px;
-		padding: 5px;
-	}
-	div[class*=col] > div {
-		background-color: lightblue;
-		height: 100%;
-	}
+.tabs{
+	width:100%;
+	height: 100px;
+	margin-top: 10px;
+
+}
+.cntnr {
+    text-align: center;
+	float: left;
+    height: 100%;
+    width:25%;
+    cursor:pointer;
+}
+.upper {
+    color: black;
+    width: 100%;
+    height: 100%;
+    transition: .6s;
+    z-index: 10;
+}
+p {
+	line-height: 100px;
+}
+.bottom {
+    margin-top: 5px;
+    background-color: gold;
+    height: 10%;
+    width: 100%;
+    opacity:0;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    transition: opacity .4s, bottom 0.5s;
+}
+.cntnr:hover .bottom{
+    bottom: -15px;
+    opacity:1;
+}
 </style>
