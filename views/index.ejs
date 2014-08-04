@@ -1,9 +1,53 @@
 <%- layout('base.ejs') %>
 <% block('title', 'Главная страница') -%>
+<script src="/javascripts/index_page.js"></script>
+
+<div ng-controller="Index">	
+	<div class="feed">
+		<div ng-repeat="block in feed_blocks"
+			 class="block">
+			<div ng-repeat="element in block.feed_elements"
+				 ng-class="{ s11 : element.size == 1, s21 : element.size == 2 , s22 : element.size == 4}">
+				 <div class="inner_container">
+					<!-- <span>{{ element.size }}</span> -->
+				 </div>
+			</div>
+			<hr>
+		</div>
+
+	</div>
+</div>
 
 
 <style>
-	
+	div.block {
+		width: 50%;
+		float: left;
+		margin-bottom: 10px;
+		height: 400px;
+	}
+	div.s11, div.s21, div.s22 {
+		padding: 10px;
+		float: left;
+	}
+	div.s11, div.s21 {
+		height: 200px;
+	}
+	div.s11 {
+		width: 50%;
+	}
+	div.s21 {
+		width: 100%;
+	}
+	div.s22 {
+		width: 100%;
+		height: 400px;
+	}
+	div.inner_container {
+		background-color: #ddd;
+		width: 100%;
+		height: 100%;
+	}
 	div[class*=col] {
 		height: 200px;
 		padding: 5px;
