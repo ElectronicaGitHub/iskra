@@ -8,7 +8,6 @@ var mongoose = require('./configs/mongoose');
 var log = require('./configs/logger')(module);
 var config = require('./configs/config_file');
 
-var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
@@ -29,7 +28,8 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+app.use('/', require('./routes/index.js')(express));
+app.use('/admin', require('./routes/admin.js')(express));
 app.use('/users', users);
 
 /// catch 404 and forward to error handler
