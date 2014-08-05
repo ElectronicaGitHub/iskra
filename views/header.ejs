@@ -1,38 +1,38 @@
 <link href='http://fonts.googleapis.com/css?family=Philosopher:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+<script>
+	$(document).ready(function() {
+		colors = ['#2F5A99','#2A8C66','#B94788','#CE5251','#14B8DE'];
+		random_color = colors[~~(Math.random() * colors.length)]
+		$('.logo').css('color', random_color)
+		$('.bottom').css('background-color', random_color)
+	})
+</script>
 <div class="logo">ИСКРА</div>
-<hr>
 <div class="tabs">
-		<div class = 'upper'>
-			<span>
-				Фишка
-				<div class = 'bottom'></div>
+		<div class="each-tab">
+			<span>Фишка
+				<div class='bottom'></div>
 			</span>
 		</div>
-		
-		<div class = 'upper'>
-			<span>
-				Темы
-				<div class = 'bottom'></div>
+		<div class="each-tab">
+			<span>Темы
+				<div class='bottom'></div>
 			</span>
 		</div>
-		
-		<div class = 'upper'>
-			<span>
-				Карусель
-				<div class = 'bottom'></div>
+		<div class="each-tab">
+			<span>Карусель
+				<div class='bottom'></div>
 			</span>
 		</div>
-		
-		<div class = 'upper'>
-			<span>
-				О проекте
-				<div class = 'bottom'></div>
+		<div class="each-tab">
+			<span>О проекте
+				<div class='bottom'></div>
 			</span>
 		</div>
 </div>
 <style>
-	.tabs{
+	.tabs {
 		width:100%;
 		height: 50px;
 		line-height: 50px;
@@ -40,7 +40,7 @@
 		font-family: 'Roboto Condensed';
 		font-size: 25px;
 	}
-	.upper {
+	.each-tab {
 	    color: black;
 	    text-align: center;
 		float: left;
@@ -50,9 +50,9 @@
 	}
 	span {
 		position: relative;
-		/*display: inline-block;*/
+		padding: 10px 5px;
 	}
-	.bottom {
+	span div.bottom {
 		position: absolute;
 		left:0;
 		right:0;
@@ -63,7 +63,7 @@
 	    bottom: -15px;
 	    transition: opacity .4s, bottom 0.5s;
 	}
-	.upper:hover .bottom{
+	.each-tab:hover .bottom{
 	    bottom: -3px;
 	    opacity:1;
 	}
