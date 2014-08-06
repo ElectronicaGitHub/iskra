@@ -46,3 +46,26 @@ app.controller('Index', [ '$scope', '$http', function($scope, $http) {
 	console.log('feeds', $scope.feeds);
 	console.log('blocks', $scope.feed_blocks);
 }])
+
+$(document).ready(function() {
+	var inner_container = $('.inner_container'),
+		description = $('.description');
+	
+	inner_container.hover(sizeTitleHover());
+	
+	function sizeDescriptionHover() {
+		var this_description = $(this).find(description),
+			p = this_description.find($('p'));
+
+		while (p.height()>this_description.height()) {
+			p.css('font-size', '-=1px')
+		}
+	}
+
+	function sizeTitleHover() {
+		var a = $(this).find(description).find($('p')),
+			b = $(this).find($('.img')).find($('.news_title')).find($('p'));
+
+		console.log(a.width(), b.width());
+	}
+})
