@@ -55,9 +55,7 @@ $(document).ready(function() {
 	function setWidthTitle(container) {
 		var c = ~~($(container).width()),
 			e = ~~($(container).find('.img').find('.news_title').width()),
-			x;
-
-		x = (c-e)/2;
+			x = (c-e)/2;
 		return x;
 	}
 	jQuery.each(inner_container, function() {
