@@ -77,7 +77,7 @@ $(document).ready(function() {
 			b.css('height','-='+a);
 		}
 		if(inner_container_hover.parent().hasClass('s21')) {
-			b.css('margin-left','+='+x);
+			b.css('width','70%');
 		}
 		while (p.height()>this_description.height()) {
 			p.css('font-size', '-=1px');
@@ -85,6 +85,9 @@ $(document).ready(function() {
 	})
 	inner_container.mouseleave(function() {
 		var b = $(this).find(".img").find(".news_title");
+		if(inner_container.parent().hasClass('s21')) {
+			b.css('width','100%');
+		}
 		b.height(initial_height);
 		b.css('margin-left', setWidthTitle(this));
 	})	
