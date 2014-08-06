@@ -1,27 +1,57 @@
 <%- layout('base.ejs')%>
+<script src="/javascripts/utils.js"></script>
 
 <div ng-controller="Admin">
-	<p>welcome in admin panel </p>
-	<div class="input">
-		<p>Title</p>
-		<input type="text" ng-model="news.title">
-		<p>Description</p>
-		<input type="text" ng-model="news.description">
-		<p>Content</p>
-		<input type="text" ng-model="news.content">
-		<p>Size</p>
-		<input type="number" ng-model="news.size">
-		<p>Image</p>
-		<input type="text" ng-model="news.image">
-		<button ng-click="saveNews(news)">Сохранить</button>
-	</div>
-	<div class="output">
-		<p>{{ news.title }}</p>
-		<p>{{ news.description }}</p>
-		<p>{{ news.content }}</p>
-		<p>{{ news.size }}</p>
-		<p>{{ news.image }}</p>
 
+	<div class="button_panel">
+		<button ng-click="page='create_page'">Create news page</button>
+		<button ng-click="page='list_page'">Newslist page</button>
+	</div>
+	{{ page }}
+
+	<div ng-if="page=='create_page'">
+			
+		<div class="input">
+			<p>Title</p>
+			<input type="text" ng-model="news.title">
+			<p>Description</p>
+			<input type="text" ng-model="news.description">
+			<p>Content</p>
+			<input type="text" ng-model="news.content">
+			<p>Size</p>
+			<input type="number" ng-model="news.size">
+			<p>Image</p>
+			<input type="text" ng-model="news.image">
+			<button ng-click="saveNews(news)">Сохранить</button>
+		</div>
+		<div class="output">
+			<p>{{ news.title }}</p>
+			<p>{{ news.description }}</p>
+			<p>{{ news.content }}</p>
+			<p>{{ news.size }}</p>
+			<p>{{ news.image }}</p>
+		</div>
+	</div>
+	<div ng-if="page='list_page'" ng-init="getNews()">
+		
+		<div class="feed">
+			<div ng-repeat="block in feed_blocks"
+				 class="block">
+				<div ng-repeat="element in block.feed_elements"
+					 ng-class="{ s11 : element.size == 1, s21 : element.size == 2 , s22 : element.size == 4}">
+					 <div class="inner_container">
+					 	<div class="img">
+					 		<div class='news_title'>
+						 		<p>{{ element.title }}</p>
+					 		</div>
+					 	</div>
+					 	<div class="description">
+					 		<p>{{ element.description }}</p>
+					 	</div>
+					 </div>
+				</div>
+			</div>
+		</div>
 
 	</div>
 
@@ -31,6 +61,23 @@
 <script>
 	app.controller('Admin', ['$scope', '$http', function($scope, $http) {
 		console.log('hello admin')
+
+		$scope.page = 'list_page';
+		$scope.feed_blocks = [];
+
+		$scope.getNews = function() {
+			url = '/all';
+			$http.get(url)
+				.success(function(data) {
+					$scope.feeds = data;
+					console.log($scope.feeds)
+
+					$scope.feed_blocks = UTILS.blocks_former($scope.feeds, $scope.feed_blocks);
+				})
+				.error(function(data) {
+					console.log(data)
+				})
+		}
 
 		$scope.saveNews = function(news) {
 			url = '/admin'
