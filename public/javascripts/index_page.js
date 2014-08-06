@@ -72,14 +72,15 @@ app.controller('Index', [ '$scope', '$http', function($scope, $http) {
 
 		var inner_container = $('.inner_container'),
 			description = $('.description'),
+			news_title = $(),
 			initial_height=0;
 
-		function setWidthTitle(container) {
-			var c = ~~($(container).width()),
-				e = ~~($(container).find('.img .news_title').width()),
-				x = (c-e)/2;
-			return x;
-		}
+		// function setWidthTitle(container) {
+		// 	var c = ~~($(container).width()),
+		// 		e = ~~($(container).find('.img .news_title').width()),
+		// 		x = (c-e)/2;
+		// 	return x;
+		// }
 		// $.each(inner_container, function() {
 		// 	var b = $(this).find('.img .news_title');
 		// 	b.css('margin-left', setWidthTitle(this));
