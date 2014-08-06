@@ -8,7 +8,6 @@ var UTILS = (function() {
 	return {
 		blocks_former : function(feeds, blocks) {
 			console.warn('UTILS BLOCK FORMER');
-			debugger;
 			init_number ++;
 			for (var i=0; i< feeds.length;i++) {
 				if (!local_block) {
@@ -24,7 +23,8 @@ var UTILS = (function() {
 						feeds.splice(i,1);
 						i--;
 					}
-				} else {
+				} 
+				if (local_block_number == block_size) {
 					sort_way = Math.random() > .5;
 					local_block.feed_elements.sort(function(a,b) {
 						return sort_way ? a.size-b.size : b.size-a.size
