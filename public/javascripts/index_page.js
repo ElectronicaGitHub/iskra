@@ -49,23 +49,81 @@ app.controller('Index', [ '$scope', '$http', function($scope, $http) {
 
 $(document).ready(function() {
 	var inner_container = $('.inner_container'),
-		description = $('.description');
+		description = $('.description'),
+		initial_height=0;
+
+	function setWidthTitle(container) {
+		var c = ~~($(container).width()),
+			e = ~~($(container).find('.img').find('.news_title').width()),
+			x;
+
+		x = (c-e)/2;
+		return x;
+	}
+	jQuery.each(inner_container, function() {
+		var b = $(this).find('.img').find('.news_title');
+		b.css('margin-left','+=' + setWidthTitle(this));
+	})
+	inner_container.mouseenter(function() {
+		var inner_container_hover = $('.inner_container:hover'),
+			this_description = $(this).find(description),
+			p = this_description.find('p'),
+			a = ~~(inner_container_hover.find(description).find('p').height()),
+			b = inner_container_hover.find(".img").find(".news_title"),
+			c = ~~(inner_container_hover.width()),
+			d = ~~(inner_container_hover.find(description).width()),
+			e = ~~(inner_container_hover.find('.img').find('.news_title').width()),
+			x = (c-d-e)/2;
+		initial_height=b.height();
+		if(inner_container_hover.parent().hasClass('s11') || inner_container_hover.parent().hasClass('s22')) {
+			b.css('height','-='+a);
+		}
+		if(inner_container_hover.parent().hasClass('s21')) {
+			b.css('margin-left','+='+x);
+		}
+		while (p.height()>this_description.height()) {
+			p.css('font-size', '-=1px');
+		}
+	})
+	inner_container.mouseleave(function() {
+		var b = $(this).find(".img").find(".news_title");
+		b.height(initial_height);
+		b.css('margin-left', setWidthTitle(this));
+	})	
+
+
+
+	// inner_container.hover(function() {
+	// 	// sizeTitleHover(this);
+	// 	moveTitleHover(this);
+	// 	sizeDescriptionHover(this);
+	// });
 	
-	inner_container.hover(sizeTitleHover());
-	
-	function sizeDescriptionHover() {
-		var this_description = $(this).find(description),
-			p = this_description.find($('p'));
+	function sizeDescriptionHover(elem) {
+		var this_description = $(elem).find(description),
+			p = this_description.find('p');
 
 		while (p.height()>this_description.height()) {
-			p.css('font-size', '-=1px')
+			p.css('font-size', '-=1px');
 		}
 	}
 
-	function sizeTitleHover() {
-		var a = $(this).find(description).find($('p')),
-			b = $(this).find($('.img')).find($('.news_title')).find($('p'));
+	// // function sizeTitleHover(elem) {
+	// // 	var p = $(elem).find(description).find('p'),
+	// // 		container = $(elem).find('.img').find('.news_title'),
+	// // 		title_p = container.find('p');
+		
 
-		console.log(a.width(), b.width());
-	}
+	// // }
+	// function moveTitleHover(elem) {
+	// 	var a = ~~($(elem).find(description).find("p").height()),
+	// 		b = $(elem).find(".img").find(".news_title");
+	// 		console.log(a, b.height())
+			
+	// 		b.css({
+	// 			'height':'-=a',
+	// 			'translation':'.4s'
+	// 		});
+	// }
+
 })
