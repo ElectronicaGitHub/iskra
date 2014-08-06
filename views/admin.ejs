@@ -1,16 +1,18 @@
 <%- layout('base.ejs')%>
+<script src="/javascripts/directives/news_element.js"></script>
 <script src="/javascripts/utils.js"></script>
+<script src="/javascripts/admin.js"></script>
 <link rel="stylesheet" href="/stylesheets/index.css">
 
 <div ng-controller="Admin">
 
 	<div class="button_panel">
-		<button ng-click="page='create_page'">Create news page</button>
-		<button ng-click="page='list_page'">Newslist page</button>
+		<button ng-click="page='create_page'">create</button>
+		<button ng-click="page='list_page'">list</button>
 	</div>
 	{{ page }}
 
-	<div ng-if="page=='create_page'">
+	<div ng-show="page=='create_page'">
 			
 		<div class="input">
 			<p>Title</p>
@@ -26,89 +28,34 @@
 			<button ng-click="saveNews(news)">Сохранить</button>
 		</div>
 		<div class="output">
-			<p>{{ news.title }}</p>
-			<p>{{ news.description }}</p>
-			<p>{{ news.content }}</p>
-			<p>{{ news.size }}</p>
-			<p>{{ news.image }}</p>
+			<news ng-model="news"></news>
 		</div>
 	</div>
-	<div ng-if="page='list_page'" ng-init="getNews()">
+	<div ng-show="page=='list_page'" ng-init="getNews()">
 		
 		<div class="feed">
 			<div ng-repeat="block in feed_blocks"
 				 class="block">
-				<div ng-repeat="element in block.feed_elements"
-					 ng-class="{ s11 : element.size == 1, s21 : element.size == 2 , s22 : element.size == 4}">
-					 <div class="inner_container">
-					 	<div class="img">
-					 		<div class='news_title'>
-						 		<p>{{ element.title }}</p>
-					 		</div>
-					 	</div>
-					 	<div class="description">
-					 		<p>{{ element.description }}</p>
-					 	</div>
-					 </div>
-				</div>
+				<news ng-repeat="element in block.feed_elements" ng-model="element"></news>
 			</div>
 		</div>
-
 	</div>
-
-
 </div>
-
-<script>
-	app.controller('Admin', ['$scope', '$http', function($scope, $http) {
-		console.log('hello admin')
-
-		$scope.page = 'list_page';
-		$scope.feed_blocks = [];
-
-		$scope.getNews = function() {
-			url = '/all';
-			$http.get(url)
-				.success(function(data) {
-					$scope.feeds = data;
-					console.log($scope.feeds)
-
-					$scope.feed_blocks = UTILS.blocks_former($scope.feeds, $scope.feed_blocks);
-				})
-				.error(function(data) {
-					console.log(data)
-				})
-		}
-
-		$scope.saveNews = function(news) {
-			url = '/admin'
-			$http.post(url, news)
-				.success(function(data) {
-					console.log(data)
-				})
-				.error(function(data) {
-					console.log(data)
-				})
-		}
-
-	}])
-
-</script>
 
 <style>
 	.input, .output {
 		float:left;
 	}
 	.input {
-		width: 70%;
+		width: 50%;
 		border-top: gold;
+	}
+	.output {
+		width: 50%;
+		border-top: cyan;
 	}
 	.input input, .input button {
 		width: 100%;
-	}
-	.output {
-		width: 30%;
-		border-top: cyan;
 	}
 
 </style>

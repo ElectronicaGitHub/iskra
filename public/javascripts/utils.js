@@ -7,9 +7,10 @@ var UTILS = (function() {
 
 	return {
 		blocks_former : function(feeds, blocks) {
-			console.warn('UTILS BLOCK FORMER')
+			console.warn('UTILS BLOCK FORMER');
+			debugger;
 			init_number ++;
-			for (var i in feeds) {
+			for (var i=0; i< feeds.length;i++) {
 				if (!local_block) {
 					local_block = {
 						id : ~~(Math.random() * 9999),

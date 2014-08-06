@@ -8,9 +8,9 @@ function fn(express) {
 	});
 
 	router.get('/all', function(req, res, next) {
-		News.find(function(err, result) {
+		News.find().sort({date:-1}).exec(function(err, results) {
 			if (err) return next(err);
-			res.json(result)
+			res.json(results);
 		})
 	})
 

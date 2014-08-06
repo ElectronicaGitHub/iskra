@@ -40,11 +40,12 @@ div.inner_container {
 	overflow: hidden;
 }
 div.img {
-	right:0;
-	background: url(http://www.extremetech.com/wp-content/uploads/2014/07/cassini-1.jpg) no-repeat center center;
-	background-size: cover;
-	height: 100%;
 	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	right: 0;
 }
 div.description {
 	position: absolute;

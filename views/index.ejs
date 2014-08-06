@@ -1,5 +1,6 @@
 <%- layout('base.ejs') %>
 <% block('title', 'Главная страница') -%>
+<script src="/javascripts/directives/news_element.js"></script>
 <script src="/javascripts/utils.js"></script>
 <script src="/javascripts/index_page.js"></script>
 <link rel="stylesheet" href="/stylesheets/index.css">
@@ -8,19 +9,7 @@
 	<div class="feed">
 		<div ng-repeat="block in feed_blocks"
 			 class="block">
-			<div ng-repeat="element in block.feed_elements"
-				 ng-class="{ s11 : element.size == 1, s21 : element.size == 2 , s22 : element.size == 4}">
-				 <div class="inner_container">
-				 	<div class="img">
-				 		<div class='news_title'>
-					 		<p>{{ element.title }}</p>
-				 		</div>
-				 	</div>
-				 	<div class="description">
-				 		<p>{{ element.description }}</p>
-				 	</div>
-				 </div>
-			</div>
+			<news ng-repeat="element in block.feed_elements" ng-model="element"></news>
 		</div>
 	</div>
 </div>
