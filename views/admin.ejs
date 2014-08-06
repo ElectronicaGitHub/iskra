@@ -1,12 +1,66 @@
 <%- layout('base.ejs')%>
 
 <div ng-controller="Admin">
-	welcome in admin panel 
+	<p>welcome in admin panel </p>
+	<div class="input">
+		<p>Title</p>
+		<input type="text" ng-model="news.title">
+		<p>Description</p>
+		<input type="text" ng-model="news.description">
+		<p>Content</p>
+		<input type="text" ng-model="news.content">
+		<p>Size</p>
+		<input type="number" ng-model="news.size">
+		<p>Image</p>
+		<input type="text" ng-model="news.image">
+		<button ng-click="saveNews(news)">Сохранить</button>
+	</div>
+	<div class="output">
+		<p>{{ news.title }}</p>
+		<p>{{ news.description }}</p>
+		<p>{{ news.content }}</p>
+		<p>{{ news.size }}</p>
+		<p>{{ news.image }}</p>
+
+
+	</div>
+
+
 </div>
 
 <script>
-	app.controller('Admin', ['$scope', function($scope) {
+	app.controller('Admin', ['$scope', '$http', function($scope, $http) {
 		console.log('hello admin')
+
+		$scope.saveNews = function(news) {
+			url = '/admin'
+			$http.post(url, news)
+				.success(function(data) {
+					console.log(data)
+				})
+				.error(function(data) {
+					console.log(data)
+				})
+		}
+
 	}])
 
 </script>
+
+<style>
+	.input, .output {
+		float:left;
+	}
+	.input {
+		width: 70%;
+		border-top: gold;
+	}
+	.input input, .input button {
+		width: 100%;
+	}
+	.output {
+		width: 30%;
+		border-top: cyan;
+	}
+
+</style>

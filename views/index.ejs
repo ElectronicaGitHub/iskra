@@ -1,7 +1,8 @@
 <%- layout('base.ejs') %>
 <% block('title', 'Главная страница') -%>
 <script src="/javascripts/index_page.js"></script>
-<div ng-controller="Index">	
+<div ng-controller="Index" ng-init="init()">	
+
 	<div class="feed">
 		<div ng-repeat="block in feed_blocks"
 			 class="block">
@@ -10,11 +11,11 @@
 				 <div class="inner_container">
 				 	<div class="img">
 				 		<div class='news_title'>
-					 		<p>Lorem ipsum dolor sit amet</p>
+					 		<p>{{ element.title }}</p>
 				 		</div>
 				 	</div>
 				 	<div class="description">
-				 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi voluptatum sed blanditiis, tempora odio eos eveniet omnis accusamus, assumenda praesentium debitis quaerat neque harum similique sint. Inventore ratione quisquam, nisi?</p>
+				 		<p>{{ element.description }}</p>
 				 	</div>
 				 </div>
 			</div>
@@ -93,9 +94,6 @@
 	div.news_title {
 		display: table;
 		height: 180px;
-		-webkit-transition: all .4s;
-			-moz-transition: all .4s; 
-		    	transition: all .4s;
 	}
 	.s21 .inner_container .img .news_title{
 		margin: 0;
@@ -128,5 +126,11 @@
 		-webkit-transform: translateX(0);
    			-moz-transform: translateX(0);
         		transform: translateX(0);
+	}
+	.transitioner {
+		-webkit-transition: .4s;
+		-moz-transition: .4s;
+		transition: .4s;
+		
 	}
 </style>
