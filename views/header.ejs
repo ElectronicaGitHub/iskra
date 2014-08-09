@@ -1,15 +1,16 @@
 <link href='http://fonts.googleapis.com/css?family=Philosopher:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 <script>
 	$(document).ready(function() {
 		colors = ['#2F5A99','#2A8C66','#B94788','#CE5251','#21C7C2'];
 		random_color = colors[~~(Math.random() * colors.length)]
-		$('.logo').css('color', random_color)
-		$('.bottom').css('background-color', random_color)
+		$('.logo').css('color', random_color);
+		$('.bottom').css('background-color', random_color);
+		$('body > .container').css('border-top', '4px solid ' + random_color)
 	})
 </script>
-<div class="logo">ИСКРА</div>
-<div class="tabs">
+<div class="logo">ИСКРА
+	<div class="left-tabs">
 		<div class="each-tab">
 			<span>Фишка
 				<div class='bottom'></div>
@@ -20,6 +21,8 @@
 				<div class='bottom'></div>
 			</span>
 		</div>
+	</div>
+	<div class="right-tabs">
 		<div class="each-tab">
 			<span>Карусель
 				<div class='bottom'></div>
@@ -30,29 +33,56 @@
 				<div class='bottom'></div>
 			</span>
 		</div>
+	</div>
 </div>
 <style>
-	.tabs {
-		width:100%;
-		height: 50px;
-		line-height: 50px;
-		margin: 10px auto 20px;
+	.logo {
+		width: 550px;
+		height: 110px;
+		font-size: 150px;
+		line-height: 110px;
+		text-align: center;
+		position: relative;
+		font-family: "Philosopher";
+		font-weight: 700;
+		margin: 20px auto;
+	}
+	div[class*=-tabs] {
+		width: 180px;
+		height: 50%;
+		line-height: 55px;
+		font-weight: 700;
+		margin: 0 auto 20px;
 		font-family: 'Roboto Condensed';
-		font-size: 25px;
+		font-size: 30px;
+		color : #555;
+		position: absolute;
+		top: 0;
+	}
+	div.left-tabs {
+		right: 100%;
+		text-align: right;
+		margin-right: 40px;
+	}
+	div.right-tabs {
+		left: 100%;
+		text-align: left;
+		margin-left: 40px;
 	}
 	.each-tab {
-	    color: black;
-	    text-align: center;
-		float: left;
 	    height: 100%;
-	    width:25%;
+	    width: 100%;
 	    cursor:pointer;
 	}
-	span {
+	.each-tab span {
 		position: relative;
-		padding: 10px 5px;
+		padding: 5px 5px;
 	}
-	span div.bottom {
+	.each-tab:hover span div.bottom{
+	    bottom: 0px;
+	    opacity:1;
+	}
+	.each-tab span div.bottom {
 		position: absolute;
 		left:0;
 		right:0;
@@ -60,20 +90,10 @@
 	    background-color: gold;
 	    height: 5px;
 	    opacity:0;
-	    bottom: -20px;
+	    bottom: -10px;
+	    -webkit-transition: opacity .4s, bottom 0.5s;
+	    -moz-transition: opacity .4s, bottom 0.5s;
 	    transition: opacity .4s, bottom 0.5s;
-	}
-	.each-tab:hover .bottom{
-	    bottom: 0px;
-	    opacity:1;
-	}
-	.logo {
-		text-align: center;
-		font-size: 140px;
-		height: 150px;
-		line-height: 150px;
-		font-family: "Philosopher";
-		font-weight: 700;
 	}
 </style>
 
