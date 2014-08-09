@@ -24,20 +24,18 @@ div.s22 {
 	height: 400px;
 }
 
-
-
-p {
-	margin: 0;
-	display: table-cell;
-	vertical-align: middle;
-	text-align: center;
-}
 div.inner_container {
 	position: relative;
 	width: 100%;
 	height: 100%;
 	background-color: lightblue;
 	overflow: hidden;
+}
+div.inner_container p {
+	margin: 0;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
 }
 div.img {
 	width: 100%;
