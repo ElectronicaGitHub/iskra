@@ -1,10 +1,12 @@
 <%- layout('base.ejs')%>
-<script src="/javascripts/directives/news_element.js"></script>
+<script src="/libs/tinymce/tinymce.min.js"></script>
+<script src="/libs/angular-ui-tinymce/src/tinymce.js"></script>
 <script src="/javascripts/utils.js"></script>
 <script src="/javascripts/admin.js"></script>
+<script src="/javascripts/directives/news_element.js"></script>
 <link rel="stylesheet" href="/stylesheets/index.css">
 
-<div ng-controller="Admin">
+<div ng-app="admin" ng-controller="Admin">
 
 	<div class="button_panel">
 		<button ng-click="page='create_page'; news = {};">create</button>
@@ -20,11 +22,10 @@
 			<input type="text" 
 				   ng-model="news.title">
 			<p>Description</p>
-			<textarea type="text" 
-				   ng-model="news.description"></textarea>
+			<textarea ng-model="news.description"></textarea>
 			<p>Content</p>
-			<input type="text" 
-				   ng-model="news.content">
+			<textarea ui-tinymce="tinymce_options"
+				   	  ng-model="news.content"></textarea>
 			<p>Size</p>
 			<button ng-class="{ highlighted : news.size == 1}" 
 					class="size-change" 

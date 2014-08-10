@@ -1,9 +1,24 @@
+app = angular.module('admin', ['ui.tinymce']);
+
 app.controller('Admin', ['$scope', '$http', function($scope, $http) {
-	console.log('hello admin')
+	console.log('hello admin');
 
 	$scope.page = 'list_page';
 	$scope.dish_options = ['Завтрак', 'Обед', 'Полдник', 'Ужин']
 	$scope.feed_blocks = [];
+	$scope.tinymce_options = {
+		theme: "modern",
+        plugins: [
+            "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+            "searchreplace wordcount visualblocks visualchars code fullscreen",
+            "insertdatetime media nonbreaking save table contextmenu directionality",
+            "emoticons template paste textcolor"
+        ],
+        toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent",
+        toolbar2: "print preview media | forecolor backcolor emoticons | link image",
+        image_advtab: true,
+		height : '500px'
+	}
 
 	$scope.loadForPage = function(render_blocks) {
 		$scope.setDefaultAndGet(render_blocks)
