@@ -19,7 +19,12 @@ app.controller('Admin', ['$scope', '$http', function($scope, $http) {
 	}
 
 	$scope.saveNews = function(news) {
-		url = '/admin'
+		url = '/admin';
+		news.tags = news.tags
+			.split(',')
+			.map(function(a,b) {
+				return $.trim(a);
+			});
 		$http.post(url, news)
 			.success(function(data) {
 				console.log(data)

@@ -18,6 +18,9 @@ var News = new Schema({
 		type: 'Date',
 		default : Date.now
 	},
+	tags : {
+		type: [String]
+	},
 	size :{
 		type: 'Number'
 	}
