@@ -8,7 +8,7 @@ app.controller('Index', [ '$scope', '$http', function($scope, $http) {
 	}
 
 	$scope.getNews = function() {
-		url = '/all';
+		url = '/news/';
 		$http.get(url)
 			.success(function(data) {
 				$scope.feeds = data;

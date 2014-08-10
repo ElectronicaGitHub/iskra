@@ -2,6 +2,7 @@ app.controller('Admin', ['$scope', '$http', function($scope, $http) {
 	console.log('hello admin')
 
 	$scope.page = 'list_page';
+	$scope.dish_options = ['Завтрак', 'Обед', 'Полдник', 'Ужин']
 	$scope.feed_blocks = [];
 
 	$scope.loadForPage = function(render_blocks) {
@@ -16,7 +17,7 @@ app.controller('Admin', ['$scope', '$http', function($scope, $http) {
 
 
 	$scope.getNews = function(render_blocks) {
-		url = '/all';
+		url = '/news/';
 		$http.get(url)
 			.success(function(data) {
 				$scope.feeds = data;
@@ -31,8 +32,8 @@ app.controller('Admin', ['$scope', '$http', function($scope, $http) {
 			})
 	}
 
-	$scope.saveNews = function(news) {
-		url = '/admin';
+	$scope.postNews = function(news, first_save) {
+		url = first_save ? '/admin' : '/admin/' + news._id;
 		news.tags = news.tags
 			.split(',')
 			.map(function(a,b) {
@@ -46,6 +47,12 @@ app.controller('Admin', ['$scope', '$http', function($scope, $http) {
 				console.log(data)
 			})
 	}
+
+	$scope.loadToFormForUpdate = function(news) {
+		$scope.page = 'create_page';
+		$scope.news = news;
+	}
+
 	$scope.deleteNews = function(news_id, render_blocks) {
 		url = '/admin/' + news_id;
 		$http.delete(url)
