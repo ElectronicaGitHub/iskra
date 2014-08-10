@@ -17,19 +17,41 @@
 			
 		<div class="input">
 			<p>Title</p>
-			<input type="text" ng-model="news.title">
+			<input type="text" 
+				   ng-model="news.title">
 			<p>Description</p>
-			<input type="text" ng-model="news.description">
+			<textarea type="text" 
+				   ng-model="news.description"></textarea>
 			<p>Content</p>
-			<input type="text" ng-model="news.content">
+			<input type="text" 
+				   ng-model="news.content">
 			<p>Size</p>
-			<input type="number" ng-model="news.size">
+			<button ng-class="{ highlighted : news.size == 1}" 
+					class="size-change" 
+					ng-click="news.size=1">1
+			</button>
+			<button ng-class="{ highlighted : news.size == 2}" 
+					class="size-change" 
+					ng-click="news.size=2">2
+			</button>
+			<button ng-class="{ highlighted : news.size == 4}" 
+					class="size-change" 
+					ng-click="news.size=4">4
+			</button>
 			<p>Image</p>
-			<input type="text" ng-model="news.image">
+			<input type="text" 
+				   ng-model="news.image">
+			<p>Dish</p>
+			<select ng-model="news.dish" ng-options="k as v for (k,v) in dish_options"></select>
 			<p>Tags</p>
-			<input type="text" ng-model="news.tags">
-			<button ng-if="!news._id" ng-click="postNews(news, true)">Сохранить</button>
-			<button ng-if="news._id" ng-click="postNews(news)">Изменить</button>
+			<input type="text" 
+				   ng-model="news.tags">
+			<button ng-if="!news._id" 
+					ng-click="postNews(news, true)">Сохранить
+			</button>
+			<button ng-if="news._id" 
+					ng-click="postNews(news)">Изменить
+			</button>
 		</div>
 		<div class="output">
 			<news ng-model="news"></news>
@@ -60,6 +82,7 @@
 	<div ng-if="page=='list_page'" ng-init="loadForPage()"> 
 		<div ng-repeat="news in feeds" class="news-in-list">
 			<p>{{ news.title }}</p>
+			<p>size : {{ news.size }}</p>
 			<button ng-click="deleteNews(news._id)">Удалить</button>
 			<button ng-click="loadToFormForUpdate(news)">Редактировать</button>
 		</div>
@@ -78,8 +101,23 @@
 		width: 50%;
 		border-top: cyan;
 	}
-	.input input, .input button {
+	.input input, .input button, .input select, .input textarea {
 		width: 100%;
+		height: 30px;
+		line-height: 30px;
+		font-size: 15px;
+	}
+	.input textarea {
+		height: 100px;
+	}
+	button.size-change {
+		float: left;
+		width: 33%;
+		outline: none;
+		border: 0;
+	}
+	button.highlighted {
+		background-color: #2980b9;
 	}
 	/*// basic blocks additional styles for update and delete*/
 	.admin-elements {

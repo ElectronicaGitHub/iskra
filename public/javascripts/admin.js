@@ -2,6 +2,7 @@ app.controller('Admin', ['$scope', '$http', function($scope, $http) {
 	console.log('hello admin')
 
 	$scope.page = 'list_page';
+	$scope.dish_options = ['Завтрак', 'Обед', 'Полдник', 'Ужин']
 	$scope.feed_blocks = [];
 
 	$scope.loadForPage = function(render_blocks) {

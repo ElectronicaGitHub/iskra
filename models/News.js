@@ -3,26 +3,29 @@ Schema = mongoose.Schema;
 
 var News = new Schema({
 	title : {
-		type: 'String'
+		type: String
 	},
 	description : {
-		type: 'String'
+		type: String
 	},
 	content : {
-		type: 'String'
+		type: String
 	},
 	image : {
-		type : 'String'
+		type : String
 	},
 	date : {
-		type: 'Date',
+		type: Date,
 		default : Date.now
 	},
 	tags : {
 		type: [String]
 	},
+	dish : {
+		type : Number
+	},
 	size :{
-		type: 'Number'
+		type: Number
 	}
 })
 
