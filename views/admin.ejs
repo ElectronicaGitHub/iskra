@@ -7,7 +7,7 @@
 <div ng-controller="Admin">
 
 	<div class="button_panel">
-		<button ng-click="page='create_page'">create</button>
+		<button ng-click="page='create_page'; news = {};">create</button>
 		<button ng-click="page='feed_page'">feed</button>
 		<button ng-click="page='list_page'">list</button>
 	</div>
@@ -28,7 +28,8 @@
 			<input type="text" ng-model="news.image">
 			<p>Tags</p>
 			<input type="text" ng-model="news.tags">
-			<button ng-click="saveNews(news)">Сохранить</button>
+			<button ng-if="!news._id" ng-click="postNews(news, true)">Сохранить</button>
+			<button ng-if="news._id" ng-click="postNews(news)">Изменить</button>
 		</div>
 		<div class="output">
 			<news ng-model="news"></news>
@@ -45,7 +46,7 @@
 							<span class="look">Просмотр</span>
 						</div>
 						<div class="row2">
-							<span class="update">Редактировать</span>
+							<span class="update" ng-click="loadToFormForUpdate(element)">Редактировать</span>
 							<span class="delete" ng-click="deleteNews(element._id, true)">Удалить</span>
 						</div>
 
@@ -60,6 +61,7 @@
 		<div ng-repeat="news in feeds" class="news-in-list">
 			<p>{{ news.title }}</p>
 			<button ng-click="deleteNews(news._id)">Удалить</button>
+			<button ng-click="loadToFormForUpdate(news)">Редактировать</button>
 		</div>
 	</div>
 </div>
