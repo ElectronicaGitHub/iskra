@@ -8,6 +8,7 @@
 
 	<div class="button_panel">
 		<button ng-click="page='create_page'">create</button>
+		<button ng-click="page='feed_page'">feed</button>
 		<button ng-click="page='list_page'">list</button>
 	</div>
 	{{ page }}
@@ -33,13 +34,32 @@
 			<news ng-model="news"></news>
 		</div>
 	</div>
-	<div ng-show="page=='list_page'" ng-init="getNews()">
+	<div ng-if="page=='feed_page'" ng-init="loadForPage(true)">
 		
 		<div class="feed">
 			<div ng-repeat="block in feed_blocks"
 				 class="block">
-				<news ng-repeat="element in block.feed_elements" ng-model="element"></news>
+				<news ng-repeat="element in block.feed_elements" ng-model="element">
+					<div class="admin-elements">
+						<div class="row1">
+							<span class="look">Просмотр</span>
+						</div>
+						<div class="row2">
+							<span class="update">Редактировать</span>
+							<span class="delete" ng-click="deleteNews(element._id, true)">Удалить</span>
+						</div>
+
+					</div>
+					
+				</news>
 			</div>
+		</div>
+	</div>
+
+	<div ng-if="page=='list_page'" ng-init="loadForPage()"> 
+		<div ng-repeat="news in feeds" class="news-in-list">
+			<p>{{ news.title }}</p>
+			<button ng-click="deleteNews(news._id)">Удалить</button>
 		</div>
 	</div>
 </div>
@@ -58,6 +78,47 @@
 	}
 	.input input, .input button {
 		width: 100%;
+	}
+	/*// basic blocks additional styles for update and delete*/
+	.admin-elements {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: 9999;
+	}
+	.row1, .row2 {
+		height: 50%;
+		width: 100%;
+		text-align: center;
+	}
+	.delete {
+		color: #e74c3c;
+	}
+	.update {
+		color: #2980b9;
+	}
+	.s11 div[class*=row], .s21 div[class*=row] {
+		line-height: 100px;
+	}
+	.s22 div[class*=row] {
+		line-height: 200px;
+	}
+	div[class*=row] span {
+		background-color: rgba(255,255,255,.8);
+		font-weight: 700;
+	}
+	.s11 div[class*=row] span, .s21 div[class*=row] span {
+		font-size: 18px;
+		padding: 3px 10px;
+	} 
+	.s22 div[class*=row] span {
+		font-size: 25px;
+		padding: 10px 20px;
+	}
+	.news-in-list {
+		background-color: white;
+		border: 1px solid #ddd;
+		margin-bottom: 10px;
 	}
 
 </style>

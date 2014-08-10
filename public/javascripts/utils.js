@@ -37,8 +37,8 @@ var UTILS = (function() {
 			if (feeds.length != 0 && init_number < 10) {
 				this.blocks_former(feeds, blocks);
 			}
-			console.log('feeds', feeds);
-			console.log('blocks', blocks);
+			// console.log('feeds', feeds);
+			// console.log('blocks', blocks);
 			setTimeout(function() {
 				if (formatter) {
 					formatter();

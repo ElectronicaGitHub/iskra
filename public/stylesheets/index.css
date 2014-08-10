@@ -9,6 +9,7 @@
 	div.s11, div.s21,div.s22 {
 		padding: 10px;
 		float: left;
+		position: relative;
 	}
 	div.s11, div.s21 {
 		height: 200px;

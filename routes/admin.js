@@ -15,6 +15,13 @@ function admin(express) {
 		res.json('News successfully created')
 	})
 
+	router.delete('/:id', function(req, res, next) {
+		News.findByIdAndRemove(req.params.id, function(err, result) {
+			console.log(err, result);
+			res.json('deleted');
+		});
+	})
+
 	return router;
 }
 
