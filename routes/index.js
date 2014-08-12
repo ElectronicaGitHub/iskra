@@ -7,6 +7,12 @@ function fn(express) {
 		res.render('index');
 	});
 
+	router.get('/post/:id', function(req, res) {
+		res.render('content', {
+			id : req.params.id
+		});
+	});
+
 	router.get('/news/:id', function(req, res, next) {
 		News.findById(req.params.id).exec(function(err, result) {
 			if (err) return next(err);

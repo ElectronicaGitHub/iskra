@@ -1,4 +1,6 @@
-<div ng-if="news.size" ng-class="{ s11 : news.size == 1, s21 : news.size == 2 , s22 : news.size == 4}">
+<div ng-if="news.size" 
+	 ng-class="{ s11 : news.size == 1, s21 : news.size == 2 , s22 : news.size == 4}"
+	 ng-click="location.href = '/post/{{ news._id }}'">
 	 <div class="inner_container">
 		<div ng-transclude></div>
 	 	<div class="img" style="background-image: url( {{ news.image }} )">

@@ -21,9 +21,6 @@ var News = new Schema({
 	tags : {
 		type: [String]
 	},
-	dish : {
-		type : Number
-	},
 	size :{
 		type: Number
 	}

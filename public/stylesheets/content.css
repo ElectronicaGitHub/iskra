@@ -1,0 +1,37 @@
+.page * {
+	color: #555;
+}
+div.page {
+	margin-top: 40px;
+}
+div.page > div {
+	float: left;
+	height: 100vh;
+}
+div.page .content {
+	width: 50%;
+	background: white;
+	border: 1px solid #ddd;
+	padding: 15px;
+}
+div.page .list, div.page .misc {
+	width: 25%;
+}
+.title {
+	font-family: 'Roboto Condensed';
+	font-weight: 700;
+	font-size: 30px;
+	line-height: 35px;
+}
+.date {
+	color: #E85C49;
+	font-size: 15px;
+	line-height: 30px;
+	height: 30px;
+}
+.content {
+	font: 16px/24px 'PT Sans', sans-serif;
+}
+.content img {
+	padding: 10px;
+}

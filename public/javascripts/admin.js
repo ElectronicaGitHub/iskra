@@ -1,10 +1,8 @@
 app = angular.module('admin', ['ui.tinymce']);
 
 app.controller('Admin', ['$scope', '$http', function($scope, $http) {
-	console.log('hello admin');
 
 	$scope.page = 'list_page';
-	$scope.dish_options = ['Завтрак', 'Обед', 'Полдник', 'Ужин']
 	$scope.feed_blocks = [];
 	$scope.tinymce_options = {
 		theme: "modern",
@@ -66,6 +64,7 @@ app.controller('Admin', ['$scope', '$http', function($scope, $http) {
 	$scope.loadToFormForUpdate = function(news) {
 		$scope.page = 'create_page';
 		$scope.news = news;
+		$scope.news.tags = $scope.news.tags.join(', ');
 	}
 
 	$scope.deleteNews = function(news_id, render_blocks) {

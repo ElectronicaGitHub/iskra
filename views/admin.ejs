@@ -6,7 +6,7 @@
 <script src="/javascripts/directives/news_element.js"></script>
 <link rel="stylesheet" href="/stylesheets/index.css">
 
-<div ng-app="admin" ng-controller="Admin">
+<div class="admin-page" ng-app="admin" ng-controller="Admin">
 
 	<div class="button_panel">
 		<button ng-click="page='create_page'; news = {};">create</button>
@@ -42,17 +42,17 @@
 			<p>Image</p>
 			<input type="text" 
 				   ng-model="news.image">
-			<p>Dish</p>
-			<select ng-model="news.dish" ng-options="k as v for (k,v) in dish_options"></select>
 			<p>Tags</p>
 			<input type="text" 
 				   ng-model="news.tags">
-			<button ng-if="!news._id" 
-					ng-click="postNews(news, true)">Сохранить
-			</button>
-			<button ng-if="news._id" 
-					ng-click="postNews(news)">Изменить
-			</button>
+			<div class="button-bottom-panel">
+				<button ng-if="!news._id" 
+						ng-click="postNews(news, true)">Сохранить
+				</button>
+				<button ng-if="news._id" 
+						ng-click="postNews(news)">Изменить
+				</button>
+			</div>
 		</div>
 		<div class="output">
 			<news ng-model="news"></news>
@@ -86,6 +86,7 @@
 			<p>size : {{ news.size }}</p>
 			<button ng-click="deleteNews(news._id)">Удалить</button>
 			<button ng-click="loadToFormForUpdate(news)">Редактировать</button>
+			<button><a href="/post/{{ news._id }}">Перейти в новость</a></button>
 		</div>
 	</div>
 </div>
@@ -102,6 +103,9 @@
 		width: 50%;
 		border-top: cyan;
 	}
+	.button-bottom-panel {
+		padding: 40px 0;
+	}
 	.input input, .input button, .input select, .input textarea {
 		width: 100%;
 		height: 30px;
@@ -113,7 +117,7 @@
 	}
 	button.size-change {
 		float: left;
-		width: 33%;
+		width: 33.33333%;
 		outline: none;
 		border: 0;
 	}
