@@ -82,11 +82,21 @@
 
 	<div ng-if="page=='list_page'" ng-init="loadForPage()"> 
 		<div ng-repeat="news in feeds" class="news-in-list">
-			<p>{{ news.title }}</p>
-			<p>size : {{ news.size }}</p>
-			<button ng-click="deleteNews(news._id)">Удалить</button>
-			<button ng-click="loadToFormForUpdate(news)">Редактировать</button>
-			<button><a href="/post/{{ news._id }}">Перейти в новость</a></button>
+			
+			<div class = "news-block news-main">
+				<p>{{ news.title }}</p>
+				<p>size : {{ news.size }}</p>
+			</div>
+			
+			<div class = "news-block news-description">
+				<p>{{ news.description }}</p>
+			</div>
+
+			<div class = "button-block">
+				<button ng-click="deleteNews(news._id)">Удалить</button>
+				<button ng-click="loadToFormForUpdate(news)">Редактировать</button>
+				<button><a href="/post/{{ news._id }}">Перейти в новость</a></button>
+			</div>
 		</div>
 	</div>
 </div>
@@ -161,9 +171,20 @@
 		padding: 10px 20px;
 	}
 	.news-in-list {
-		background-color: white;
 		border: 1px solid #ddd;
-		margin-bottom: 10px;
+		background-color: snow;
+		padding: 5px;
 	}
+	.news-block {
+		background-color: #ffd;
+	}
+	.news-main {
+		
+	}
+	.news-description {
+		
+	}
+	.button-block {
 
+	}
 </style>
