@@ -1,20 +1,28 @@
 <%- layout('base.ejs') %>
 <% block('title', 'Главная страница') -%>
+<script>
+	window.id = '<%- id %>';
+	var DATA = (function() {
+		return {
+			a : 1
+		}
+	})()
+</script>
+<script src="/libs/react/react.js"></script>
+<script src="/libs/react/JSXTransformer.js"></script>
 <script src="/libs/angular-sanitize.js"></script>
 <script src="/libs/moment/min/moment-with-locales.min.js"></script>
+<script type="text/jsx" src="/javascripts/content-react.js"></script>
 <script src="/javascripts/content.js"></script>
-<script>
-	window.id = '<%- id %>'
-</script>
 <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/stylesheets/content.css">
 
 <div class="page" ng-app="content" ng-controller="contentCtrl" ng-init="init()">
 
-	<div class="content">
+	<div class="post">
 		<div class="title">{{ post.title }}</div>
 		<div class="date">{{ post.date }}</div>		
-		<div ng-bind-html="post.content"></div>
+		<div class="content" ng-bind-html="post.content"></div>
 	</div>
 	<div class="list"></div>
 	<div class="misc"></div>

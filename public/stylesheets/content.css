@@ -1,5 +1,6 @@
 .page * {
 	color: #555;
+	font-family: 'Roboto Condensed';
 }
 div.page {
 	margin-top: 40px;
@@ -8,30 +9,62 @@ div.page > div {
 	float: left;
 	height: 100vh;
 }
-div.page .content {
+div.page .post {
 	width: 50%;
-	background: white;
-	border: 1px solid #ddd;
 	padding: 15px;
 }
 div.page .list, div.page .misc {
 	width: 25%;
 }
-.title {
-	font-family: 'Roboto Condensed';
+.list {
+	background-color: #e9e9e9;
+}
+.post .title {
 	font-weight: 700;
 	font-size: 30px;
 	line-height: 35px;
 }
-.date {
+.post .date {
 	color: #E85C49;
 	font-size: 15px;
 	line-height: 30px;
 	height: 30px;
 }
-.content {
+.post .content {
 	font: 16px/24px 'PT Sans', sans-serif;
 }
-.content img {
+.tag-title {
+	font-weight: 700;
+	font-size: 25px;
+	padding: 0px 10px;
+	color: #4D42FF;
+	margin-top: 10px;
+}
+.each-post {
+	border-radius: 2px;
+	/*margin-bottom: 10px;*/
 	padding: 10px;
+	-webkit-transition: all .4s;
+	-moz-transition: all .4s;
+	transition: all .4s;
+	
+}
+.each-post:hover {
+	background-color: #ACE3E8;
+}
+.each-post .title {
+	font-size: 20px;
+	line-height: 24px;
+	font-weight: 700;
+}
+.each-post .date {
+	font-size: 12px;
+	font-weight: 400;
+	color: #E85C49;
+}
+.each-post .description {
+	font: 14px;
+	line-height: 18px;
+	padding-top: 5px;
+	font-weight: 400;
 }
