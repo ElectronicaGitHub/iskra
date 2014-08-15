@@ -68,3 +68,9 @@ div.page .list, div.page .misc {
 	padding-top: 5px;
 	font-weight: 400;
 }
+a {
+	color: #4D42FF !important;
+}
+.img_description {
+	font-size: 13px;
+}
