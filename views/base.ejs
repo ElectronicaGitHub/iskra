@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: http://ogp.me/ns#">
 <head>
 	<meta charset="UTF-8">
 	<title><%- blocks.title %></title>
@@ -12,6 +12,15 @@
 			.controller('baseCtrl', [ '$scope', function($scope) {
 			}])
 	</script>
+
+	 <meta property="og:title" content="Заголовок" />
+      <meta property="og:description" content="Описание" />
+      <meta property="og:url" content="Ссылка на страницу" />
+      <meta property="og:image" content="Ссылка на картинку" />
+
+      <meta name="title" content="Заголовок" />
+      <meta name="description" content="Описание" />
+
 </head>
 <body>
 	<div class="container">	

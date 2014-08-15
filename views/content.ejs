@@ -1,5 +1,4 @@
 <%- layout('base.ejs') %>
-<% block('title', 'Главная страница') -%>
 <script>
 	window.id = '<%- id %>';
 	var DATA = (function() {
@@ -33,7 +32,17 @@
 <div class="page" ng-app="content" ng-controller="contentCtrl" ng-init="init()">
 
 	<div class="post">
-		<div class="fb-share-button" data-href="https://www.facebook.com/tvoykosmos" data-width="20"></div>
+
+		<script type="text/javascript">(function() {
+		  if (window.pluso)if (typeof window.pluso.start == "function") return;
+		  if (window.ifpluso==undefined) { window.ifpluso = 1;
+		    var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+		    s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
+		    s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';
+		    var h=d[g]('body')[0];
+		    h.appendChild(s);
+		  }})();</script>
+		<div class="pluso" data-background="transparent" data-options="medium,square,line,horizontal,nocounter,theme=01" data-services="vkontakte,facebook,twitter,google"></div>
 
 		<div class="title">{{ post.title }}</div>
 		<div class="date">{{ post.date }}</div>		
