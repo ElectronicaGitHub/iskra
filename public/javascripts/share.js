@@ -14,7 +14,7 @@ Share = {
             self = Share,
             options = $.extend(
                 {
-                    type:       'vk',    // тип соцсети
+                    // social_type:       'vk',    // тип соцсети
                     url:        location.href,  // какую ссылку шарим
                     count_url:  location.href,  // для какой ссылки крутим счётчик
                     title:      document.title, // заголовок шаринга
@@ -25,7 +25,8 @@ Share = {
                 _options            // Параметры из вызова метода имеют наивысший приоритет
             );
 
-        if (self.popup(link = self[options.type](options)) === null) {
+            // link = self[options.social_type](options);
+        if (self.popup(link = self[options.social_type](options)) === null) {
             // Если не удалось открыть попап
             if ( $(_element).is('a') ) {
                 // Если это <a>, то подставляем адрес и просим браузер продолжить переход по ссылке

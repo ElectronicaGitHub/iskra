@@ -12,15 +12,18 @@ content = angular.module('content', ['ngSanitize'])
 					$scope.post.content = $scope.trustContent($scope.post.content);
 					$scope.post.date = moment($scope.post.date).locale('ru').calendar();
 					
+					var options = {
+				    	url:        location.href,  // какую ссылку шарим
+	                    count_url:  location.href,  // для какой ссылки крутим счётчик
+	                    title:      $scope.post.title, // заголовок шаринга
+	                    image:      $scope.post.image,             // картинка шаринга
+	                    text:       $scope.post.description
+					}
 					$(document).on('click', '.social_share', function(){
-					    Share.go(this, {
-					    	url:        location.href,  // какую ссылку шарим
-		                    count_url:  location.href,  // для какой ссылки крутим счётчик
-		                    title:      $scope.post.title, // заголовок шаринга
-		                    image:      $scope.post.image,             // картинка шаринга
-		                    text:       $scope.post.description
-						});
+						options.social_type = $(this).attr('data-type');
+					    Share.go(this, options);
 					});
+					insertMeta(options);
 				})
 				.error(function(data) {
 					console.log(data)
@@ -35,3 +38,27 @@ content = angular.module('content', ['ngSanitize'])
 			return text;
 		}
 	}])
+
+function insertMeta(options) {
+	$.extend(options, {
+		type: 'article',
+        site_name: 'Твой Космос',
+        description: options.title
+	})
+	props = [ 'title', 
+			  'type', 
+			  'url', 
+			  'image', 
+			  'description', 
+			  'site_name'
+	]
+	for (i in props) {
+		meta = document.createElement('META');
+		$(meta)
+			.attr('property', 'og:' + props[i])
+			.attr('content', options[props[i]])
+		document.head.appendChild(meta);
+	}
+}
+
+
