@@ -1,5 +1,7 @@
 content = angular.module('content', ['ngSanitize'])
 	.controller('contentCtrl', ['$scope', '$http', '$sce', function($scope, $http, $sce) {
+		
+
 		$scope.news_id = id;
 		$scope.getContent = function(id) {
 			url = '/news/' + id;
@@ -9,6 +11,16 @@ content = angular.module('content', ['ngSanitize'])
 					$scope.post = data;
 					$scope.post.content = $scope.trustContent($scope.post.content);
 					$scope.post.date = moment($scope.post.date).locale('ru').calendar();
+					
+					$(document).on('click', '.social_share', function(){
+					    Share.go(this, {
+					    	url:        location.href,  // какую ссылку шарим
+		                    count_url:  location.href,  // для какой ссылки крутим счётчик
+		                    title:      $scope.post.title, // заголовок шаринга
+		                    image:      $scope.post.image,             // картинка шаринга
+		                    text:       $scope.post.description
+						});
+					});
 				})
 				.error(function(data) {
 					console.log(data)

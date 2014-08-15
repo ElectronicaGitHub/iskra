@@ -4,16 +4,19 @@ EachPost = React.createClass({
 	render: function() {
 		data = this.props.data;
 		date = moment(data.date).locale('ru').calendar();
+		href = '/post/' + data._id;
 		imgStyle = data.image ? {
 			backgroundImage : 'url(' + data.image + ')'
 		} : { display : 'none' }
 		return (
-			<div className="each-post">
-				<div className="title">{data.title}</div>
-				<div className="date">{date}</div>
-				<div className="description">{data.description}</div>
-				<div style={imgStyle}></div>
-			</div>
+			<a href={href}>
+				<div className="each-post">
+					<div className="title">{data.title}</div>
+					<div className="date">{date}</div>
+					<div className="description">{data.description}</div>
+					<div style={imgStyle}></div>
+				</div>
+			</a>
 		)
 	}
 })
