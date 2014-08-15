@@ -42,6 +42,7 @@ div.page .misc {
 }
 .post .content {
 	font: 16px/24px 'PT Sans', sans-serif;
+	margin-top: 15px;
 }
 .tag-title {
 	font-weight: 700;
@@ -91,7 +92,7 @@ a {
 }
 .social_share_buttons {
 	height: 30px;
-	margin: 5px 0;
+	margin: 5px 0 0 0;
 }
 span.social_share {
 	height: 30px;
