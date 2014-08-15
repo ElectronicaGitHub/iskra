@@ -2,7 +2,7 @@
 <html lang="en" prefix="og: http://ogp.me/ns#">
 <head>
 	<title><%- blocks.title %></title>
-	
+
 	<meta charset="UTF-8">
 	<meta http-equiv="cache-control" content="max-age=0" />
 	<meta http-equiv="cache-control" content="no-cache" />
@@ -13,13 +13,13 @@
 	<script src="/libs/angular/angular.min.js"></script>
 	<script src="/libs/angular-route/angular-route.min.js"></script>
 	<script src="/libs/jquery/dist/jquery.min.js"></script>
-	<link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.css"></link>
 	<script>
 		base = angular.module('base', [])
 			.controller('baseCtrl', [ '$scope', function($scope) {
 			}])
 	</script>
 
+	<link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.css"></link>
 
 	<meta property="og:title" content="Заголовок" />
     <meta property="og:description" content="Описание" />
@@ -31,7 +31,6 @@
 	<meta name="description" content="Article description.This is a very interesting article." />
 	<link rel="image_src" href="http://mysite.com/mypic.jpg" />
 
-	
 	<meta name="twitter:card" content="summary_large_image"> 
 	<meta name="twitter:site" content="@publisher_handle"> 
 	<meta name="twitter:title" content="Page Title"> 

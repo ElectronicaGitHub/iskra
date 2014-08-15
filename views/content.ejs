@@ -13,6 +13,7 @@
 <script src="/libs/moment/min/moment-with-locales.min.js"></script>
 <script type="text/jsx" src="/javascripts/content-react.js"></script>
 <script src="/javascripts/content.js"></script>
+<script src="/javascripts/share.js"></script>
 
 <script type="text/javascript" src="//vk.com/js/api/openapi.js?115"></script>
 <div id="fb-root"></div>
@@ -32,17 +33,13 @@
 <div class="page" ng-app="content" ng-controller="contentCtrl" ng-init="init()">
 
 	<div class="post">
-
-		<script type="text/javascript">(function() {
-		  if (window.pluso)if (typeof window.pluso.start == "function") return;
-		  if (window.ifpluso==undefined) { window.ifpluso = 1;
-		    var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
-		    s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
-		    s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';
-		    var h=d[g]('body')[0];
-		    h.appendChild(s);
-		  }})();</script>
-		<div class="pluso" data-background="transparent" data-options="medium,square,line,horizontal,nocounter,theme=01" data-services="vkontakte,facebook,twitter,google"></div>
+		<p>Поделиться:
+		    <button class="social_share" data-type="vk">ВКонтакте</button>
+		    <button class="social_share" data-type="fb">Facebook</button>
+		    <button class="social_share" data-type="tw">Twitter</button>
+		    <!-- <button class="social_share" data-type="lj">LiveJournal</button> -->
+		    <!-- <button class="social_share" data-type="ok">Одноклассники</button> -->
+		</p>
 
 		<div class="title">{{ post.title }}</div>
 		<div class="date">{{ post.date }}</div>		
