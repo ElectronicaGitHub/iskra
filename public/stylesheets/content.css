@@ -11,7 +11,7 @@ div.page > div {
 }
 div.page .post {
 	width: 50%;
-	padding: 15px;
+	padding: 0 15px 15px 15px;
 }
 div.page .list, div.page .misc {
 	width: 25%;
@@ -89,3 +89,29 @@ a {
 #vk_groups {
 	width: 100%;
 }
+.social_share_buttons {
+	height: 30px;
+	margin: 5px 0;
+}
+span.social_share {
+	height: 30px;
+	width: 30px;
+	line-height: 30px;
+	text-align: center;
+	color: white;
+}
+span.social_share:hover {
+	opacity: 0.8;
+}
+span.fa-facebook {
+	background-color: #3B5998;
+}
+span.fa-vk {
+	background-color: #45668e;
+}
+span.fa-twitter {
+	background-color: #4099FF;
+}
+
+
+

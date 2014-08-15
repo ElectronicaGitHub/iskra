@@ -29,20 +29,19 @@
 
 <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/stylesheets/content.css">
+<link rel="stylesheet" href="/libs/fontawesome/css/font-awesome.min.css">
 
 <div class="page" ng-app="content" ng-controller="contentCtrl" ng-init="init()">
 
 	<div class="post">
-		<p>Поделиться:
-		    <button class="social_share" data-type="vk">ВКонтакте</button>
-		    <button class="social_share" data-type="fb">Facebook</button>
-		    <button class="social_share" data-type="tw">Twitter</button>
-		    <!-- <button class="social_share" data-type="lj">LiveJournal</button> -->
-		    <!-- <button class="social_share" data-type="ok">Одноклассники</button> -->
-		</p>
 
 		<div class="title">{{ post.title }}</div>
-		<div class="date">{{ post.date }}</div>		
+		<div class="social_share_buttons">
+		    <span class="social_share fa fa-vk" data-type="vk"></span>
+		    <span class="social_share fa fa-facebook" data-type="fb"></span>
+		    <span class="social_share fa fa-twitter" data-type="tw"></span>
+		</div>
+		<div class="date">Редактор произвел новость {{ post.date }}</div>		
 		<div class="content" ng-bind-html="post.content"></div>
 	</div>
 	<div class="list"></div>
