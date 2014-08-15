@@ -59,6 +59,20 @@ function insertMeta(options) {
 			.attr('content', options[props[i]])
 		document.head.appendChild(meta);
 	}
+	default_meta = ['title', 'description'];
+
+	meta = document.createElement('META');
+	$(meta)
+		.attr('name', 'title')
+		.attr('content', options['title'])
+	document.head.appendChild(meta);
+
+	meta = document.createElement('META');
+	$(meta)
+		.attr('name', 'description')
+		.attr('content', options['text'])
+	document.head.appendChild(meta);
+
 }
 
 
