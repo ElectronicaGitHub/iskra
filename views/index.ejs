@@ -10,9 +10,9 @@
 		<div ng-repeat="block in feed_blocks"
 			 class="block">
 			<news ng-if="element._size" 
-			 	  ng-click="location.href = '/post/{{ element._id }}'"
+				  ng-repeat="element in block.feed_elements"
 	 			  ng-class="{ s11 : element._size == 1, s21 : element._size == 2 , s22 : element._size == 4}"  
-				  ng-repeat="element in block.feed_elements" 
+				   
 				  ng-model="element"></news>
 		</div>
 	</div>

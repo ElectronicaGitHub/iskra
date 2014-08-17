@@ -1,11 +1,13 @@
- <div class="inner_container">
-	<div ng-transclude></div>
- 	<div class="img" style="background-image: url( {{ news.image }} )">
- 		<div class='news_title'>
-	 		<p>{{ news.title }}</p>
- 		</div>
- 	</div>
- 	<div class="description">
- 		<p>{{ news.description }}</p>
- 	</div>
- </div>
+ <a href="/post/{{ news._id }}">
+	<div class="inner_container">
+		<div ng-transclude></div>
+	 	<div class="img" style="background-image: url( {{ news.image }} )">
+	 		<div class='news_title'>
+		 		<p>{{ news.title }}</p>
+	 		</div>
+	 	</div>
+	 	<div class="description">
+	 		<p>{{ news.description }}</p>
+	 	</div>
+	</div>
+ </a>
