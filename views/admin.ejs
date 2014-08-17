@@ -27,19 +27,6 @@
 			<p>Content</p>
 			<textarea ui-tinymce="tinymce_options"
 				   	  ng-model="news.content"></textarea>
-			<p>Size</p>
-			<button ng-class="{ highlighted : news.size == 1}" 
-					class="size-change" 
-					ng-click="news.size=1">1
-			</button>
-			<button ng-class="{ highlighted : news.size == 2}" 
-					class="size-change" 
-					ng-click="news.size=2">2
-			</button>
-			<button ng-class="{ highlighted : news.size == 4}" 
-					class="size-change" 
-					ng-click="news.size=4">4
-			</button>
 			<p>Image</p>
 			<input type="text" 
 				   ng-model="news.image">
@@ -56,7 +43,9 @@
 			</div>
 		</div>
 		<div class="output">
-			<news ng-model="news"></news>
+			<news ng-model="news" class="s11"></news>
+			<news ng-model="news" class="s21"></news>
+			<news ng-model="news" class="s22"></news>
 		</div>
 	</div>
 	<div ng-if="page=='feed_page'" ng-init="loadForPage(true)">
@@ -64,7 +53,11 @@
 		<div class="feed">
 			<div ng-repeat="block in feed_blocks"
 				 class="block">
-				<news ng-repeat="element in block.feed_elements" ng-model="element">
+				<news ng-if="news._size" 
+					  ng-click="location.href = '/post/{{ news._id }}'"
+	 				  ng-class="{ s11 : news._size == 1, s21 : news._size == 2 , s22 : news._size == 4}" 
+	 				  ng-repeat="element in block.feed_elements" 
+	 				  ng-model="element">
 					<div class="admin-elements">
 						<div class="row1">
 							<span class="look">Просмотр</span>

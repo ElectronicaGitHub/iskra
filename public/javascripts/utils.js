@@ -3,50 +3,73 @@ var UTILS = (function() {
 	var block_size = 4,
 	local_block = null,
 	local_block_number = 0,
-	init_number = 0;
+	init_number = 0,
+	acceptable_sizes = [1,2,4];
 
 	return {
 		blocks_former : function(feeds, blocks) {
 			console.warn('UTILS BLOCK FORMER');
-			init_number ++;
-			for (var i=0; i< feeds.length;i++) {
-				if (!local_block) {
+			for (i in feeds) {
+				var local_element = feeds[i],
+					rem_size = block_size - local_block_number;
+
+				setDefault = function() {
+					local_block = null;
+					local_block_number = 0;
+				}	
+				addNewsToBlock = function() {
+					local_block.feed_elements.push(local_element);
+					local_block_number += feeds[i]._size;
+				}
+				createBlock = function(add_flag) {
 					local_block = {
 						id : ~~(Math.random() * 9999),
 						feed_elements : []
 					}
-				}
-				if (local_block_number < block_size) {
-					if (feeds[i].size <= (block_size-local_block_number)) {
-						local_block.feed_elements.push(feeds[i]);
-						local_block_number += feeds[i].size;
-						feeds.splice(i,1);
-						i--;
+					if (add_flag) {
+						addNewsToBlock();
+
 					}
-				} 
-				if (local_block_number == block_size) {
+				}
+				generateSize = function(array_fully) {
+				    random_value = ~~(Math.random() * (acceptable_sizes.length - array_fully));
+					local_element._size = acceptable_sizes[random_value];
+				    console.log('local_element._size', local_element._size)
+				}
+
+				// size generation
+				if (rem_size == 4) {
+					generateSize(0);
+					createBlock(true);
+				} else if (rem_size > 2) {
+					generateSize(1);
+					addNewsToBlock();
+				} else if (rem_size == 2) {
+					generateSize(2);
+					addNewsToBlock();
+				} else if (rem_size == 1) {
+					generateSize(3);
+					addNewsToBlock();
+				} else if (rem_size == 0) {
 					sort_way = Math.random() > .5;
 					local_block.feed_elements.sort(function(a,b) {
-						return sort_way ? a.size-b.size : b.size-a.size
+						return sort_way ? a._size-b._size : b._size-a._size
 					})
 					blocks.push(local_block);
-					local_block = null;
-					local_block_number = 0;
+					setDefault();
+					generateSize(0);
+					createBlock(true);
 				}
-			}
-			if (feeds.length != 0 && init_number < 10) {
-				this.blocks_former(feeds, blocks);
-			}
-			// console.log('feeds', feeds);
-			// console.log('blocks', blocks);
-			setTimeout(function() {
-				if (formatter) {
-					formatter();
-				} else {
-					console.warn('text formatter not allowed');
-				}
-			})
 
+				if (i == feeds.length - 1) {
+					sort_way = Math.random() > .5;
+					local_block.feed_elements.sort(function(a,b) {
+						return sort_way ? a._size-b._size : b._size-a._size
+					})
+					blocks.push(local_block);
+					setDefault();
+				}
+			}
 			return blocks;
 		}
 	}
