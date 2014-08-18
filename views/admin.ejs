@@ -19,20 +19,20 @@
 	<div ng-show="page=='create_page'">
 			
 		<div class="input">
-			<p>Title</p>
+			<p class="labels">Title</p>
 			<input type="text" 
 				   ng-model="news.title">
-			<p>Description</p>
+			<p class="labels">Description</p>
 			<textarea ng-model="news.description"></textarea>
-			<p>Content</p>
-			<textarea ui-tinymce="tinymce_options"
-				   	  ng-model="news.content"></textarea>
-			<p>Image</p>
+			<p class="labels">Image</p>
 			<input type="text" 
 				   ng-model="news.image">
-			<p>Tags</p>
+			<p class="labels">Tags</p>
 			<input type="text" 
 				   ng-model="news.tags">
+			<p class="labels">Content</p>
+			<textarea ui-tinymce="tinymce_options"
+				   	  ng-model="news.content"></textarea>
 			<div class="button-bottom-panel">
 				<button ng-if="!news._id" 
 						ng-click="postNews(news, true)">Сохранить
@@ -110,6 +110,9 @@
 	.button-bottom-panel {
 		padding: 40px 0;
 	}
+	p.labels {
+		margin: 10px 0 0;
+	}
 	.input input, .input button, .input select, .input textarea {
 		width: 100%;
 		height: 30px;
@@ -169,19 +172,4 @@
 		background-color: white;
 		padding: 5px;
 	}
-	/*.news-block {
-		padding: 5px;
-		text-align: center;
-		float:left;
-		width: 50%;
-		height: 70px;
-	}
-	.news-main {
-	}
-	.news-description {
-		
-	}
-	.button-block {
-		display: inline-block
-	}*/
 </style>
