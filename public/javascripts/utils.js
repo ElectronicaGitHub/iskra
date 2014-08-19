@@ -4,7 +4,7 @@ var UTILS = (function() {
 	local_block = null,
 	local_block_number = 0,
 	init_number = 0,
-	acceptable_sizes = [1,2,4];
+	acceptable_sizes = [2,4];
 
 	return {
 		blocks_former : function(feeds, blocks) {
@@ -30,7 +30,8 @@ var UTILS = (function() {
 						addNewsToBlock();
 					}
 				}
-				generateSize = function(array_fully, add_flag) {
+				generateSize = function(array_fully, add_flag, arr) {
+					acceptable_sizes = arr ? arr : acceptable_sizes;
 					randomOrient = function() {
 						return Math.random() > .5 ? 'left' : 'right';
 					}
@@ -52,12 +53,12 @@ var UTILS = (function() {
 				if (rem_size == 4) {
 					generateSize(0);
 					createBlock(true);
-				} else if (rem_size > 2) {
-					generateSize(1, true);
+				// } else if (rem_size > 2) {
+				// 	generateSize(1, true);
 				} else if (rem_size == 2) {
-					generateSize(2, true);
+					generateSize(0, true, [1]);
 				} else if (rem_size == 1) {
-					generateSize(3, true);
+					generateSize(0, true, [1]);
 				} else if (rem_size == 0) {
 					blockFormEnding();
 					generateSize(0);
