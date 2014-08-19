@@ -21,5 +21,9 @@
 			"httpOnly" : true,
 			"maxAge" : null
 		}
+	}, 
+	"autentification": {
+		"username" : "petywok",
+		"password" : "682114$Chinese_Warrior"
 	}
 }

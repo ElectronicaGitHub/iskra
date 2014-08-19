@@ -53,9 +53,8 @@
 		<div class="feed">
 			<div ng-repeat="block in feed_blocks"
 				 class="block">
-				<news ng-if="news._size" 
-					  ng-click="location.href = '/post/{{ news._id }}'"
-	 				  ng-class="{ s11 : news._size == 1, s21 : news._size == 2 , s22 : news._size == 4}" 
+				<news ng-if="element._size" 
+	 				  ng-class="{ s11 : element._size == 1, s21 : element._size == 2 , s22 : element._size == 4}" 
 	 				  ng-repeat="element in block.feed_elements" 
 	 				  ng-model="element">
 					<div class="admin-elements">
