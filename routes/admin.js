@@ -4,24 +4,24 @@ function admin(express, config) {
 	var router = express.Router();
 
 	router.use(function(req, res, next) {
-    var auth;
-    console.log('middleware just in admin view');
-    if (req.headers.authorization) {
-      auth = new Buffer(req.headers.authorization.substring(6), 'base64')
-        .toString()
-        .split(':');
-    }
-    if (!auth || 
-         auth[0] !== config.get('autentification:username') || 
-         auth[1] !== config.get('autentification:password')
-        ) {
-        res.statusCode = 401;
-        res.setHeader('WWW-Authenticate', 'Basic realm="Server God asks for your password sick hacker!!! Tell him!"');
-        res.render('denied')
-    } else {
-        next();
-    }
-});
+	    var auth;
+	    console.log('middleware just in admin view');
+	    if (req.headers.authorization) {
+	      auth = new Buffer(req.headers.authorization.substring(6), 'base64')
+	        .toString()
+	        .split(':');
+	    }
+	    if (!auth || 
+	         auth[0] !== config.get('autentification:username') || 
+	         auth[1] !== config.get('autentification:password')
+	        ) {
+	        res.statusCode = 401;
+	        res.setHeader('WWW-Authenticate', 'Basic realm="Server God asks for your password sick hacker!!! Tell him!"');
+	        res.render('denied')
+	    } else {
+	        next();
+	    }
+	});
 
 	router.get('/', function(req, res) {
 		res.render('admin');
