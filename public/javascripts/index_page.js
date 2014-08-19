@@ -17,7 +17,7 @@ app.controller('Index', [ '$scope', '$http', function($scope, $http) {
 				console.log($scope.feeds)
 
 				$scope.feed_blocks = UTILS.blocks_former($scope.feeds, $scope.feed_blocks);
-				UTILS.formatter();
+				// UTILS.formatter();
 			})
 			.error(function(data) {
 				console.log(data)

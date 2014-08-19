@@ -94,7 +94,7 @@ var UTILS = (function() {
 					})
 					pic.css({
 						height: (pic_h + diff_h) + 'px'
-					}, 250)
+					})
 				
 
 
