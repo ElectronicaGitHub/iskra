@@ -5,7 +5,7 @@
 div.page {
 	margin-top: 40px;
 }
-div.page > div {
+div.page > * {
 	float: left;
 	/*height: 100vh;*/
 }

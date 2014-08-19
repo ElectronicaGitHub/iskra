@@ -33,9 +33,9 @@
 
 <div class="page" ng-app="content" ng-controller="contentCtrl" ng-init="init()">
 
-	<div class="post">
+	<article class="post">
 
-		<div class="title">{{ post.title }}</div>
+		<header class="title">{{ post.title }}</header>
 		<div class="social_share_buttons">
 		    <span class="social_share fa fa-vk" data-type="vk"></span>
 		    <span class="social_share fa fa-facebook" data-type="fb"></span>
@@ -43,9 +43,9 @@
 		</div>
 		<div class="date">Редактор произвел новость {{ post.date }}</div>		
 		<div class="content" ng-bind-html="post.content"></div>
-	</div>
-	<div class="list"></div>
-	<div class="misc">
+	</article>
+	<aside class="list"></aside>
+	<aside class="misc">
 
 		<a class="twitter-timeline" href="https://twitter.com/tvoykosmosbaby" data-widget-id="500006500979331072"></a>
 		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
@@ -61,7 +61,7 @@
 
 
 		
-	</div>
+	</aside>
 	
 
 </div>

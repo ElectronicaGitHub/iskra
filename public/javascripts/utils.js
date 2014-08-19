@@ -28,13 +28,24 @@ var UTILS = (function() {
 					}
 					if (add_flag) {
 						addNewsToBlock();
-
 					}
 				}
-				generateSize = function(array_fully) {
+				generateSize = function(array_fully, add_flag) {
+					randomOrient = function() {
+						return Math.random() > .5 ? 'left' : 'right';
+					}
 				    random_value = ~~(Math.random() * (acceptable_sizes.length - array_fully));
 					local_element._size = acceptable_sizes[random_value];
-				    console.log('local_element._size', local_element._size)
+					local_element.orient = local_element._size == 2 ? randomOrient() : null;
+				    if (add_flag) addNewsToBlock();
+				}
+				blockFormEnding = function() {
+					sort_way = Math.random() > .5;
+					local_block.feed_elements.sort(function(a,b) {
+						return sort_way ? a._size-b._size : b._size-a._size
+					})
+					blocks.push(local_block);
+					setDefault();
 				}
 
 				// size generation
@@ -42,32 +53,19 @@ var UTILS = (function() {
 					generateSize(0);
 					createBlock(true);
 				} else if (rem_size > 2) {
-					generateSize(1);
-					addNewsToBlock();
+					generateSize(1, true);
 				} else if (rem_size == 2) {
-					generateSize(2);
-					addNewsToBlock();
+					generateSize(2, true);
 				} else if (rem_size == 1) {
-					generateSize(3);
-					addNewsToBlock();
+					generateSize(3, true);
 				} else if (rem_size == 0) {
-					sort_way = Math.random() > .5;
-					local_block.feed_elements.sort(function(a,b) {
-						return sort_way ? a._size-b._size : b._size-a._size
-					})
-					blocks.push(local_block);
-					setDefault();
+					blockFormEnding();
 					generateSize(0);
 					createBlock(true);
 				}
 
 				if (i == feeds.length - 1) {
-					sort_way = Math.random() > .5;
-					local_block.feed_elements.sort(function(a,b) {
-						return sort_way ? a._size-b._size : b._size-a._size
-					})
-					blocks.push(local_block);
-					setDefault();
+					blockFormEnding();
 				}
 			}
 			return blocks;
