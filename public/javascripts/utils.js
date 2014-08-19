@@ -79,9 +79,9 @@ var UTILS = (function() {
 					console.log(el);
 					el_h = $(el).find('.inner-container').height();
 					text = $(el).find('.text-container');
-					text_h = text.height();
 					pic = $(el).find('.picture');
 					pic_h = pic.height();
+					text_h = text.height();
 					title_h = $(el).find('.news_title').height();
 					desc_h = $(el).find('.description').height();
 					text_p = (title_h + desc_h) / text_h;
