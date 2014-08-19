@@ -32,7 +32,9 @@ function admin(express, config) {
 		news.save(function(err) {
 			if (err) return next(err);
 		})
-		res.json('News successfully created')
+		res.json({
+			result: true
+		})
 	})
 
 

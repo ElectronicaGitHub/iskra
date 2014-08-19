@@ -69,7 +69,38 @@ var UTILS = (function() {
 					blockFormEnding();
 				}
 			}
+
 			return blocks;
+		}, 
+		formatter : function() {
+			setTimeout(function() {
+				a = $('news.s11');
+				a.each(function(n, el) {
+					console.log(el);
+					el_h = $(el).find('.inner-container').height();
+					text = $(el).find('.text-container');
+					text_h = text.height();
+					pic = $(el).find('.picture');
+					pic_h = pic.height();
+					title_h = $(el).find('.news_title').height();
+					desc_h = $(el).find('.description').height();
+					text_p = (title_h + desc_h) / text_h;
+					pic_p = pic_h / el_h
+					diff_p = text_p < 1 ? 1 - text_p : null;
+					diff_h = diff_p * el_h;
+					console.log(pic_p, text_p, diff_p, diff_h);
+					text.css({
+						height: (text_h - diff_h) + 'px'
+					})
+					pic.css({
+						height: (pic_h + diff_h) + 'px'
+					})
+				
+
+
+				})
+
+			})
 		}
 	}
 })();

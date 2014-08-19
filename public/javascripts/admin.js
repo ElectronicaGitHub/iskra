@@ -37,6 +37,7 @@ app.controller('Admin', ['$scope', '$http', function($scope, $http) {
 
 				if (render_blocks) {
 					$scope.feed_blocks = UTILS.blocks_former($scope.feeds, $scope.feed_blocks);
+					UTILS.formatter();
 				}
 
 			})
@@ -47,24 +48,26 @@ app.controller('Admin', ['$scope', '$http', function($scope, $http) {
 
 	$scope.postNews = function(news, first_save) {
 		url = first_save ? '/admin' : '/admin/' + news._id;
-		news.tags = news.tags
-			.split(',')
-			.map(function(a,b) {
-				return $.trim(a);
-			});
 		$http.post(url, news)
 			.success(function(data) {
-				console.log(data)
+				console.log(data);
+				if (data.result) {
+					$scope.successful_save = true;
+					setTimeout(function() {
+						$scope.successful_save = false;
+						$scope.$apply();
+					}, 1500)
+					$scope.page = 'list_page';
+				}
 			})
 			.error(function(data) {
-				console.log(data)
+				console.log(data);
 			})
 	}
 
 	$scope.loadToFormForUpdate = function(news) {
 		$scope.page = 'create_page';
 		$scope.news = news;
-		$scope.news.tags = $scope.news.tags.join(', ');	
 	}
 
 	$scope.deleteNews = function(news_id, render_blocks) {

@@ -20,15 +20,15 @@
 	}
 	news.s11 {
 		width: 50%;
-		height: 60%;
+		height: 360px;
 	}
 	news.s21 {
 		width: 100%;
-		height: 40%;
+		height: 240px;
 	}
 	news.s22 {
 		width: 100%;
-		height: 100%;
+		height: 600px;
 	}
 	.inner-container {
 		display: block;
