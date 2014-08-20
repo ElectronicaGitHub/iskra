@@ -37,7 +37,6 @@ app.controller('Admin', ['$scope', '$http', function($scope, $http) {
 
 				if (render_blocks) {
 					$scope.feed_blocks = UTILS.blocks_former($scope.feeds, $scope.feed_blocks);
-					UTILS.formatter();
 				}
 
 			})
