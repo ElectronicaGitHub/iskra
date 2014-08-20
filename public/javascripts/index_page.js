@@ -14,24 +14,13 @@ app.controller('Index', [ '$scope', '$http', function($scope, $http) {
 		$http.get(url)
 			.success(function(data) {
 				$scope.feeds = data;
-				console.log($scope.feeds)
+				console.log($scope.feeds);
 
 				$scope.feed_blocks = UTILS.blocks_former($scope.feeds, $scope.feed_blocks);
 			})
 			.error(function(data) {
-				console.log(data)
+				console.log(data);
 			})
-	}
-
-	var formatter = function() {
-		function sizeDescriptionHover(elem) {
-			var this_description = $(elem).find(description),
-				p = this_description.find('p');
-
-			while (p.height()>this_description.height() || p.width()>this_description.width()) {
-				p.css('font-size', '-=1px');
-			}
-		}
 	}
 }])
 

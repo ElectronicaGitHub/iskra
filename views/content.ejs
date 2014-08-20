@@ -1,40 +1,19 @@
 <%- layout('base.ejs') %>
 <script>
 	window.id = '<%- id %>';
-	var DATA = (function() {
-		return {
-			a : 1
-		}
-	})()
 </script>
-<script src="/libs/react/react.js"></script>
-<script src="/libs/react/JSXTransformer.js"></script>
-<script src="/libs/angular-sanitize.js"></script>
-<script src="/libs/moment/min/moment-with-locales.min.js"></script>
-<script type="text/jsx" src="/javascripts/content-react.js"></script>
-<script src="/javascripts/content.js"></script>
-<script src="/javascripts/share.js"></script>
+<% script("/libs/angular-sanitize.js") -%>
+<% script("/libs/moment/min/moment-with-locales.min.js") -%>
+<% script("/libs/react/react.min.js") -%>
+<% script("/javascripts/utils.js") -%>
+<% script("/javascripts/content.js") -%>
+<% script("/javascripts/share.js") -%>
 
-<script type="text/javascript" src="//vk.com/js/api/openapi.js?115"></script>
-<div id="fb-root"></div>
-<script>
-	(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=123344407840562&version=v2.0";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));
-</script>
-
-<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="/stylesheets/content.css">
-<link rel="stylesheet" href="/libs/fontawesome/css/font-awesome.min.css">
+<% stylesheet("/stylesheets/content.css") -%>
+<% stylesheet("/libs/fontawesome/css/font-awesome.min.css") -%>
 
 <div class="page" ng-app="content" ng-controller="contentCtrl" ng-init="init()">
-
 	<article class="post">
-
 		<header class="title">{{ post.title }}</header>
 		<div class="social_share_buttons">
 		    <span class="social_share fa fa-vk" data-type="vk"></span>
@@ -46,25 +25,30 @@
 	</article>
 	<aside class="list"></aside>
 	<aside class="misc">
-
 		<a class="twitter-timeline" href="https://twitter.com/tvoykosmosbaby" data-widget-id="500006500979331072"></a>
-		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-		</script>
-
 		<div id="vk_groups"></div>
-		<script type="text/javascript">
-		VK.Widgets.Group("vk_groups", {mode: 0, width: "272", height: "200",color1: 'E5E5E5', color2: '2B587A', color3: '5B7FA6'}, 75281223);
-		</script>
-
-		<div class="fb-like-box" data-href="https://www.facebook.com/tvoykosmos" data-width="272" data-height="200" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
-
-
-
-		
+		<div class="fb-like-box" data-href="https://www.facebook.com/tvoykosmos" data-width="272" data-height="200" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>	
 	</aside>
 	
 
 </div>
+<script src="/javascripts/react-build/content-react.js"></script>
+<script src="//vk.com/js/api/openapi.js?115"></script>
+<script>
+	(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=123344407840562&version=v2.0";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+</script>
+<script type="text/javascript">
+VK.Widgets.Group("vk_groups", {mode: 0, width: "272", height: "200",color1: 'E5E5E5', color2: '2B587A', color3: '5B7FA6'}, 75281223);
+</script>
+
 
 
 

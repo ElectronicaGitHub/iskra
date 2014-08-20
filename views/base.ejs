@@ -2,23 +2,14 @@
 <html lang="en" prefix="og: http://ogp.me/ns#">
 <head>
 	<title><%- blocks.title %></title>
-
 	<meta charset="UTF-8">
-	
 	<script src="/libs/angular/angular.min.js"></script>
-	<script src="/libs/angular-route/angular-route.min.js"></script>
 	<script src="/libs/jquery/dist/jquery.min.js"></script>
-	<script>
-		base = angular.module('base', [])
-			.controller('baseCtrl', [ '$scope', function($scope) {
-			}])
-	</script>
+	<%- scripts%>
 
 	<link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.css"></link>
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-
-    <!-- <meta name="title" content="Научно-познавательное издание с уклоном" /> -->
-	<!-- <meta name="description" content="Космос, новости, физика, редактор" /> -->
+	<%- stylesheets %>
 
 </head>
 <body>

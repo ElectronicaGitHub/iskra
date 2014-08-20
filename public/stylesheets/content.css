@@ -1,13 +1,12 @@
 .page * {
 	color: #555;
-	font-family: 'Roboto Condensed';
+	font-family: 'Roboto Condensed', sans-serif;
 }
 div.page {
 	margin-top: 40px;
 }
 div.page > * {
 	float: left;
-	/*height: 100vh;*/
 }
 div.page .post {
 	width: 50%;
@@ -41,7 +40,7 @@ div.page .misc {
 	height: 30px;
 }
 .post .content {
-	font: 16px/24px 'PT Sans', sans-serif;
+	font: 16px/24px 'Roboto Condensed', sans-serif;
 	margin-top: 15px;
 }
 .tag-title {
@@ -53,7 +52,6 @@ div.page .misc {
 }
 .each-post {
 	border-radius: 2px;
-	/*margin-bottom: 10px;*/
 	padding: 10px;
 	-webkit-transition: all .4s;
 	-moz-transition: all .4s;

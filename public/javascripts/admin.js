@@ -16,17 +16,17 @@ app.controller('Admin', ['$scope', '$http', function($scope, $http) {
         toolbar2: "print preview media | forecolor backcolor emoticons | link image",
         image_advtab: true,
 		height : '500px'
-	}
+	};
 
 	$scope.loadForPage = function(render_blocks) {
 		$scope.setDefaultAndGet(render_blocks);
-	}
+	};
 
 	$scope.setDefaultAndGet = function(render_blocks) {
 		$scope.feed_blocks = [];
 		$scope.feeds = [];
 		$scope.getNews(render_blocks);
-	}
+	};
 
 
 	$scope.getNews = function(render_blocks) {
@@ -41,9 +41,9 @@ app.controller('Admin', ['$scope', '$http', function($scope, $http) {
 
 			})
 			.error(function(data) {
-				console.log(data)
+				console.log(data);
 			})
-	}
+	};
 
 	$scope.postNews = function(news, first_save) {
 		url = first_save ? '/admin' : '/admin/' + news._id;
@@ -55,19 +55,19 @@ app.controller('Admin', ['$scope', '$http', function($scope, $http) {
 					setTimeout(function() {
 						$scope.successful_save = false;
 						$scope.$apply();
-					}, 1500)
+					}, 1500);
 					$scope.page = 'list_page';
 				}
 			})
 			.error(function(data) {
 				console.log(data);
 			})
-	}
+	};
 
 	$scope.loadToFormForUpdate = function(news) {
 		$scope.page = 'create_page';
 		$scope.news = news;
-	}
+	};
 
 	$scope.deleteNews = function(news_id, render_blocks) {
 		url = '/admin/' + news_id;
@@ -77,8 +77,8 @@ app.controller('Admin', ['$scope', '$http', function($scope, $http) {
 				$scope.setDefaultAndGet(render_blocks);
 			})
 			.error(function(data) {
-				console.log(data)
+				console.log(data);
 			})
-	}
+	};
 
 }])

@@ -1,9 +1,9 @@
 <%- layout('base.ejs') %>
 <% block('title', 'Главная страница') -%>
-<script src="/javascripts/utils.js"></script>
-<script src="/javascripts/index_page.js"></script>
-<script src="/javascripts/directives/news_element.js"></script>
-<link rel="stylesheet" href="/stylesheets/index.css">
+<% script("/javascripts/utils.js") -%>
+<% script("/javascripts/index_page.js") -%>
+<% script("/javascripts/directives/news_element.js") -%>
+<% stylesheet("/stylesheets/index.css") -%>
 <div ng-app="index" ng-controller="Index" ng-init="init()">	
 
 	<div class="feed">

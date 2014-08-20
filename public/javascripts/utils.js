@@ -58,6 +58,34 @@ var UTILS = (function() {
 			}
 
 			return blocks;
+		},
+		insertMeta : function(options_og, options_default) {
+			$.extend(options_og, {
+				type: 'article',
+		        site_name: 'Твой Космос'
+			});
+			props = [ 'title', 
+					  'type', 
+					  'url', 
+					  'image', 
+					  'description', 
+					  'site_name'
+			];
+			for (i in props) {
+				meta = document.createElement('META');
+				$(meta)
+					.attr('property', 'og:' + props[i])
+					.attr('content', options_og[props[i]])
+				document.head.appendChild(meta);
+			};
+
+			for (i in options_default) {
+				meta = document.createElement('META');
+				$(meta)
+					.attr('name', i)
+					.attr('content', options_default[i]);
+				document.head.appendChild(meta);
+			}
 		}
 	}
 })();
