@@ -21,7 +21,7 @@ function fn(express) {
 	});
 
 	router.get('/news/', function(req, res, next) {
-		News.find().sort({date:-1}).exec(function(err, results) {
+		News.find().sort({date:-1}).limit(6).exec(function(err, results) {
 			if (err) return next(err);
 			res.json(results);
 		})
