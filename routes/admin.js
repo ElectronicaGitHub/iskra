@@ -42,10 +42,8 @@ function admin(express, config) {
 		News.findByIdAndUpdate(req.params.id, req.body, function(err, result) {
 			if (err) return next(err);
 			res.json({
-				action : 'updated', 
-				id : result._id, 
-				title : result.title
-			});
+				result: true
+			})
 		})
 	});
 
