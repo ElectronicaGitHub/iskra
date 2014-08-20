@@ -31,7 +31,7 @@ content = angular.module('content', ['ngSanitize'])
 						options.social_type = $(this).attr('data-type');
 					    Share.go(this, options);
 					});
-					UTILS.insertMeta(options, options_search);
+					UTILS.insertMeta(options, options_search, $scope.post.title);
 				})
 				.error(function(data) {
 					console.log(data);

@@ -59,7 +59,7 @@ var UTILS = (function() {
 
 			return blocks;
 		},
-		insertMeta : function(options_og, options_default) {
+		insertMeta : function(options_og, options_default, title) {
 			$.extend(options_og, {
 				type: 'article',
 		        site_name: 'Твой Космос'
@@ -85,6 +85,9 @@ var UTILS = (function() {
 					.attr('name', i)
 					.attr('content', options_default[i]);
 				document.head.appendChild(meta);
+			}
+			if (title) {
+				document.title = 'Твой Космос | ' + title;
 			}
 		}
 	}
