@@ -3,6 +3,7 @@ app = angular.module('index', [])
 app.controller('Index', [ '$scope', '$http', function($scope, $http) {
 	
 	var page = 1;
+	$scope.news_type = 'normal';
 	$scope.feed_blocks = [];
 
 	$scope.init = function() {
@@ -13,6 +14,7 @@ app.controller('Index', [ '$scope', '$http', function($scope, $http) {
 		url = '/news/';
 		$http.get(url)
 			.success(function(data) {
+				console.log(data)
 				$scope.feeds = data;
 				console.log($scope.feeds);
 

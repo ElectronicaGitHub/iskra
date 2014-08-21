@@ -1,8 +1,9 @@
  <a class="inner-container" href="/post/{{ news._id }}" target="_blank">
-	<!-- <div ng-transclude></div> -->
- 	<div class="picture" 
+ 	<div ng-if="type=='normal'"
+ 		 class="picture" 
  		 style="background-image: url( {{ news.image }} )"></div>
-	<div class="text-container">
+	<div ng-if="type=='normal'"
+		 class="text-container">
  		<div class='news_title'>
 	 		<p>{{ news.title }}</p>
  		</div>
@@ -10,4 +11,17 @@
 	 		<p>{{ news.description }}</p>
 	 	</div>
 	</div>
- </a>
+
+	<div ng-if="type=='special'" 
+	     class="picture" 
+ 		 style="background-image: url( {{ news.image_special }} )"></div>
+	<div ng-if="type=='special'" 
+	     class="text-container">
+ 		<div class='news_title'>
+	 		<p>{{ news.title_special }}</p>
+ 		</div>
+	 	<div class="description">
+	 		<p>{{ news.description_special }}</p>
+	 	</div>
+	</div>
+</a>

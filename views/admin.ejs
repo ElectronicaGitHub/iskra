@@ -18,19 +18,40 @@
 
 	<div ng-show="page=='create_page'">
 		<h1>СОЗДАНИЕ/РЕДАКТИРОВАНИЕ НОВОСТИ</h1>
-			
+
+		<div>
+			<button ng-click="new_type='normal'">Нормальная</button>
+			<button ng-click="new_type='special'">Для особенных</button>
+		</div>
+
+
 		<div class="input">
-			<p class="labels">Title</p>
-			<input type="text" 
-				   ng-model="news.title">
-			<p class="labels">Description</p>
-			<textarea ng-model="news.description"></textarea>
-			<p class="labels">Image</p>
-			<input type="text" 
-				   ng-model="news.image">
-			<p class="labels">Content</p>
-			<textarea ui-tinymce="tinymce_options"
-				   	  ng-model="news.content"></textarea>
+			<div ng-show="new_type=='normal'">
+				<p class="labels">Title</p>
+				<input type="text" 
+					   ng-model="news.title">
+				<p class="labels">Description</p>
+				<textarea ng-model="news.description"></textarea>
+				<p class="labels">Image</p>
+				<input type="text" 
+					   ng-model="news.image">
+				<p class="labels">Content</p>
+				<textarea ui-tinymce="tinymce_options"
+					   	  ng-model="news.content"></textarea>
+			</div>
+			<div ng-show="new_type=='special'">
+				<p class="labels">Title</p>
+				<input type="text" 
+					   ng-model="news.title_special">
+				<p class="labels">Description</p>
+				<textarea ng-model="news.description_special"></textarea>
+				<p class="labels">Image</p>
+				<input type="text" 
+					   ng-model="news.image_special">
+				<p class="labels">Content</p>
+				<textarea ui-tinymce="tinymce_options"
+					   	  ng-model="news.content_special"></textarea>
+			</div>
 			<div class="button-bottom-panel">
 				<button ng-if="!news._id" 
 						ng-click="postNews(news, true)">Сохранить
@@ -41,9 +62,9 @@
 			</div>
 		</div>
 		<div class="output">
-			<news ng-model="news" class="s11"></news>
-			<news ng-model="news" class="s21"></news>
-			<news ng-model="news" class="s22"></news>
+			<news ng-model="news" type="new_type" class="s11"></news>
+			<news ng-model="news" type="new_type" class="s21"></news>
+			<news ng-model="news" type="new_type" class="s22"></news>
 		</div>
 	</div>
 	<div ng-if="page=='feed_page'" ng-init="loadForPage(true)">
@@ -55,7 +76,8 @@
 				<news ng-if="element._size" 
 	 				  ng-class="{ s11 : element._size == 1, s21 : element._size == 2 , s22 : element._size == 4}" 
 	 				  ng-repeat="element in block.feed_elements" 
-	 				  ng-model="element">
+	 				  ng-model="element"
+	 				  type="news_type">
 					<div class="admin-elements">
 						<div class="row1">
 							<span class="look">Просмотр</span>

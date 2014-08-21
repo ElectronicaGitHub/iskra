@@ -14,12 +14,21 @@ var News = new Schema({
 	image : {
 		type : String
 	},
+	title_special : {
+		type: String
+	},
+	description_special : {
+		type: String
+	},
+	content_special : {
+		type: String
+	},
+	image_special : {
+		type : String
+	},
 	date : {
 		type: Date,
 		default : Date.now
-	},
-	size :{
-		type: Number
 	}
 })
 

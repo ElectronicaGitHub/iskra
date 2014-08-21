@@ -21,8 +21,18 @@ function fn(express) {
 	});
 
 	router.get('/news/', function(req, res, next) {
+		var results;
 		News.find().sort({date:-1}).exec(function(err, results) {
 			if (err) return next(err);
+			results.map(function(news) {
+				news.normal = {
+					title : news.title,
+					description : news.description,
+					content : news.content,
+					image : news.image
+				}
+				return news
+			})
 			res.json(results);
 		})
 	});

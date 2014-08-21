@@ -3,6 +3,10 @@ app = angular.module('admin', ['ui.tinymce']);
 app.controller('Admin', ['$scope', '$http', function($scope, $http) {
 
 	$scope.page = 'list_page';
+	// значение для превью новости
+	$scope.new_type = 'normal';
+	// значения для всех новостей админки
+	$scope.news_type = 'normal';
 	$scope.feed_blocks = [];
 	$scope.tinymce_options = {
 		theme: "modern",

@@ -1,7 +1,8 @@
 app.directive('news', function() {
 	return {
 		scope : {
-			news : '=ngModel'
+			news : '=ngModel',
+			type : '=type'
 		},
 		transclude : true,
 		restrict : 'E',
