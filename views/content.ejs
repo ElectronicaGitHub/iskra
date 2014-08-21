@@ -29,10 +29,15 @@
 		<div class="posts-list">
 			<h3 class="tag-title">Последние новости</h3>
 			<a href="/post/{{ news._id }}" ng-repeat="news in popular">
-				<div class="each-post">
+				<div ng-if="news_type=='normal'" class="each-post">
 					<div class="title">{{news.title}}</div>
 					<div class="date">{{news.date}}</div>
 					<div class="description">{{news.description}}</div>
+				</div>
+				<div ng-if="news_type=='special'" class="each-post">
+					<div class="title">{{news.title_special}}</div>
+					<div class="date">{{news.date_special}}</div>
+					<div class="description">{{news.description_special}}</div>
 				</div>
 			</a>
 		</div>

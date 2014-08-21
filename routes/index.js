@@ -21,11 +21,11 @@ function fn(express) {
 	});
 
 	router.get('/news/', function(req, res, next) {
-		var results;
+		var search = req.query;
 		News.find({},{ 
 			content: 0, 
 			content_special : 0 
-		})
+		}, search)
 			.sort({date:-1})
 			.exec(function(err, results) {
 				if (err) return next(err);

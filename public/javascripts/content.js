@@ -17,34 +17,42 @@
 					$scope.post.content = $scope.trustContent($scope.post.content);
 					$scope.post.content_special = $scope.trustContent($scope.post.content_special);
 					$scope.post.date = moment($scope.post.date).locale('ru').calendar();
-					
-					var options = {
-	                    title:      $scope.post.title,
-				    	url:        location.href, 
-	                    image:      $scope.post.image, 
-	                    count_url:  location.href, 
-	                    text:       $scope.post.description,
-	                    description : $scope.post.description
-					};
 
-					var options_search = {
-						title: options['title'],
-						description: options['text'],
-						keywords: options['text'].split(' ').join(', ')
+					var options, options_search;
+					
+					getOptions = function() {
+						options = {
+		                    title:      $scope.news_type == 'normal' ? $scope.post.title : $scope.post.title_special,
+					    	url:        location.href, 
+		                    image:      $scope.news_type == 'normal' ? $scope.post.image : $scope.post.image_special, 
+		                    count_url:  location.href, 
+		                    text:       $scope.news_type == 'normal' ? $scope.post.description : $scope.post.description_special,
+		                    description : $scope.news_type == 'normal' ? $scope.post.description : $scope.post.description_special
+						};
+						return options;
+					}
+
+					getOptionsSearch = function() {
+						options_search = {
+							title: options['title'],
+							description: options['text'],
+							keywords: options['text'].split(' ').join(', ')
+						}
+						
 					}
 
 					$(document).on('click', '.social_share', function(){
 						options.social_type = $(this).attr('data-type');
-					    Share.go(this, options);
+					    Share.go(this, getOptions());
 					});
-					UTILS.insertMeta(options, options_search, $scope.post.title);
+					UTILS.insertMeta(getOptions(), getOptionsSearch(), $scope.post.title);
 				})
 				.error(function(data) {
 					console.log(data);
 				})
 		}
 		$scope.getPopular = function() {
-			var url = '/news/';
+			var url = '/news/' + '?limit=8';
 			$http.get(url)
 				.success(function(data) {
 					console.log(data);
