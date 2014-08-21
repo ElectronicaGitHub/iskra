@@ -64,8 +64,15 @@ tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
 	};
 
 	$scope.loadToFormForUpdate = function(news) {
-		$scope.page = 'create_page';
-		$scope.news = news;
+		$http.get('/news/' + news._id)
+			.success(function(data) {
+				console.log(data);
+				$scope.page = 'create_page';
+				$scope.news = data;
+			})
+			.error(function(data) {
+				console.log(data);
+			})
 	};
 
 	$scope.deleteNews = function(news_id, render_blocks) {
