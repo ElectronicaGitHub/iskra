@@ -1,0 +1,48 @@
+<% stylesheet('/stylesheets/header.css') -%>
+<% stylesheet("/libs/animate.css/animate.min.css") -%>
+<% script('/javascripts/header.js') -%>
+<nav class="top" ng-controller="HeaderCtrl">
+	<spans style="display:inline-block">
+		<div class="top-squares">
+			
+		<a href="/">
+			<div class="animated flipInX image">
+				<div class="animated bounceInDown tk_star"></div>
+				<div class="animated bounceInDown tk_text"></div>
+			</div>
+		</a>
+		</div>
+		<div class="top-squares news_type" ng-click="toggle_news_type()">
+			
+			<p class="regime">MODE</p>
+			<p class="type-name" ng-if="news_type=='normal'">НОРМАЛ</p>
+			<p class="type-name" ng-if="news_type=='special'">СПЕШЛ</p>
+		</div>
+	</span>
+</nav>
+<!-- <div class="logo">космос -->
+	<!-- <div class="left-tabs">
+		<div class="each-tab">
+			<span>Фишка
+				<div class='bottom'></div>
+			</span>
+		</div>
+		<div class="each-tab">
+			<span>Темы
+				<div class='bottom'></div>
+			</span>
+		</div>
+	</div>
+	<div class="right-tabs">
+		<div class="each-tab">
+			<span>Карусель
+				<div class='bottom'></div>
+			</span>
+		</div>
+		div class="each-tab">
+			<span>О проекте
+				<div class='bottom'></div>
+			</span>
+		</div>
+	</div> -->
+<!-- </div> -->
