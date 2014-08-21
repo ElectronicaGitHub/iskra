@@ -47,7 +47,7 @@ var UTILS = (function() {
 				var local_element = feeds[i];
 
 				if (local_block.number == 0) {
-					generateSize([2,4], true);
+					generateSize([2,2,4], true);
 				} else if (local_block.number == 2 || 
 						   local_block.number == 3) {
 					generateSize([1], true);

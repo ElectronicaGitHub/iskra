@@ -1,6 +1,5 @@
 <%- layout('base.ejs')%>
 <% script("/libs/tinymce/tinymce.min.js") -%>
-<% script("/libs/angular-ui-tinymce/src/tinymce.js") -%>
 <% script("/javascripts/utils.js") -%>
 <% script("/javascripts/admin.js") -%>
 <% script("/javascripts/directives/news_element.js") -%>
@@ -8,7 +7,7 @@
 <% stylesheet("/stylesheets/admin.css") -%>
 <% stylesheet("/libs/fontawesome/css/font-awesome.min.css") -%>
 
-<div class="admin-page" ng-app="admin" ng-controller="Admin">
+<div class="admin-page" ng-controller="Admin">
 	<div class="promises" ng-if="successful_save" ng-class="{ success : successful_save }"><p>Новость успешно сохранена</p></div>
 	<div class="button_panel">
 		<button ng-click="page='create_page'; news = {};">create</button>

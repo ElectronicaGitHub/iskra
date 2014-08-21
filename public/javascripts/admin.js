@@ -1,6 +1,4 @@
-app = angular.module('admin', ['ui.tinymce']);
-
-app.controller('Admin', ['$scope', '$http', function($scope, $http) {
+tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
 
 	$scope.page = 'list_page';
 	// значение для превью новости
@@ -32,17 +30,14 @@ app.controller('Admin', ['$scope', '$http', function($scope, $http) {
 		$scope.getNews(render_blocks);
 	};
 
-
 	$scope.getNews = function(render_blocks) {
 		url = '/news/';
 		$http.get(url)
 			.success(function(data) {
 				$scope.feeds = data;
-
 				if (render_blocks) {
 					$scope.feed_blocks = UTILS.blocks_former($scope.feeds, $scope.feed_blocks);
 				}
-
 			})
 			.error(function(data) {
 				console.log(data);

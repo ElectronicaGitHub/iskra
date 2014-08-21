@@ -12,27 +12,37 @@
 <% stylesheet("/stylesheets/content.css") -%>
 <% stylesheet("/libs/fontawesome/css/font-awesome.min.css") -%>
 
-<div class="page" ng-app="content" ng-controller="contentCtrl" ng-init="init()">
+<div class="page" ng-controller="contentCtrl" ng-init="init()">
 	<article class="post">
-		<header class="title">{{ post.title }}</header>
+		<header ng-if="news_type=='normal'" class="title">{{ post.title }}</header>
+		<header ng-if="news_type=='special'" class="title">{{ post.title_special }}</header>
 		<div class="social_share_buttons">
 		    <span class="social_share fa fa-vk" data-type="vk"></span>
 		    <span class="social_share fa fa-facebook" data-type="fb"></span>
 		    <span class="social_share fa fa-twitter" data-type="tw"></span>
 		</div>
 		<div class="date">Редактор произвел новость {{ post.date }}</div>		
-		<div class="content" ng-bind-html="post.content"></div>
+		<div class="content" ng-if="news_type=='normal'" ng-bind-html="post.content"></div>
+		<div class="content" ng-if="news_type=='special'" ng-bind-html="post.content_special"></div>
 	</article>
-	<aside class="list"></aside>
+	<aside class="list">
+		<div class="posts-list">
+			<h3 class="tag-title">Последние новости</h3>
+			<a href="/post/{{ news._id }}" ng-repeat="news in popular">
+				<div class="each-post">
+					<div class="title">{{news.title}}</div>
+					<div class="date">{{news.date}}</div>
+					<div class="description">{{news.description}}</div>
+				</div>
+			</a>
+		</div>
+	</aside>
 	<aside class="misc">
 		<a class="twitter-timeline" href="https://twitter.com/tvoykosmosbaby" data-widget-id="500006500979331072"></a>
 		<div id="vk_groups"></div>
-		<div class="fb-like-box" data-href="https://www.facebook.com/tvoykosmos" data-width="272" data-height="200" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>	
+		<div class="fb-like-box" data-href="https://www.facebook.com/tvoykosmos" data-width="272" data-height="200" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
 	</aside>
-	
-
 </div>
-<script src="/javascripts/react-build/content-react.js"></script>
 <script src="//vk.com/js/api/openapi.js?115"></script>
 <script>
 	(function(d, s, id) {

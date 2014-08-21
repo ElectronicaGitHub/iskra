@@ -1,4 +1,4 @@
-app.directive('news', function() {
+tk.directive('news', function() {
 	return {
 		scope : {
 			news : '=ngModel',

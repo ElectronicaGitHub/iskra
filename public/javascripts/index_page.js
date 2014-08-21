@@ -1,9 +1,15 @@
-app = angular.module('index', [])
+tk.controller('Index', [ '$scope', '$http', '$rootScope', 
+	function($scope, $http, $rootScope) {
 
-app.controller('Index', [ '$scope', '$http', function($scope, $http) {
+	$scope.news_type = 'normal';
+
+	$rootScope.$watch('news_type', function(value) {
+		if (value) {
+			$scope.news_type = value;
+		}
+	})
 	
 	var page = 1;
-	$scope.news_type = 'normal';
 	$scope.feed_blocks = [];
 
 	$scope.init = function() {
