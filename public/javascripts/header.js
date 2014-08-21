@@ -9,7 +9,7 @@ tk.controller('HeaderCtrl', ['$scope', '$rootScope', '$location', 'localStorageS
 	function($scope, $rootScope, $location, localStorageService) {
 
 	//init page 
-	$rootScope.news_type = $scope.news_type = localStorageService.get('tvoyKosmos_MODE');
+	$rootScope.news_type = $scope.news_type = localStorageService.get('tvoyKosmos_MODE') || 'normal';
 	$rootScope.$watch('news_type', function(value) {
 		if (value) $location.path(value);
 	})
