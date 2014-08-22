@@ -8,6 +8,13 @@
 	width: 60px;
 	height: 60px;
 	display: inline-block;
+	
+}
+.usn {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 .top-squares {
 	float: left;
