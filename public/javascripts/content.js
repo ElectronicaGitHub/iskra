@@ -1,10 +1,8 @@
 	tk.controller('contentCtrl', ['$scope', '$http', '$sce', '$rootScope',
-
 		function($scope, $http, $sce, $rootScope) {
 		
-		$scope.news_type = 'normal';
 		$rootScope.$watch('news_type', function(value) {
-			$scope.news_type = value;
+			$scope.news_type = value ? value : '';
 		})
 
 		$scope.news_id = id;

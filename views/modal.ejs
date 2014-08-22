@@ -1,0 +1,51 @@
+<% stylesheet('/stylesheets/modal.css') -%>
+<script>
+    tk.controller('modalCtrl',['$rootScope', '$scope', 'localStorageService', '$timeout',
+        function(rSc, sc, lsS, $timeout) {
+        
+        rSc.$watch('news_type', function(value) {
+            sc.news_type = value ? value : null;
+        })
+
+        sc.chooseType = function(type) {
+            sc.news_type = rSc.news_type = type;
+            lsS.set('tvoyKosmos_MODE', type);
+
+            $timeout(function() {
+                sc.destroy_modal = true;
+                console.log(sc.destroy_modal);
+            }, 1000)
+
+        }
+    }])
+
+</script>
+
+<div ng-controller="modalCtrl" 
+     class="modal-high"
+     ng-class="{ hid : news_type, destroy : destroy_modal}">    
+    <div class="fader"></div>
+    <div class="tk-modal">
+        <div class="modal-_header"></div>
+        <div class="greet">
+            <span>
+                <p class="hello">Приветствуем тебя, серфер!</p>
+                <p>На нашем сайте новости существуют в двух вариантах.</p>
+                <p>Хорошенько подумай и выбери свой космос.</p>
+                <i>Ты всегда сможешь поменять режим отображения ткнув на кнопку MODE.</i>
+            </span>
+        </div>
+        <div class="near normal" ng-click="chooseType('normal')">
+            <div>
+                <p class="mode">НОРМАЛ</p>
+                <p class="desc">Вам будут показаны новости в классическом научно-популярном формате и имеющие интеллектуальную ценность.</p>
+            </div>
+        </div>
+        <div class="near special" ng-click="chooseType('special')">
+            <div>
+                <p class="mode">СПЕШЛ</p>
+                <p class="desc">Выбрав этот режим, ты, наш особенный, будешь видеть новости в облегченном формате, не будем  грузить тебя терминами.</p>
+            </div>
+        </div>
+    </div>
+</div>

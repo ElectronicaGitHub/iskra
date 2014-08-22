@@ -1,0 +1,120 @@
+.modal-high {
+    opacity: 1;
+    -webkit-transition: opacity 0.5s;
+    -moz-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+    font-family: 'Roboto Condensed';
+}
+.fader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.6);
+    z-index: 999;
+}
+.tk-modal {
+    width: 600px;
+    height: 550px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: white;
+    z-index: 9999;
+    box-shadow: 0 2px 5px rgba(0,0,0,.5);
+    border-radius: 5px;
+}
+.modal-_header {
+    border-radius: 5px 5px 0 0;
+    background: url(http://i.telegraph.co.uk/multimedia/archive/02357/eso-summary_2357457k.jpg) center center;
+    width: 100%;
+    height: 50px;
+}
+.near {
+    float: left;
+    width: 50%;
+    height: 300px;
+    transition: all 1s;
+    -webkit-transition: all 1s;
+    cursor: pointer;
+}
+.near div {
+    text-align: center;
+    padding: 20px;
+}
+.near p {
+    transition: all .6s;
+    -webkit-transition: all .6s;
+}
+.near .mode {
+    font-weight: bold;
+    color: white;
+    font-size: 50px;
+    text-shadow: 0 1px 2px rgba(0,0,0,.5);
+    margin-top: 100px;
+    position: relative;
+    top: 0px;
+}
+.near .desc {
+    font-size: 16px;
+    margin-top: 20px;
+    position: relative;
+    opacity: 0;    
+    color: #333;
+    font-weight: 700;
+    color: #fff;
+    top: 50px;
+    text-shadow: 0 1px 2px rgba(0,0,0,.5);
+}
+.near:hover > div .mode {
+    top: -40px;
+}
+.near:hover > div .desc {
+    top: -50px;
+    opacity: 1;
+}
+.near.normal:hover {
+    background: rgba(42, 140, 102, .9);
+}
+.near.special:hover {
+    background: rgba(206, 82, 81, .9);
+}
+.greet {
+    height: 200px;
+    text-align: center;
+    line-height: 200px;
+    padding: 0 20px;
+}
+.greet span {
+    line-height: 25px;
+    font-size: 20px;
+    font-weight: 700;
+    display: inline-block;
+    vertical-align: middle;
+}
+.greet span i {
+    font-size: 16px;
+    font-weight: 400;
+}
+.greet .hello {
+    font-size: 35px;
+    font-weight: 700;
+    line-height: 45px;
+    margin-bottom: 30px;
+}
+.normal {
+    background: rgba(42, 140, 102, 1);
+    border-bottom-left-radius: 5px;
+}
+.special {
+    background: rgba(206, 82, 81, 1);
+    border-bottom-right-radius: 5px;
+}
+.hid {
+    opacity: 0;
+}
+.destroy {
+    display: none;
+}

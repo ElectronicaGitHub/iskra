@@ -1,12 +1,8 @@
 tk.controller('Index', [ '$scope', '$http', '$rootScope', 
 	function($scope, $http, $rootScope) {
 
-	$scope.news_type = 'normal';
-
 	$rootScope.$watch('news_type', function(value) {
-		if (value) {
-			$scope.news_type = value;
-		}
+		$scope.news_type = value ? value : '';
 	})
 	
 	var page = 1;
