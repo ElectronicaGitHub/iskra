@@ -4,18 +4,24 @@
         function(rSc, sc, lsS, $timeout) {
         
         rSc.$watch('news_type', function(value) {
-            sc.news_type = value ? value : null;
+            if (value) {
+                sc.news_type = value;
+                timer();
+
+            }
         })
 
         sc.chooseType = function(type) {
             sc.news_type = rSc.news_type = type;
             lsS.set('tvoyKosmos_MODE', type);
+            timer();
 
+        }
+        function timer() {
             $timeout(function() {
                 sc.destroy_modal = true;
                 console.log(sc.destroy_modal);
-            }, 1000)
-
+            }, 600)
         }
     }])
 
