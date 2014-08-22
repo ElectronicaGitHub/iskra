@@ -41,9 +41,13 @@ div.page .misc {
 	line-height: 30px;
 	height: 30px;
 }
+.post .description {
+	margin-top: 10px;
+	font: italic 16px/24px 'Roboto Condensed', sans-serif;
+}
 .post .content {
 	font: 16px/24px 'Roboto Condensed', sans-serif;
-	margin-top: 15px;
+	margin-top: 10px;
 }
 .tag-title {
 	font-weight: 700;
@@ -58,7 +62,6 @@ div.page .misc {
 	-webkit-transition: all .4s;
 	-moz-transition: all .4s;
 	transition: all .4s;
-	
 }
 .each-post:hover {
 	background-color: #ACE3E8;
