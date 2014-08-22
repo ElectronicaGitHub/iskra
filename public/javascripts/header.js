@@ -21,4 +21,7 @@ tk.controller('HeaderCtrl', ['$scope', '$rootScope', '$location', 'localStorageS
 		$rootScope.news_type  = $scope.news_type;
 		localStorageService.set('tvoyKosmos_MODE', $scope.news_type);
 	}
+	$scope.goToRoot = function() {
+		window.location.href = '/';
+	}
 }])
