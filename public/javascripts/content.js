@@ -33,11 +33,13 @@
 					}
 
 					getOptionsSearch = function() {
+						var options = getOptions();
 						options_search = {
 							title: options['title'],
 							description: options['text'],
-							keywords: options['text'].split(' ').join(', ')
+							keywords: options['text'] ? options['text'].split(' ').join(', ') : ''
 						}
+						return options_search;
 						
 					}
 
