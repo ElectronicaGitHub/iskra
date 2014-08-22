@@ -42,8 +42,9 @@
 					}
 
 					$(document).on('click', '.social_share', function(){
+						var options = getOptions();
 						options.social_type = $(this).attr('data-type');
-					    Share.go(this, getOptions());
+					    Share.go(this, options);
 					});
 					UTILS.insertMeta(getOptions(), getOptionsSearch(), $scope.post.title);
 				})
