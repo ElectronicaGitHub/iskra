@@ -3,7 +3,10 @@
     -webkit-transition: opacity 0.5s;
     -moz-transition: opacity 0.5s;
     transition: opacity 0.5s;
-    font-family: 'Roboto Condensed';
+}
+.modal-high p {
+    padding: 0;
+    margin: 0;
 }
 .fader {
     position: fixed;
@@ -45,7 +48,7 @@
     padding: 20px;
 }
 .near .mode {
-    font-weight: bold;
+    font-family: 'RobCondBold';
     color: white;
     font-size: 50px;
     text-shadow: 0 1px 2px rgba(0,0,0,.5);
@@ -57,12 +60,11 @@
     -webkit-transition: all .4s;
 }
 .near .desc {
+    font-family: 'RobCondBold';
     font-size: 16px;
     margin-top: 20px;
     position: relative;
     opacity: 0;    
-    color: #333;
-    font-weight: 700;
     color: #fff;
     top: 0px;
     text-shadow: 0 1px 2px rgba(0,0,0,.5);
@@ -92,17 +94,18 @@
 .greet span {
     line-height: 25px;
     font-size: 20px;
-    font-weight: 700;
+    /*font-weight: 700;*/
+    font-family: 'RobCondBold';
     display: inline-block;
     vertical-align: middle;
 }
 .greet span i {
     font-size: 16px;
-    font-weight: 400;
+    font-family: 'RobCondLight';
 }
 .greet .hello {
+    font-family: 'RobCondBold';
     font-size: 35px;
-    font-weight: 700;
     line-height: 45px;
     margin-bottom: 30px;
 }

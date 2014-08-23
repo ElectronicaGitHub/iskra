@@ -1,7 +1,4 @@
 /*blocks positioning*/
-	* {
-		font-family: 'Roboto Condensed';
-	}
 	p {
 		padding: 0;
 		margin: 0;
@@ -85,23 +82,29 @@
 		width: 100%;
 		padding: 10px 20px;
 	}
+	news[class*=s] .inner-container .text-container .news_title {
+		font-family: 'RobCondBold';
+	}
 	news.s11 .inner-container .text-container .news_title {
 		margin: 0 0 2px 0;
 		font-size: 18px;
 		line-height: 20px;
-		font-weight: 700;
+		/*font-weight: 700;*/
 	}
 	news.s21 .inner-container .text-container .news_title {
 		font-size: 17px;
 		line-height: 19px;
-		font-weight: 700;
 		margin: 0 0 5px 0;
+		/*font-weight: 700;*/
 	}
 	news.s22 .inner-container .text-container .news_title {
 		margin: 0 0 5px 0;
 		font-size: 28px;
 		line-height: 30px;
-		font-weight: 700;
+		/*font-weight: 700;*/
+	}
+	news[class*=s] .inner-container .text-container .description {
+		font-family: 'RobCondLight';
 	}
 	news.s11 .inner-container .text-container .description {
 		font-size: 14px;
