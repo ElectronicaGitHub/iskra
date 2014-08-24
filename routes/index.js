@@ -11,7 +11,6 @@ function fn(express) {
 		News.findById(req.params.id, function(err, result) {
 			if (err) return next(err);
 			res.render('content', {
-				id : req.params.id,
 				post : result
 			});
 		})

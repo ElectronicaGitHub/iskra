@@ -1,6 +1,6 @@
 <%- layout('base.ejs') %>
 <script>
-	window.id = '<%- id %>';
+	window.post = <%- JSON.stringify(post) %>
 </script>
 <% script("/libs/angular-sanitize.js") -%>
 <% script("/libs/moment/min/moment-with-locales.min.js") -%>

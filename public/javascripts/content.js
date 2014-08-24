@@ -1,19 +1,18 @@
 	tk.controller('contentCtrl', ['$scope', '$http', '$sce', '$rootScope',
 		function($scope, $http, $sce, $rootScope) {
+		$scope.news = post;
 		
 		$rootScope.$watch('news_type', function(value) {
 			$scope.news_type = value ? value : '';
 			document.title = $scope.news_type=='normal' ? 
-								'Твой Космос | ' + $scope.post.title : 
-								'Твой Космос | ' + $scope.post.title_special;
+								'Твой Космос | ' + $scope.news.title : 
+								'Твой Космос | ' + $scope.news.title_special;
 		})
 
-		$scope.news_id = id;
 		$scope.getContent = function(id) {
 			var url = '/news/' + id;
 			$http.get(url)
 				.success(function(data) {
-					console.log(data);
 					$scope.post = data;
 					$scope.post.content = $scope.trustContent($scope.post.content);
 					$scope.post.content_special = $scope.trustContent($scope.post.content_special);
@@ -59,7 +58,6 @@
 			var url = '/news/' + '?limit=8';
 			$http.get(url)
 				.success(function(data) {
-					console.log(data);
 					data.map(function(elem) {
 						elem.date = moment(elem.date).locale('ru').calendar();
 						return elem;
@@ -72,7 +70,7 @@
 		}
 
 		$scope.init = function() {
-			$scope.getContent($scope.news_id);
+			$scope.getContent($scope.news._id);
 			$scope.getPopular();
 		}
 		$scope.trustContent = function(text) {
