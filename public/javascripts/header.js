@@ -5,12 +5,12 @@ tk.controller('HeaderCtrl', ['$scope', '$rootScope', '$location', 'localStorageS
 	$rootScope.news_type = $scope.news_type = localStorageService.get('tvoyKosmos_MODE');
 	$rootScope.$watch('news_type', function(value) {
 		console.log('news type header watcher');
-		search_value = $location.path().slice(1) || null;
+		search_value = $location.path() ? $location.path().slice(1) : null;
 		if (value && search_value && value != search_value) {
 			$location.path(search_value);
 			$rootScope.news_type = $scope.news_type = search_value;
 		} else {
-			$location.path(value);
+			// $location.path(value);
 			$scope.news_type = value;	
 		}
 	})
