@@ -3,6 +3,9 @@
 		
 		$rootScope.$watch('news_type', function(value) {
 			$scope.news_type = value ? value : '';
+			document.title = $scope.news_type=='normal' ? 
+								'Твой Космос | ' + $scope.post.title : 
+								'Твой Космос | ' + $scope.post.title_special;
 		})
 
 		$scope.news_id = id;
@@ -46,7 +49,7 @@
 						options.social_type = $(this).attr('data-type');
 					    Share.go(this, options);
 					});
-					UTILS.insertMeta(getOptions(), getOptionsSearch(), $scope.post.title);
+					UTILS.insertMeta(getOptions(), getOptionsSearch(), $scope.news_type=='normal' ? $scope.post.title : $scope.post.title_special);
 				})
 				.error(function(data) {
 					console.log(data);
