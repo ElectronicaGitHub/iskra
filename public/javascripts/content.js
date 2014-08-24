@@ -17,7 +17,7 @@
 					$scope.post = data;
 					$scope.post.content = $scope.trustContent($scope.post.content);
 					$scope.post.content_special = $scope.trustContent($scope.post.content_special);
-					$scope.post.date = moment($scope.post.date).locale('ru').calendar();
+					$scope.post.date = moment($scope.post.date).locale('ru').calendar().toLowerCase();
 
 					var options, options_search;
 					
