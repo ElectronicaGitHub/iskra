@@ -3,6 +3,7 @@
 <head>
 	<title><%- blocks.title %></title>
 	<meta charset="UTF-8"> 
+	<meta name="viewport" content="width=device-width">
 	<script src="/libs/angular/angular.min.js"></script>
 	<script src="/libs/jquery/dist/jquery.min.js"></script>
 	<script src="/libs/angular-local-storage/angular-local-storage.min.js"></script>
@@ -40,6 +41,8 @@
 		padding: 0px;
 		background: #f5f5f5;
 		box-shadow: 0px 2px 2px rgba(0,0,0,.5);
+		position: relative;
+		z-index: 1;
 	}
 	*[ng-click] {
 		cursor: pointer;

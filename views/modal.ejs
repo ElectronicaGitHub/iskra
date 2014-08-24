@@ -6,22 +6,11 @@
         rSc.$watch('news_type', function(value) {
             if (value) {
                 sc.news_type = value;
-                timer();
-
             }
         })
-
         sc.chooseType = function(type) {
             sc.news_type = rSc.news_type = type;
             lsS.set('tvoyKosmos_MODE', type);
-            timer();
-
-        }
-        function timer() {
-            $timeout(function() {
-                sc.destroy_modal = true;
-                console.log(sc.destroy_modal);
-            }, 600)
         }
     }])
 
@@ -29,7 +18,7 @@
 
 <div ng-controller="modalCtrl" 
      class="modal-high"
-     ng-class="{ hid : news_type, destroy : destroy_modal}">    
+     ng-class="{ _show : !news_type }">    
     <div class="fader"></div>
     <div class="tk-modal">
         <div class="modal-_header"></div>
