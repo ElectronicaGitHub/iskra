@@ -15,38 +15,38 @@
 	<%- scripts%>
 	<script src="/libs/angular-ui-tinymce/src/tinymce.js"></script>
 
+	<style>
+		html, body {
+			height: 100%;
+			width: 100%;
+			background: #e2e2e2;
+		}
+		.container {
+			width: 1200px !important;
+			padding: 0px;
+			background: #f5f5f5;
+			box-shadow: 0px 2px 2px rgba(0,0,0,.5);
+			position: relative;
+			z-index: 1;
+		}
+		*[ng-click] {
+			cursor: pointer;
+		}
+	</style>
 	<link rel="stylesheet" href="/stylesheets/fonts.css">
 	<link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css"></link>
 	<link rel="icon" type="image/png" href="/images/tk.png" sizes="32x32">
 	<%- stylesheets %>
 
 </head>
-<body ng-app="tvoyKosmos">
-	
-	<%- partial('modal')%>
-	<div class="container">	
-		<%- partial('header') %>	
-		<%- body %>
-		<%- partial('footer')%>
-	</div>
+	<body ng-app="tvoyKosmos">
+		
+		<%- partial('modal')%>
+		<div class="container">	
+			<%- partial('header') %>	
+			<%- body %>
+			<%- partial('footer')%>
+		</div>
 
-	<style>
-	html, body {
-		height: 100%;
-		width: 100%;
-		background: #e2e2e2;
-	}
-	.container {
-		width: 1200px !important;
-		padding: 0px;
-		background: #f5f5f5;
-		box-shadow: 0px 2px 2px rgba(0,0,0,.5);
-		position: relative;
-		z-index: 1;
-	}
-	*[ng-click] {
-		cursor: pointer;
-	}
-	</style>
-</body>
+	</body>
 </html>

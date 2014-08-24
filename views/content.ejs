@@ -14,20 +14,37 @@
 
 <div class="page" ng-controller="contentCtrl" ng-init="init()">
 	<article class="post">
-		<header ng-if="news_type=='normal'" class="title">{{ post.title }}</header>
-		<header ng-if="news_type=='special'" class="title">{{ post.title_special }}</header>
+
+		<header ng-if="news_type=='normal'" class="title">
+			<%- post.title %>
+		</header>
+		<header ng-if="news_type=='special'" class="title"><%- post.title_special %>
+		</header>
+
 		<div class="social_share_buttons">
 		    <span class="social_share fa fa-vk" data-type="vk"></span>
 		    <!-- <span class="social_share fa fa-facebook" data-type="fb"></span> -->
 		    <span class="social_share fa fa-twitter" data-type="tw"></span>
 		</div>
-		<div class="date">Редактор произвел новость {{ post.date }}</div>	
+		<div class="date" ng-if="post">Редактор произвел новость {{ post.date }}</div>	
+		<div class="date" ng-if="!post">Когда же это было ...</div>	
 
-		<div class="description" ng-if="news_type=='normal'" ng-bind="post.description"></div>
-		<div class="description" ng-if="news_type=='special'" ng-bind="post.description_special"></div>	
 
-		<div class="content" ng-if="news_type=='normal'" ng-bind-html="post.content"></div>
-		<div class="content" ng-if="news_type=='special'" ng-bind-html="post.content_special"></div>
+		<div class="description" ng-if="news_type=='normal'">
+			<%- post.description %>
+		</div>
+		<div class="description" ng-if="news_type=='special'">
+			<%- post.description_special %>
+		</div>	
+
+		<div class="content" ng-if="news_type=='normal'">
+			<%- post.content %>
+		</div>
+		<div class="content" ng-if="news_type=='special'">
+			<%- post.content_special %>
+		</div>
+
+
 	</article>
 	<aside class="list">
 		<div class="posts-list">

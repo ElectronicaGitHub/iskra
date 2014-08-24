@@ -8,9 +8,13 @@ function fn(express) {
 	});
 
 	router.get('/post/:id', function(req, res) {
-		res.render('content', {
-			id : req.params.id
-		});
+		News.findById(req.params.id, function(err, result) {
+			if (err) return next(err);
+			res.render('content', {
+				id : req.params.id,
+				post : result
+			});
+		})
 	});
 
 	router.get('/news/:id', function(req, res, next) {
