@@ -6,12 +6,22 @@ tk.controller('HeaderCtrl', ['$scope', '$rootScope', '$location', 'localStorageS
 	$rootScope.$watch('news_type', function(value) {
 		console.log('news type header watcher');
 		search_value = $location.path() ? $location.path().slice(1) : null;
-		if (value && search_value && value != search_value) {
-			$location.path(search_value);
-			$rootScope.news_type = $scope.news_type = search_value;
-		} else {
-			// $location.path(value);
-			$scope.news_type = value;	
+		// if (value && search_value && value != search_value) {
+		// 	$location.path(search_value);
+		// 	$rootScope.news_type = $scope.news_type = search_value;
+		// } 
+		// else if (value) {
+		// 	$location.path(value);
+		// 	$scope.news_type = value;	
+		// }
+		if (value) {
+			if (search_value && search_value != value) {
+				$location.path(search_value);
+				$scope.news_type = $rootScope.news_type = search_value;
+			} else {
+				$location.path(value);
+				$scope.news_type = $rootScope.news_type = value;
+			}
 		}
 	})
 	$scope.toggle_news_type = function() {
