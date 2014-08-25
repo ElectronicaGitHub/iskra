@@ -116,6 +116,16 @@ span.fa-vk {
 span.fa-twitter {
 	background-color: #4099FF;
 }
-
-
-
+div.after-text-advice {
+	line-height: 25px;
+	width: 100%;
+	border-top: 1px solid #ddd;
+	margin-top: 20px;
+	padding: 10px 0;
+	font-size: 18px;
+	font-family: 'RobCondBold';
+}
+div.after-text-advice span {
+	color: #4D42FF;
+	font-family: inherit;
+}

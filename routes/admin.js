@@ -39,6 +39,8 @@ function admin(express, config) {
 
 
 	router.post('/:id', function(req, res, next) {
+		var post = req.body;
+		delete post._id;
 		News.findByIdAndUpdate(req.params.id, req.body, function(err, result) {
 			if (err) return next(err);
 			res.json({

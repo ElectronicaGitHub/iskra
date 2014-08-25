@@ -44,6 +44,11 @@
 			<%- post.content_special %>
 		</div>
 
+		<div ng-if="news_type=='normal'" 
+			 class="after-text-advice">{{ generateAfterTextAdvice('normal') }} <span ng-click="slideAndChangeMode('special')">Читай что попроще.</span></div>
+		<div ng-if="news_type=='special'" 
+			 class="after-text-advice">{{ generateAfterTextAdvice('special') }} <span ng-click="slideAndChangeMode('normal')">Читай классическую версию.</span></div>
+
 
 	</article>
 	<aside class="list">

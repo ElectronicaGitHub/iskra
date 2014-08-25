@@ -1,5 +1,5 @@
-	tk.controller('contentCtrl', ['$scope', '$http', '$sce', '$rootScope',
-		function($scope, $http, $sce, $rootScope) {
+	tk.controller('contentCtrl', ['$scope', '$http', '$sce', '$rootScope', '$location',
+		function($scope, $http, $sce, $rootScope, $location) {
 		$scope.news = post;
 		
 		$rootScope.$watch('news_type', function(value) {
@@ -76,5 +76,28 @@
 		$scope.trustContent = function(text) {
 			text = $sce.trustAsHtml(text);
 			return text;
+		}
+
+		$scope.slideAndChangeMode = function(type) {
+			$('body, html').animate({
+				scrollTop : 0
+			}, 300)
+			$location.path(type);
+			$scope.news_type = $rootScope.news_type = type;
+		}
+
+		var special = [ 'Слишком сложно для тебя, умник?', 
+						'Не справляешься с потоком разума?', 
+						'Уныло и много букв?', 
+						'Ты несколько особенный?', 
+						'Тебя поглотили термины?'];
+		var normal = [ 'Прочитал и не понял почему нету терминов?', 
+					   'Слишком легко для тебя, Эйнштейн?', 
+					   'Кажется слишком простым?', 
+					   'Да, эта статья для особенных!', 
+					   'Статью писал парень c высоким ICQ.'];
+		$scope.generateAfterTextAdvice = function(type) {
+			return type == 'special' ? normal[~~(Math.random() * normal.length)]
+			 						: special[~~(Math.random() * special.length)]
 		}
 	}])
