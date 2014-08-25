@@ -1,9 +1,5 @@
 tk.controller('Index', [ '$scope', '$http', '$rootScope', 
 	function($scope, $http, $rootScope) {
-
-	$rootScope.$watch('news_type', function(value) {
-		$scope.news_type = value ? value : '';
-	})
 	
 	var page = 1;
 	$scope.feed_blocks = [];

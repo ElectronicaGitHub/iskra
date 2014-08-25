@@ -1,34 +1,27 @@
-tk.controller('HeaderCtrl', ['$scope', '$rootScope', '$location', 'localStorageService',
+tk.controller('HeaderCtrl', 
+	['$scope', '$rootScope', '$location', 'localStorageService',
 	function($scope, $rootScope, $location, localStorageService) {
 
 	//init page 
-	$rootScope.news_type = $scope.news_type = localStorageService.get('tvoyKosmos_MODE');
-	$rootScope.$watch('news_type', function(value) {
-		console.log('news type header watcher');
-		search_value = $location.path() ? $location.path().slice(1) : null;
-		// if (value && search_value && value != search_value) {
-		// 	$location.path(search_value);
-		// 	$rootScope.news_type = $scope.news_type = search_value;
-		// } 
-		// else if (value) {
-		// 	$location.path(value);
-		// 	$scope.news_type = value;	
-		// }
-		if (value) {
-			if (search_value && search_value != value) {
-				$location.path(search_value);
-				$scope.news_type = $rootScope.news_type = search_value;
-			} else {
-				$location.path(value);
-				$scope.news_type = $rootScope.news_type = value;
-			}
-		}
-	})
+	value = localStorageService.get('tvoyKosmos_MODE');
+	
+	search_value = $location.path() ? $location.path().slice(1) : null;
+	if (value) {
+		if (search_value && search_value != value) {
+			$location.path(search_value);
+			$rootScope.news_type = search_value;
+		} else {
+			$location.path(value);
+			$rootScope.news_type = value;
+		} 
+	} else if (!value && search_value) {
+		$rootScope.news_type = search_value;
+		$location.path(search_value);
+	}
 	$scope.toggle_news_type = function() {
-		$scope.news_type = $scope.news_type == 'normal' ? 'special' : 'normal';
-		$rootScope.news_type  = $scope.news_type;
-		localStorageService.set('tvoyKosmos_MODE', $scope.news_type);
-		$location.path($scope.news_type);
+		$rootScope.news_type = $rootScope.news_type == 'normal' ? 'special' : 'normal';
+		localStorageService.set('tvoyKosmos_MODE', $rootScope.news_type);
+		$location.path($rootScope.news_type);
 	}
 	$scope.goToRoot = function() {
 		window.location.href = '/';

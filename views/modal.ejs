@@ -3,19 +3,10 @@
     tk.controller('modalCtrl',['$rootScope', '$scope', 'localStorageService', '$timeout', '$location', 
         function(rSc, sc, lsS, $timeout, $location) {
 
-        search_value = $location.path() ? $location.path().slice(1) : null;
-        
-        rSc.$watch('news_type', function(value) {
-            if (value) {
-                sc.news_type = value;
-            } 
-            else if (!value && search_value) {
-                rSc.news_type = sc.news_type = search_value;
-            }
-        })
         sc.chooseType = function(type) {
-            sc.news_type = rSc.news_type = type;
+            rSc.news_type = type;
             lsS.set('tvoyKosmos_MODE', type);
+            $location.path(type);
         }
     }])
 
