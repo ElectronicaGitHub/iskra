@@ -1,7 +1,7 @@
 	tk.controller('contentCtrl', ['$scope', '$http', '$sce', '$rootScope', '$location',
 		function($scope, $http, $sce, $rootScope, $location) {
 		$scope.post = post;
-		$scope.post.date = moment($scope.post.date).locale('ru').calendar();
+		$scope.post.date = moment($scope.post.date).locale('ru').calendar().toLowerCase();
 		
 		getOptions = function() {
 			options = {
