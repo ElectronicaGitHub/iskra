@@ -1,59 +1,24 @@
 	tk.controller('contentCtrl', ['$scope', '$http', '$sce', '$rootScope', '$location',
 		function($scope, $http, $sce, $rootScope, $location) {
-		$scope.news = post;
+		$scope.post = post;
 		
-		$rootScope.$watch('news_type', function(value) {
-			$scope.news_type = value ? value : '';
-			document.title = $scope.news_type=='normal' ? 
-								'Твой Космос | ' + $scope.news.title : 
-								'Твой Космос | ' + $scope.news.title_special;
-		})
-
-		$scope.getContent = function(id) {
-			var url = '/news/' + id;
-			$http.get(url)
-				.success(function(data) {
-					$scope.post = data;
-					$scope.post.content = $scope.trustContent($scope.post.content);
-					$scope.post.content_special = $scope.trustContent($scope.post.content_special);
-					$scope.post.date = moment($scope.post.date).locale('ru').calendar().toLowerCase();
-
-					var options, options_search;
-					
-					getOptions = function() {
-						options = {
-		                    title:      $scope.news_type == 'normal' ? $scope.post.title : $scope.post.title_special,
-					    	url:        location.href, 
-		                    image:      $scope.news_type == 'normal' ? $scope.post.image : $scope.post.image_special, 
-		                    count_url:  location.href, 
-		                    text:       $scope.news_type == 'normal' ? $scope.post.description : $scope.post.description_special,
-		                    description : $scope.news_type == 'normal' ? $scope.post.description : $scope.post.description_special
-						};
-						return options;
-					}
-
-					getOptionsSearch = function() {
-						var options = getOptions();
-						options_search = {
-							title: options['title'],
-							description: options['text'],
-							keywords: options['text'] ? options['text'].split(' ').join(', ') : ''
-						}
-						return options_search;
-						
-					}
-
-					$(document).on('click', '.social_share', function(){
-						var options = getOptions();
-						options.social_type = $(this).attr('data-type');
-					    Share.go(this, options);
-					});
-					UTILS.insertMeta(getOptions(), getOptionsSearch(), $scope.news_type=='normal' ? $scope.post.title : $scope.post.title_special);
-				})
-				.error(function(data) {
-					console.log(data);
-				})
+		getOptions = function() {
+			options = {
+                title:      $scope.news_type != 'special' ? $scope.post.title : $scope.post.title_special,
+		    	url:        location.href, 
+                image:      $scope.news_type != 'special' ? $scope.post.image : $scope.post.image_special, 
+                count_url:  location.href, 
+                text:       $scope.news_type != 'special' ? $scope.post.description : $scope.post.description_special,
+                description : $scope.news_type != 'special' ? $scope.post.description : $scope.post.description_special
+			};
+			return options;
 		}
+		$(document).on('click', '.social_share', function(){
+			var options = getOptions();
+			options.social_type = $(this).attr('data-type');
+		    Share.go(this, options);
+		});
+
 		$scope.getPopular = function() {
 			var url = '/news/' + '?limit=8';
 			$http.get(url)
@@ -68,14 +33,8 @@
 					console.log(data)
 				})
 		}
-
 		$scope.init = function() {
-			$scope.getContent($scope.news._id);
 			$scope.getPopular();
-		}
-		$scope.trustContent = function(text) {
-			text = $sce.trustAsHtml(text);
-			return text;
 		}
 
 		$scope.slideAndChangeMode = function(type) {
@@ -83,7 +42,7 @@
 				scrollTop : 0
 			}, 300)
 			$location.path(type);
-			$scope.news_type = $rootScope.news_type = type;
+			$rootScope.news_type = type;
 		}
 
 		var special = [ 'Слишком сложно для тебя, умник?', 

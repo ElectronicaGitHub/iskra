@@ -1,0 +1,15 @@
+<title><%- post.title %></title>
+<meta name="robots" content="index,follow" />
+<meta name="title" content="<%- post.title %>" />
+<meta name="description" content="<%- post.description %>" />
+<meta name="keywords" content="<%- post.description.split(' ').filter(function(elem) { return elem.length>5 ? elem : ''}).join(',') %>" />
+
+<link rel="image_src" href=" <%- post.image %>" />
+
+<meta property="og:title" content="<%- post.title %>" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/<%- post._id %>" />
+<meta property="og:image" content="<%- post.image %>" />
+<meta property="og:description" content="<%- post.description %>" />
+<meta property="og:site_name" content="TvoyKosmos" />
+
