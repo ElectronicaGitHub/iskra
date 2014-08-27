@@ -28,7 +28,7 @@
 		    <!-- <span class="social_share fa fa-facebook" data-type="fb"></span> -->
 		    <span class="social_share fa fa-twitter" data-type="tw"></span>
 		</div>
-		<div class="date">Редактор произвел новость <%- userdate %></div>
+		<div class="date">Редактор произвел новость {{ post.date }}</div>
 
 		<div class="description" ng-if="news_type=='normal || !news_type'">
 			<%- post.description %>
