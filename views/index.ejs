@@ -3,7 +3,7 @@
 <% script("/javascripts/index_page.js") -%>
 <% script("/javascripts/directives/news_element.js") -%>
 <% stylesheet("/stylesheets/index.css") -%>
-<%- block('meta', partial('meta_index'))%>
+<% block('meta', partial('meta_index')) -%>
 <% block('title', 'Твой Космос | Новостное научно-популярное издание о науке и космосе') -%>
 
 <div ng-app="tvoyKosmos" ng-controller="Index" ng-init="init()">	
