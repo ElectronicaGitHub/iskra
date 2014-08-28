@@ -1,10 +1,37 @@
-var News = require('../models/News');
+var News = require('../models/News'),
+    sm = require('sitemap');
+
 
 function fn(express) {
 	var router = express.Router();
 	
 	router.get('/', function(req, res) {
 		res.render('index');
+	});
+
+	
+
+	router.get('/sitemap.xml', function(req, res) {
+		News.find({}, { content : 0, content_special : 0}, function(err, results) {
+			if (err) return next(err);
+			urls = results.map(function(el) {
+				return {
+					url : '/post/' + el._id,
+					changefreq : 'daily'
+					// priority : 0.3
+				}
+			})
+			console.log('inside', urls);
+			sitemap = sm.createSitemap ({
+		      hostname: 'http://tvoykosmos.ru',
+		      cacheTime: 600000,        // 600 sec - cache purge period
+		      urls: urls
+		    });
+		    sitemap.toXML( function (xml) {
+		        res.header('Content-Type', 'application/xml');
+		        res.send( xml );
+		    });
+		})
 	});
 
 	router.get('/robots.txt', function(req, res) {
