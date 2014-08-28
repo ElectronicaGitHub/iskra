@@ -1,9 +1,11 @@
 <%- layout('base.ejs') %>
-<% block('title', 'Твой Космос') -%>
+<% block('title', 'Твой Космос | Новостное научно-популярное издение о науке и космосе') -%>
 <% script("/javascripts/utils.js") -%>
 <% script("/javascripts/index_page.js") -%>
 <% script("/javascripts/directives/news_element.js") -%>
 <% stylesheet("/stylesheets/index.css") -%>
+<%- block('meta', partial('meta_index'))%>
+
 <div ng-app="tvoyKosmos" ng-controller="Index" ng-init="init()">	
 	<div class="feed">
 		<div ng-repeat="block in feed_blocks"
