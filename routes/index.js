@@ -7,6 +7,11 @@ function fn(express) {
 		res.render('index');
 	});
 
+	router.get('/robots.txt', function(req, res) {
+		res.set('Content-Type', 'text/plain');
+		res.sendfile('robots.txt');
+	})
+
 	router.get('/post/:id', function(req, res) {
 		News.findById(req.params.id, function(err, result) {
 			if (err) return next(err);
