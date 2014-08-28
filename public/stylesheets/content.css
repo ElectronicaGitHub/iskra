@@ -33,6 +33,7 @@ div.page .misc {
 	font-family: 'RobCondBold';
 	font-size: 30px;
 	line-height: 35px;
+	margin-top: 0px;
 }
 .post .date {
 	color: #E85C49;
@@ -48,8 +49,11 @@ div.page .misc {
 	font: 16px/24px 'RobCondLight', sans-serif;
 	margin-top: 10px;
 }
-.post .content h3 {
+.post .content h3, .post .content h2 {
 	font-family: 'RobCondBold';
+}
+.post .content h2 {
+	font-size: 25px;
 }
 .tag-title {
 	font-family: 'RobCondBold';

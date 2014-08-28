@@ -15,11 +15,11 @@
 <div class="page" ng-controller="contentCtrl" ng-init="init()">
 	<article class="post">
 
-		<header ng-if="news_type=='normal' || !news_type" class="title">
+		<h1 ng-if="news_type=='normal' || !news_type" class="title">
 			<%- post.title %>
-		</header>
-		<header ng-if="news_type=='special'" class="title"><%- post.title_special %>
-		</header>
+		</h1>
+		<h1 ng-if="news_type=='special'" class="title"><%- post.title_special %>
+		</h1>
 
 		<div class="social_share_buttons">
 		    <span class="social_share fa fa-vk" data-type="vk"></span>
@@ -40,6 +40,12 @@
 		</div>
 		<div class="content" ng-if="news_type=='special'">
 			<%- post.content_special %>
+		</div>
+
+		<div class="social_share_buttons">
+		    <span class="social_share fa fa-vk" data-type="vk"></span>
+		    <!-- <span class="social_share fa fa-facebook" data-type="fb"></span> -->
+		    <span class="social_share fa fa-twitter" data-type="tw"></span>
 		</div>
 
 		<div ng-if="news_type=='normal' || !news_type" 
