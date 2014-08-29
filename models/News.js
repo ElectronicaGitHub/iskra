@@ -26,6 +26,12 @@ var News = new Schema({
 	image_special : {
 		type : String
 	},
+	section : {
+		type : Number
+	},
+	// 0 - Космос
+	// 1 - Наука
+	// 2 - Технологии
 	date : {
 		type: Date,
 		default : Date.now

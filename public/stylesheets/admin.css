@@ -71,7 +71,6 @@ p.labels {
 .input input, .input button, .input select, .input textarea {
 	width: 100%;
 	height: 30px;
-	line-height: 30px;
 	font-size: 15px;
 }
 .input textarea {

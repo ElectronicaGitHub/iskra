@@ -28,12 +28,9 @@
 	<div ng-show="page=='create_page'" class="create-page">
 		<h1>СОЗДАНИЕ/РЕДАКТИРОВАНИЕ НОВОСТИ</h1>
 
-		<!-- <div class="button-top-panel">
-			<button class="normal-button" ng-class="{ selected : news_type=='normal' }" ng-click="news_type='normal'">НОРМАЛЬНАЯ НОВОСТЬ</button>
-			<button class="special-button" ng-class="{ selected : news_type=='special' }" ng-click="news_type='special'">СПЕЦИАЛЬНАЯ НОВОСТЬ</button>
-		</div> -->
-
 		<div class="input">
+			<p class="labels">Раздел новости</p>
+			<select ng-model="news.section" ng-options="k as v for (k,v) in news_sections"></select>
 			<div ng-show="news_type=='normal'">
 				<p class="labels">Заголовок</p>
 				<input type="text" 
@@ -106,11 +103,6 @@
 
 	<div class="list-page" ng-if="page=='list_page'" ng-init="loadForPage()"> 
 		<h1>СПИСОК ВСЕХ НОВОСТЕЙ</h1>
-
-		<!-- <div class="button-top-panel">
-			<button class="normal-button" ng-class="{ selected : news_type=='normal' }" ng-click="news_type='normal'">НОРМАЛЬНЫЕ НОВОСТИ</button>
-			<button class="special-button" ng-class="{ selected : news_type=='special' }" ng-click="news_type='special'">СПЕЦИАЛЬНЫЕ НОВОСТИ</button>
-		</div> -->
 
 		<div ng-repeat="news in feeds" class="news-in-list">
 			

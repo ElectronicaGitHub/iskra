@@ -18,10 +18,8 @@ function fn(express) {
 				return {
 					url : '/post/' + el._id,
 					changefreq : 'daily'
-					// priority : 0.3
 				}
 			})
-			console.log('inside', urls);
 			sitemap = sm.createSitemap ({
 		      hostname: 'http://tvoykosmos.ru',
 		      cacheTime: 600000,        // 600 sec - cache purge period
