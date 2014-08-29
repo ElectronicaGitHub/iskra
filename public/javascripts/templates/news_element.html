@@ -2,6 +2,7 @@
  	<div ng-if="type=='normal'"
  		 class="picture" 
  		 style="background-image: url( {{ news.image }} )"></div>
+ 	<div ng-if="news.special" class="special_mark">{{ news.special }}</div>
 	<div ng-if="type=='normal'"
 		 class="text-container">
  		<div class='news_title'>

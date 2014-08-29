@@ -29,6 +29,9 @@ var News = new Schema({
 	section : {
 		type : Number
 	},
+	special : {
+		type : String
+	},
 	// 0 - Космос
 	// 1 - Наука
 	// 2 - Технологии

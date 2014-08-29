@@ -57,6 +57,10 @@
 				<textarea ui-tinymce="tinymce_options"
 					   	  ng-model="news.content_special"></textarea>
 			</div>
+			
+			<p class="labels">Спешл новость, Лейбл для спешл новости</p>
+			<input type="text" ng-model="news.special">
+
 			<div class="button-top-panel">
 				<button class="normal-button" 
 						ng-if="!news._id" 
