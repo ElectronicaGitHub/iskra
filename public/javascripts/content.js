@@ -2,7 +2,7 @@
 		function($scope, $http, $sce, $rootScope, $location) {
 		$scope.post = post;
 		$scope.post.date = moment($scope.post.date).locale('ru').calendar().toLowerCase();
-		
+
 		getOptions = function() {
 			options = {
                 title:      $scope.news_type != 'special' ? $scope.post.title : $scope.post.title_special,
@@ -20,21 +20,41 @@
 		    Share.go(this, options);
 		});
 
-		$scope.getPopular = function() {
+		$scope.getLast = function() {
 			var url = '/news/' + '?limit=8';
 			$http.get(url)
 				.success(function(data) {
-					data.map(function(elem) {
+					data = data.filter(function(elem) {
 						elem.date = moment(elem.date).locale('ru').calendar();
-						return elem;
+						if (elem._id.toString() != $scope.post._id.toString()) {
+							return elem;
+						}
+					})
+					$scope.last = data;
+				})
+				.error(function(data) {
+					console.log(data)
+				})
+		}
+		$scope.getPopular = function() {
+			var url = '/popular/' + '?limit=5';
+			$http.get(url)
+				.success(function(data) {
+					data = data.filter(function(elem) {
+						elem.date = moment(elem.date).locale('ru').calendar();
+						if (elem._id.toString() != $scope.post._id.toString()) {
+							return elem;
+						}
 					})
 					$scope.popular = data;
+					console.log($scope.popular)
 				})
 				.error(function(data) {
 					console.log(data)
 				})
 		}
 		$scope.init = function() {
+			$scope.getLast();
 			$scope.getPopular();
 		}
 

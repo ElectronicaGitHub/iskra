@@ -5,7 +5,6 @@ var UTILS = (function() {
 
 	return {
 		blocks_former : function(feeds, blocks) {
-			console.warn('UTILS BLOCK FORMER');
 			createBlock = function() {
 				local_block = {
 					id : ~~(Math.random() * 9999),

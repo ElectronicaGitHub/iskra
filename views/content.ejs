@@ -12,6 +12,8 @@
 <% stylesheet("/stylesheets/content.css") -%>
 <% stylesheet("/libs/fontawesome/css/font-awesome.min.css") -%>
 
+<div id="fb-root"></div>
+
 <div class="page" ng-controller="contentCtrl" ng-init="init()">
 	<article class="post">
 
@@ -23,10 +25,18 @@
 
 		<div class="social_share_buttons">
 		    <span class="social_share fa fa-vk" data-type="vk"></span>
-		    <!-- <span class="social_share fa fa-facebook" data-type="fb"></span> -->
+		    <span class="social_share fa fa-facebook" data-type="fb"></span>
 		    <span class="social_share fa fa-twitter" data-type="tw"></span>
+			
+			<span class="info-panel">
+				<span class="date">Редактор произвел новость <%- moment(post.date).locale('ru').calendar().toLowerCase() %></span>
+				<span class="views">
+					<span class="fa fa-eye"></span>
+					<span class="view-count"><%- post.views %></span>
+				</span>
+				
+			</span>
 		</div>
-		<div class="date">Редактор произвел новость {{ post.date }}</div>
 
 		<div class="description" ng-if="news_type=='normal' || !news_type">
 			<%- post.description %>
@@ -43,8 +53,9 @@
 		</div>
 
 		<div class="social_share_buttons">
+
 		    <span class="social_share fa fa-vk" data-type="vk"></span>
-		    <!-- <span class="social_share fa fa-facebook" data-type="fb"></span> -->
+		    <span class="social_share fa fa-facebook" data-type="fb"></span>
 		    <span class="social_share fa fa-twitter" data-type="tw"></span>
 		</div>
 
@@ -56,42 +67,75 @@
 
 	</article>
 	<aside class="list">
-		<div class="posts-list">
-			<h3 class="tag-title">Последние новости</h3>
+		<div class="posts-list gray">
+			<h3 class="tag-title popular">Популярное за неделю</h3>
 			<a href="/post/{{ news._id }}" ng-repeat="news in popular">
 				<div ng-if="news_type=='normal'" class="each-post">
+					<div class="image" style="background-image : url({{ news.image }})"></div>
 					<div class="title">{{news.title}}</div>
-					<div class="date">{{news.date}}</div>
 					<div class="description">{{news.description}}</div>
 				</div>
 				<div ng-if="news_type=='special'" class="each-post">
+					<div class="image" style="background-image : url({{ news.image_special }})"></div>
 					<div class="title">{{news.title_special}}</div>
-					<div class="date">{{news.date}}</div>
 					<div class="description">{{news.description_special}}</div>
 				</div>
 			</a>
 		</div>
+
+		<div id="vk_groups" style="margin: 0 auto"></div>
 	</aside>
 	<aside class="misc">
+		<div class="posts-list">
+			<h3 class="tag-title">Последние новости</h3>
+			<a href="/post/{{ news._id }}" ng-repeat="news in last">
+				<div ng-if="news_type=='normal'" class="each-post">
+					<div class="title">{{news.title}}</div>
+					<div class="description">{{news.description}}</div>
+				</div>
+				<div ng-if="news_type=='special'" class="each-post">
+					<div class="title">{{news.title_special}}</div>
+					<div class="description">{{news.description_special}}</div>
+				</div>
+			</a>
+		</div>
 		<a class="twitter-timeline" href="https://twitter.com/tvoykosmosbaby" data-widget-id="500006500979331072"></a>
-		<div id="vk_groups"></div>
-		<!-- <div class="fb-like-box" data-href="https://www.facebook.com/tvoykosmos" data-width="272" data-height="200" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div> -->
+
+		<div class="fb-like-box" data-href="https://www.facebook.com/tvoykosmos" data-width="272" data-height="200" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
 	</aside>
+	<!-- <aside class="misc">
+	</aside> -->
 </div>
-<!--<script>
-	(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=123344407840562&version=v2.0";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));
-</script> -->
+
+<script async>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=1529286413954549&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <script async>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 </script>
-<script src="//vk.com/js/api/openapi.js?115"></script>
+<div id="vk_api_transport"></div>
 <script type="text/javascript">
-VK.Widgets.Group("vk_groups", {mode: 0, width: "272", height: "200",color1: 'E5E5E5', color2: '2B587A', color3: '5B7FA6'}, 75281223);
+	setTimeout(function() {
+	    var el = document.createElement("script");
+	    el.type = "text/javascript";
+	    el.src = "http://vkontakte.ru/js/api/openapi.js";
+	    el.async = true;
+	    document.getElementById("vk_api_transport").appendChild(el);
+	  }, 0);
+	a = setInterval(function() {
+		try {
+			if (!!VK) {
+				VK.Widgets.Group("vk_groups", {mode: 0, width: "300", height: "200",color1: 'E5E5E5', color2: '2B587A', color3: 'FFB52E'}, 75281223);
+				clearInterval(a);
+			}
+		} catch(err) {
+		}
+		
+	}, 200)
 </script>
 
 

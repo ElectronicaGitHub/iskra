@@ -1,13 +1,24 @@
  <a class="inner-container" href="/post/{{ news._id }}">
+
  	<div ng-if="type=='normal'"
  		 class="picture" 
- 		 style="background-image: url( {{ news.image }} )"></div>
+ 		 style="background-image: url( {{ news.image }} )">
+		<div class="views">
+			<span>	
+				<span class="fa fa-eye"></span>
+				<span>{{ news.views }}</span>
+			</span>
+		</div>
+ 	</div>
+
+	<div class="hover-stater"></div>
+
  	<div ng-if="news.special" class="special_mark">{{ news.special }}</div>
 	<div ng-if="type=='normal'"
 		 class="text-container">
  		<div class='news_title'>
 	 		<p>{{ news.title }}</p>
- 		</div>
+ 		</div>	
 	 	<div class="description">
 	 		<p>{{ news.description }}</p>
 	 	</div>

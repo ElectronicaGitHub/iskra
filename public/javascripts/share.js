@@ -51,7 +51,7 @@ Share = {
                 url:    location.href,
                 title:  document.title,
                 image:  '',
-                text:   'hello this is text for vk',
+                text:   '',
             }, _options);
 
         return 'http://vkontakte.ru/share.php?'

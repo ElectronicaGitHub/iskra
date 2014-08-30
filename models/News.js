@@ -27,14 +27,15 @@ var News = new Schema({
 		type : String
 	},
 	section : {
-		type : Number
+		type : String
 	},
 	special : {
 		type : String
 	},
-	// 0 - Космос
-	// 1 - Наука
-	// 2 - Технологии
+	views : {
+		type : Number,
+		default : 0
+	},
 	date : {
 		type: Date,
 		default : Date.now

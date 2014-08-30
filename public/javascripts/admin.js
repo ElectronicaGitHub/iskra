@@ -3,7 +3,12 @@ tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
 	$scope.page = 'list_page';
 	// значение для превью новости
 	$scope.new_type = 'normal';
-	$scope.news_sections = ['Космос', 'Наука', 'Технологии'];
+
+	$scope.news_sections = {
+		space : 'Космос', 
+		science : 'Наука', 
+		tech : 'Технологии'
+	};
 	// значения для всех новостей админки
 	$scope.news_type = 'normal';
 	$scope.feed_blocks = [];
@@ -46,7 +51,6 @@ tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
 	};
 
 	$scope.postNews = function(news, first_save) {
-		news.section = parseInt(news.section);
 		url = first_save ? '/admin' : '/admin/' + news._id;
 		$http.post(url, news)
 			.success(function(data) {

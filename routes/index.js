@@ -1,15 +1,20 @@
 var News = require('../models/News'),
-    sm = require('sitemap');
+    sm = require('sitemap'),
+    moment = require('moment'),
+	ua = require('mobile-agent');
 
 
 function fn(express) {
 	var router = express.Router();
 	
 	router.get('/', function(req, res) {
-		res.render('index');
+		var agent = ua(req.headers['user-agent']);
+		// if (agent.Mobile === true) {
+			// res.send('hello mobile')
+		// } else {
+			res.render('index');
+		// }
 	});
-
-	
 
 	router.get('/sitemap.xml', function(req, res) {
 		News.find({}, { content : 0, content_special : 0}, function(err, results) {
@@ -38,27 +43,53 @@ function fn(express) {
 	})
 
 	router.get('/post/:id', function(req, res) {
-		News.findById(req.params.id, function(err, result) {
+		var update = { $inc : { views : 1}};
+		News.findByIdAndUpdate(req.params.id, update, function(err, result) {
 			if (err) return next(err);
 			res.render('content', {
-				post : result
+				post : result,
+				moment : moment
 			});
 		})
 	});
 
 	router.get('/news/:id', function(req, res, next) {
-		News.findById(req.params.id).exec(function(err, result) {
+		News.findById(req.params.id, function(err, result) {
 			if (err) return next(err);
 			res.json(result);
 		})
 	});
 
+	router.get('/popular/', function(req, res, next) {
+		if (req.query.range == 'month') {
+			var d = new Date();
+			d.setDate(d.getDate() - 7);
+		} else {
+			var d = new Date();
+			d.setMonth(d.getMonth() - 1);
+		}
+		News.find({ date : { $gte : d }}, {
+			content : 0,
+			content_special : 0
+		},  { limit : req.query.limit} )
+			.sort({ views : -1})
+			.exec(function(err, results) {
+			if (err) return next(err);
+			res.json(results);
+		})
+	})
+
 	router.get('/news/', function(req, res, next) {
-		var search = req.query;
-		News.find({},{ 
+		var options = req.query;
+		var section = req.query.section;
+		var find_query = section ? 
+			{
+				section : section
+			} : {};
+		News.find(find_query, { 
 			content: 0, 
 			content_special : 0 
-		}, search)
+		}, options)
 			.sort({date:-1})
 			.exec(function(err, results) {
 				if (err) return next(err);
