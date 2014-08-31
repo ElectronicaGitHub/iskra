@@ -2,10 +2,10 @@
 	height: 150px;
 	line-height: 150px;
 	width: 100%;
-	background-image: url(/images/header-image.jpg);
-	background-size: contain;
-	background-position-x: center;
-	background-attachment: fixed;
+	background: url(/images/header-image.jpg) no-repeat;
+	background-size: 100%;
+	/*background-position-x: center;*/
+	/*background-attachment: fixed;*/
 }
 .top > span {
 	line-height: 60px;
@@ -40,7 +40,7 @@
 	color: #fff;
 	text-decoration: none;
 	cursor: pointer;
-	margin: 0 10px;
+	margin: 0 6px;
 	-webkit-transition: color .5s;
 	-moz-transition: color .5s;
 	transition: color .5s;

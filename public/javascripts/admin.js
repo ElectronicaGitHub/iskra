@@ -6,7 +6,7 @@ tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
 
 	$scope.news_sections = {
 		space : 'Космос', 
-		science : 'Наука', 
+		physics : 'Физика', 
 		tech : 'Технологии'
 	};
 	// значения для всех новостей админки
