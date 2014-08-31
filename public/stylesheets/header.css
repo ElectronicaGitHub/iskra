@@ -3,7 +3,7 @@
 	line-height: 150px;
 	width: 100%;
 	background-image: url(/images/header-image.jpg);
-	background-size: 100%
+	background-size: contain;
 	background-position-x: center;
 	background-attachment: fixed;
 }

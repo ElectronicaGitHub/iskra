@@ -1,0 +1,68 @@
+<%- layout('base-mobile') %>
+
+<div class="content">
+	<% L = news.length; for (var i=0; i< L; i++) { %>
+		<div class="each-post">
+			<a href="/post/<%= news[i]._id%>">
+					
+				<div class="photo" style="background-image:url(<%= news[i].image %>)"></div>
+				<div class="text">
+					<span class="_title"><%= news[i].title %></span>
+				</div>
+			</a>
+		</div>
+	<% } %>
+</div>
+
+<style>
+	.content {
+		padding: 0 10px;
+		margin-top: 10px;
+		/*width: 300px;*/
+	}
+	.each-post {
+		margin-bottom: 10px;
+		height: 80px;
+		border-radius: 8px;
+		overflow: hidden;
+		background-color: #fff;
+		/*background-color: #e5e5e5;*/
+		border: 1px solid #ddd;
+	}
+	.each-post p {
+		padding: 0;
+		margin: 0;
+	}
+	.each-post a {
+		color: #000;
+		text-decoration: none;
+	}
+	.each-post > a > div {
+		float: left;
+	}
+	.each-post .photo {
+		height: 80px;
+		width: 80px;
+		background-size: 100%;
+	}
+	.each-post .text {
+		padding: 0px 10px;
+		line-height: 80px;
+	}
+	.each-post .text span._title {
+		display: inline-block;
+		font-family: 'RobCondLight';
+		font-size: 15px;
+		line-height: 19px;
+		vertical-align: middle;
+		max-width: 185px;
+		max-height: 60px;
+	}
+	.each-post .text .desc {
+		font-family: 'RobCondLight';
+		font-size: 14px;
+		line-height: 26px;
+	}
+
+</style>
+

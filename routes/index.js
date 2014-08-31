@@ -7,10 +7,20 @@ var News = require('../models/News'),
 function fn(express) {
 	var router = express.Router();
 	
-	router.get('/', function(req, res) {
+	router.get('/', function(req, res, next) {
 		var agent = ua(req.headers['user-agent']);
 		// if (agent.Mobile === true) {
-			// res.send('hello mobile')
+		// 	News.find({}, {
+		// 		content: 0,
+		// 		content_special: 0
+		// 	}, { limit : 20})
+		// 		.sort({date : -1})
+		// 		.exec(function(err, results) {
+		// 			if (err) return next(err);
+		// 			res.render('index-mobile', {
+		// 				news : results
+		// 			})
+		// 		})
 		// } else {
 			res.render('index');
 		// }
