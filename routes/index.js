@@ -1,29 +1,30 @@
 var News = require('../models/News'),
     sm = require('sitemap'),
     moment = require('moment'),
-	ua = require('mobile-agent');
+	MobileDetect = require('mobile-detect');
 
 
 function fn(express) {
 	var router = express.Router();
 	
 	router.get('/', function(req, res, next) {
-		var agent = ua(req.headers['user-agent']);
-		// if (agent.Mobile === true) {
-		// 	News.find({}, {
-		// 		content: 0,
-		// 		content_special: 0
-		// 	}, { limit : 20})
-		// 		.sort({date : -1})
-		// 		.exec(function(err, results) {
-		// 			if (err) return next(err);
-		// 			res.render('index-mobile', {
-		// 				news : results
-		// 			})
-		// 		})
-		// } else {
+		md = new MobileDetect(req.headers['user-agent']);
+		if (md.phone()) {
+			// res.send(md.phone() + md.tablet;
+			News.find({}, {
+				content: 0,
+				content_special: 0
+			}, { limit : 20})
+				.sort({date : -1})
+				.exec(function(err, results) {
+					if (err) return next(err);
+					res.render('index-mobile', {
+						news : results
+					})
+				})
+		} else {
 			res.render('index');
-		// }
+		}
 	});
 
 	router.get('/sitemap.xml', function(req, res) {
@@ -53,10 +54,16 @@ function fn(express) {
 	})
 
 	router.get('/post/:id', function(req, res) {
+		md = new MobileDetect(req.headers['user-agent']);
+		if (md.phone()) {
+			rendered = 'content-mobile';
+		} else {
+			rendered = 'content';
+		}
 		var update = { $inc : { views : 1}};
 		News.findByIdAndUpdate(req.params.id, update, function(err, result) {
 			if (err) return next(err);
-			res.render('content', {
+			res.render(rendered, {
 				post : result,
 				moment : moment
 			});

@@ -1,0 +1,50 @@
+<%- layout('base-mobile') %>
+<% stylesheet("/libs/fontawesome/css/font-awesome.min.css") -%>
+
+<div class="post">
+	<h1 class='title'><%- post.title %></h1>
+	<div class="info">
+		<span class="time">Добавлено <%- moment(post.date).locale('ru').calendar().toLowerCase() %>
+		</span>
+		<span class="views">
+			<span class="fa fa-eye"></span>
+			<span><%- post.views %></span>
+		</span>
+	</div>
+	<div class="content"><%- post.content %></div>
+</div>
+
+<style>
+	div.post {
+		padding: 10px 20px;
+	}
+	h1.title {
+		font: 20px/22px 'RobCondBold';
+	}
+	div.content {
+		font: 16px/20px 'RobCondLight';
+		margin: 10px 0;
+	}
+	.post p {
+		margin: 10px 0px;
+	}
+	.post h2, .post h3 {
+		font: 18px/22px 'RobCondBold';
+		margin-bottom: 5px;
+	}
+	.post img {
+		width: 280px !important;
+		height: 230px;
+	}
+	.post .info {
+		font-family: 'RobCondBold';
+		padding: 0 5px;
+		height: 30px;
+		line-height: 30px;
+		background-color: white;
+	}
+	.post .info .views {
+		padding-left: 10px;
+	}
+
+</style>

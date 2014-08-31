@@ -3,8 +3,7 @@
 <div class="content">
 	<% L = news.length; for (var i=0; i< L; i++) { %>
 		<div class="each-post">
-			<a href="/post/<%= news[i]._id%>">
-					
+			<a href="/post/<%= news[i]._id%>">	
 				<div class="photo" style="background-image:url(<%= news[i].image %>)"></div>
 				<div class="text">
 					<span class="_title"><%= news[i].title %></span>
@@ -18,7 +17,7 @@
 	.content {
 		padding: 0 10px;
 		margin-top: 10px;
-		/*width: 300px;*/
+		width: 300px;
 	}
 	.each-post {
 		margin-bottom: 10px;
@@ -26,7 +25,6 @@
 		border-radius: 8px;
 		overflow: hidden;
 		background-color: #fff;
-		/*background-color: #e5e5e5;*/
 		border: 1px solid #ddd;
 	}
 	.each-post p {
@@ -44,6 +42,8 @@
 		height: 80px;
 		width: 80px;
 		background-size: 100%;
+		background-position: center center;
+		background-size: cover;
 	}
 	.each-post .text {
 		padding: 0px 10px;
