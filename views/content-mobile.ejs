@@ -29,11 +29,13 @@
 	<p class="title-tag">Популярное за неделю</p>
 	<div id="slider" class="owl-carousel">	
 		<% L = posts.length; for (var i=0; i< L; i++) { %>
-		<div class="each-post">
-			<div class="image" style="background-image: url(<%- posts[i].image %>);">
+		<a href="/post/<%- posts[i]._id%>">
+			<div class="each-post">
+				<div class="image" style="background-image: url(<%- posts[i].image %>);">
+				</div>
+				<div class="title"><%- posts[i].title %></div>
 			</div>
-			<div class="title"><%- posts[i].title %></div>
-		</div>
+		</a>
 		<% } %>
 	</div>
 </div>
@@ -97,6 +99,10 @@
 	/*.popular .each-post {
 		border-radius: 4px;
 	}*/
+	.popular a {
+		color: #000;
+		text-decoration: none;
+	}
 	.popular #slider {
 		margin-top: 20px;
 		border-radius: 4px;
