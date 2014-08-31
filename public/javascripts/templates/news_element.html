@@ -26,7 +26,14 @@
 
 	<div ng-if="type=='special'" 
 	     class="picture" 
- 		 style="background-image: url( {{ news.image_special }} )"></div>
+ 		 style="background-image: url( {{ news.image_special }} )">
+		<div class="views">
+			<span>	
+				<span class="fa fa-eye"></span>
+				<span>{{ news.views }}</span>
+			</span>
+		</div>
+ 	</div>
 	<div ng-if="type=='special'" 
 	     class="text-container">
  		<div class='news_title'>
