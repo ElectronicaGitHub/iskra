@@ -54,32 +54,33 @@ function fn(express) {
 	})
 
 	router.get('/post/:id', function(req, res, next) {
-		posts = [];
-		md = new MobileDetect(req.headers['user-agent']);
-		if (md.phone()) {
-			rendered = 'content-mobile';
-			var d = new Date();
-			d.setDate(d.getDate() - 7);
-			News.find({ date : { $gte : d}}, {
-				content : 0,
-				content_special: 0
-			}, { limit : 5})
-				.sort({ views : -1})
-				.exec(function(err, results) {
-					if (err) return next(err);
-					posts = results;
-				})
-		} else {
-			rendered = 'content';
-		}
 		var update = { $inc : { views : 1}};
 		News.findByIdAndUpdate(req.params.id, update, function(err, result) {
+			md = new MobileDetect(req.headers['user-agent']);
+			if (md.phone()) {
+				var d = new Date();
+				d.setDate(d.getDate() - 7);
+				News.find({ date : { $gte : d}}, {
+					content : 0,
+					content_special: 0
+				}, { limit : 5})
+					.sort({ views : -1})
+					.exec(function(err, results) {
+						if (err) return next(err);
+						res.render('content-mobile', {
+							post : result,
+							posts : results,
+							moment : moment
+						});
+					})
+			} else {
+				res.render('content', {
+					post : result,
+					moment : moment
+				});
+			}
 			if (err) return next(err);
-			res.render(rendered, {
-				post : result,
-				posts : posts,
-				moment : moment
-			});
+			
 		})
 	});
 
