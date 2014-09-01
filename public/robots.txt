@@ -1,2 +1,3 @@
 User-Agent: *
 Host: www.tvoykosmos.ru
+Sitemap: http://www.tvoykosmos.ru/sitemap.xml
