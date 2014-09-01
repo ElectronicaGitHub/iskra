@@ -24,6 +24,7 @@ function admin(express, config) {
 	});
 
 	router.get('/', function(req, res) {
+		console.log('req.user:', req.user)
 		res.render('admin');
 	});
 

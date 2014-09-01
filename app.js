@@ -7,10 +7,12 @@ var bodyParser = require('body-parser');
 var mongoose = require('./configs/mongoose');
 var log = require('./configs/logger')(module);
 var config = require('./configs/config_file');
+var passport = require('passport');
 
 var users = require('./routes/users');
 
 var app = express();
+var session = require('express-session');
 
 mongoose.connection.on('open', function () {
     log.info('connected to database ' + config.get('db:name'));
@@ -28,6 +30,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({secret: 'keyboard cat'}))
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', require('./routes/index.js')(express));
 app.use('/admin', require('./routes/admin.js')(express, config));
