@@ -8,22 +8,32 @@ function fn(express) {
 	var router = express.Router();
 	
 	router.get('/', function(req, res, next) {
-		md = new MobileDetect(req.headers['user-agent']);
-		if (md.phone()) {
-			// res.send(md.phone() + md.tablet;
+
+		function FindNewsAndRespond(limit, render_view) {
 			News.find({}, {
 				content: 0,
 				content_special: 0
-			}, { limit : 20})
+			}, { limit : limit})
 				.sort({date : -1})
 				.exec(function(err, results) {
 					if (err) return next(err);
-					res.render('index-mobile', {
-						news : results
+					res.render(render_view, {
+						news : results,
+						ajax : false
 					})
 				})
+		}
+		if (req.query._escaped_fragment_ == '') {
+			FindNewsAndRespond(40, 'index-no-ajax');
 		} else {
-			res.render('index');
+			md = new MobileDetect(req.headers['user-agent']);
+			if (md.phone()) {
+				FindNewsAndRespond(20, 'index-mobile');
+			} else {
+				res.render('index', {
+					ajax : true
+				});
+			}
 		}
 	});
 

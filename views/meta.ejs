@@ -1,7 +1,9 @@
 <meta name="robots" content="index,follow" />
 <meta name="title" content="<%- post.title %>" />
 <meta name="description" content="<%- post.description %>" />
-<meta name="keywords" content="<%- post.description.split(' ').filter(function(elem) { return elem.length>5 ? elem : ''}).join(',') %>" />
+<% if (post.description) { %>
+	<meta name="keywords" content="<%- post.description.split(' ').filter(function(elem) { return elem.length>5 ? elem : ''}).join(',') %>" />
+<% } %>
 
 <link rel="image_src" href=" <%- post.image %>" />
 
