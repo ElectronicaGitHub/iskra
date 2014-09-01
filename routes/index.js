@@ -2,43 +2,13 @@ var News = require('../models/News'),
     sm = require('sitemap'),
     moment = require('moment'),
 	MobileDetect = require('mobile-detect');
-var passport = require('passport'), 
-    LocalStrategy = require('passport-local').Strategy;
-
 
 function fn(express) {
 	var router = express.Router();
 
-	passport.use(new LocalStrategy (
-	    function(username, password, done) {
-	        user = {
-	        	name: 'philip', 
-	        	id : 1
-	        }
-	        return done(null, user);
-	    })
-	)
-	passport.serializeUser(function(user, done) {
-	    done(null, user.id);
-	});
-	passport.deserializeUser(function(id, done) {
-	    done(null, user);
-	});
-
-	// ОПРЕДЕЛЕНИЕ РУТОВ
-
-    // router.get('/auth', function(req, res, next) {
-    // 	res.render('auth');
-    // });
-
-	// router.post('/login', passport.authenticate('local', { 
-	// 	successRedirect: '/',
- //        failureRedirect: '/auth' 
- //    }));
-
 	router.get('/', function(req, res, next) {
 
-		console.log(req.user)
+		console.log('req.user', req.user)
 
 		function FindNewsAndRespond(limit, render_view) {
 			News.find({}, {
@@ -117,7 +87,8 @@ function fn(express) {
 			} else {
 				res.render('content', {
 					post : result,
-					moment : moment
+					moment : moment,
+					user : req.user
 				});
 			}
 			if (err) return next(err);

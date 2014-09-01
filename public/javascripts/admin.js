@@ -1,6 +1,19 @@
 tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
 
-	$scope.page = 'list_page';
+	// init //
+	$scope.init = function() {
+		if (location.search) {
+			if (location.search.split('=')[0].slice(1) == 'post_id') {
+				post = {
+					_id : location.search.split('=')[1]
+				}
+				$scope.loadToFormForUpdate(post);
+			}
+		} else {
+			$scope.page = 'list_page';
+		}
+	}
+
 	// значение для превью новости
 	$scope.new_type = 'normal';
 
