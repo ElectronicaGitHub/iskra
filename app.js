@@ -7,7 +7,8 @@ var bodyParser = require('body-parser');
 var mongoose = require('./configs/mongoose');
 var log = require('./configs/logger')(module);
 var config = require('./configs/config_file');
-var passport = require('passport');
+var passport = require('passport'),
+    LocalStrategy = require('passport-local').Strategy;
 
 var users = require('./routes/users');
 
@@ -34,6 +35,37 @@ app.use(session({secret: 'keyboard cat'}))
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+passport.use(new LocalStrategy (
+    function(username, password, done) {
+        if (username != config.get('autentification:username')) {
+            return done(null, false, { message : 'Wrong Username'})
+        }
+        if (password != config.get('autentification:password')) {
+            return done(null, false, { message : 'Wrong Password'})
+        }
+        user = {
+            name : 'Gendalf',
+            id : 88162440
+        };
+        return done(null, user);
+    })
+)
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+});
+passport.deserializeUser(function(id, done) {
+    done(null, user);
+});
+
+// ОПРЕДЕЛЕНИЕ РУТОВ
+// app.get('/auth', function(req, res, next) {
+//     res.render('auth');
+// });
+app.post('/login', passport.authenticate('local', { 
+    successRedirect: '/',
+    failureRedirect: '/admin' 
+}));
 
 app.use('/', require('./routes/index.js')(express));
 app.use('/admin', require('./routes/admin.js')(express, config));

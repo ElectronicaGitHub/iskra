@@ -24,6 +24,9 @@
 		</h1>
 
 		<div class="social_share_buttons">
+			<% if (user && user.name == 'Gendalf') { %>
+		    	<a href="/admin?post_id=<%- post._id %>"><span class="update_button fa fa-key"></span></a>
+		    <% } %>
 		    <span class="social_share fa fa-vk" data-type="vk"></span>
 		    <span class="social_share fa fa-facebook" data-type="fb"></span>
 		    <span class="social_share fa fa-twitter" data-type="tw"></span>
@@ -53,7 +56,9 @@
 		</div>
 
 		<div class="social_share_buttons">
-
+			<% if (user && user.name == 'Gendalf') { %>
+		    	<a href="/admin"><span class="update_button fa fa-key"></span></a>
+		    <% } %>
 		    <span class="social_share fa fa-vk" data-type="vk"></span>
 		    <span class="social_share fa fa-facebook" data-type="fb"></span>
 		    <span class="social_share fa fa-twitter" data-type="tw"></span>

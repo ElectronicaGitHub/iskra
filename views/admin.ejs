@@ -8,7 +8,7 @@
 <% stylesheet("/stylesheets/admin.css") -%>
 <% stylesheet("/libs/fontawesome/css/font-awesome.min.css") -%>
 
-<div class="admin-page" ng-controller="Admin">
+<div class="admin-page" ng-controller="Admin" ng-init="init()">
 
 	<div class="promises" ng-if="successful_save" ng-class="{ success : successful_save }">
 		<p>Новость успешно сохранена</p>
@@ -18,12 +18,30 @@
 		<button ng-class="{ selected : page=='create_page' }" class="normal-button" ng-click="page='create_page'; news = {};">СОЗДАНИЕ</button>
 		<button ng-class="{ selected : page=='feed_page' }" class="normal-button" ng-click="page='feed_page'">ВИД ГЛАВНОЙ СТРАНИЦЫ</button>
 		<button ng-class="{ selected : page=='list_page' }" class="normal-button" ng-click="page='list_page'">СПИСОК</button>
+		<button ng-class="{ selected : page=='auth' }" 
+				ng-click="page='auth'">АВТОРИЗАЦИЯ</button>
 	</div>
 
 	<div class="button-top-panel">
-			<button class="normal-button" ng-class="{ selected : news_type=='normal' }" ng-click="news_type='normal'">НОРМАЛЬНЫЙ РЕЖИМ</button>
-			<button class="special-button" ng-class="{ selected : news_type=='special' }" ng-click="news_type='special'">СПЕЦИАЛЬНЫЙ РЕЖИМ</button>
-		</div>
+		<button class="normal-button" ng-class="{ selected : news_type=='normal' }" ng-click="news_type='normal'">НОРМАЛЬНЫЙ РЕЖИМ</button>
+		<button class="special-button" ng-class="{ selected : news_type=='special' }" ng-click="news_type='special'">СПЕЦИАЛЬНЫЙ РЕЖИМ</button>
+	</div>
+
+	<div ng-show="page=='auth'">
+		<form action="/login" method="post">
+		    <div>
+		        <label>Username:</label>
+		        <input type="text" name="username"/>
+		    </div>
+		    <div>
+		        <label>Password:</label>
+		        <input type="password" name="password"/>
+		    </div>
+		    <div>
+		        <input type="submit" value="Log In"/>
+		    </div>
+		</form>
+	</div>
 
 	<div ng-show="page=='create_page'" class="create-page">
 		<h1>СОЗДАНИЕ/РЕДАКТИРОВАНИЕ НОВОСТИ</h1>
