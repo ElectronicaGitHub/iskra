@@ -3,9 +3,46 @@ footer {
 	line-height: 150px;
 	margin-top: 30px;
 	text-align: center;
-	/*background-color: #e5e5e5;*/
+	background-color: #444;
+	/*background-color: #2E8CFF;*/
 }
-footer span {
+footer > div {
+	float: left;
+}
+footer .info {
+	width: 50%;
+}
+footer .metric, footer .nav {
+	width: 25%;
+}
+footer .info > span, footer .nav > span {
+	line-height: 15px;
+	font-size: 13px;
+	text-align: center;
+	vertical-align: middle;
+	font-family: 'RobCondLight';
+	display: inline-block;
+	color: #bbb;
+}
+footer .info p {
+	color: #fff;
+	font-size: 20px;
+	padding: 0;
+	margin: 0;
+	line-height: 25px;
+	font-family: 'RobCondBold';
+}
+footer .info {
+	padding: 0px 130px;
+}
+footer .nav > span > span {
+	padding: 3px 10px;
+}
+footer .nav > span > span a {
+	color: #fff;
+	text-decoration: none
+}
+/*footer span {
 	padding: 20px;
 	font-size: 30px;
 	height: 150px;
@@ -15,4 +52,4 @@ footer span {
 }
 footer span:hover {
 	color: rgba(44, 85, 205, .8);
-}
+}*/

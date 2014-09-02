@@ -1,3 +1,6 @@
+.admin-page {
+	overflow: hidden;
+}
 .input, .output {
 	float:left;
 }
