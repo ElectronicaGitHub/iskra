@@ -32,6 +32,9 @@ var News = new Schema({
 	special : {
 		type : String
 	},
+	linked_news : {
+		type : [Array]
+	},
 	views : {
 		type : Number,
 		default : 0

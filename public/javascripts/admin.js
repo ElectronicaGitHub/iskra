@@ -3,6 +3,7 @@ tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
 	$scope.page = 'list_page';
 	// значение для превью новости
 	$scope.new_type = 'normal';
+	$scope.search_linked = {};
 
 	$scope.news_sections = {
 		space : 'Космос', 

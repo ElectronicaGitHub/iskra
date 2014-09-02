@@ -113,3 +113,19 @@ button.highlighted {
 	height: 50px;
 	width: 50px;
 }
+.search-linked-news {
+	width: 100%;
+	height: 400px;
+	margin: 10px 0;
+	padding: 15px;
+	border: 1px solid #ddd;
+}
+.search-linked-news > input, .search-linked-news select {
+	width: 49%;
+}
+.search-linked-news .search-linked-results {
+	border: 1px solid #ddd;
+	width: 100%;
+	height: 330px;
+	margin-top: 10px;
+}

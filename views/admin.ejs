@@ -31,6 +31,22 @@
 		<div class="input">
 			<p class="labels">Раздел новости</p>
 			<select ng-model="news.section" ng-options="k as v for (k,v) in news_sections"></select>
+			<p class="labels">Связанные новости</p>
+			<!-- .. linked news .. -->
+			<button ng-click="search_linked= !search_linked">Открыть поле поиска</button>
+			<div ng-if="search_linked" class="search-linked-news">
+				<input ng-model="search_linked.query" type="text"/>	
+				<select ng-options="k as v for (k,v) in news_sections" 
+						ng-model="search_linked.section">
+				</select>
+			<div class="search-linked-results"></div>
+
+
+
+
+			</div>
+
+			<!-- .. linked news .. -->
 			<div ng-show="news_type=='normal'">
 				<p class="labels">Заголовок</p>
 				<input type="text" 
