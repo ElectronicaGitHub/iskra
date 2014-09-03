@@ -23,7 +23,7 @@ mongoose.connection.on('open', function () {
 app.engine('ejs', require('ejs-locals'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.set('env', 'production');
+// app.set('env', 'production');
 
 app.use(favicon());
 app.use(logger('dev'));

@@ -71,21 +71,18 @@
 					</select>
 					<button ng-click="getLinkedPosts()" class="search-linked-button fa fa-search"></button>
 				</div>
-			<div class="search-linked-results">
-				<div class="each-search-linked-result" 
-					 ng-repeat="post in linked_news"
-					 ng-click="selectPostForLink(post)">
-					<div class="linked-search-image" style="background-image: url({{ post.image }})"></div>
-					<div class="linked-search-info">
-						<p class="linked-search-title">{{ post.title }}</p>
-						<p class="linked-search-description">{{ post.decription }}</p>
+				<div class="search-linked-results">
+					<div class="each-search-linked-result" 
+						 ng-repeat="post in linked_news"
+						 ng-click="selectPostForLink(post)">
+						<div class="linked-search-image" style="background-image: url({{ post.image }})"></div>
+						<div class="linked-search-info">
+							<p class="linked-search-title">{{ post.title }}</p>
+							<p class="linked-search-description">{{ post.decription }}</p>
+						</div>
 					</div>
+
 				</div>
-
-			</div>
-
-
-
 
 			</div>
 

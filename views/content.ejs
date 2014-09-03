@@ -65,10 +65,43 @@
 		</div>
 
 		<div ng-if="news_type=='normal' || !news_type" 
-			 class="after-text-advice">{{ generateAfterTextAdvice('normal') }} <span ng-click="slideAndChangeMode('special')">Читай что попроще.</span></div>
+			 class="after-text-advice">{{ generateAfterTextAdvice('normal') }} <span ng-click="slideAndChangeMode('special')">Читай что попроще.</span>
+		</div>
 		<div ng-if="news_type=='special'" 
-			 class="after-text-advice">{{ generateAfterTextAdvice('special') }} <span ng-click="slideAndChangeMode('normal')">Читай классическую версию.</span></div>
+			 class="after-text-advice">{{ generateAfterTextAdvice('special') }} <span ng-click="slideAndChangeMode('normal')">Читай классическую версию.</span>
+		</div>
 
+		<div class='linked-news'>
+			<h3 class="tag-title">Новости по теме</h3>
+			<a href="/post/{{ n._id }}" ng-repeat="n in linked">
+				<div class="each-linked-news" >
+					<div ng-if="news_type=='normal' || !news_type" class="l-photo" style="background-image: url({{ n.image }})"></div>
+					<div ng-if="news_type=='special'" class="l-photo" style="background-image: url({{ n.image_special }})"></div>
+					<div class="l-info">
+						<span>
+							<p ng-if="news_type=='normal' || !news_type"  class="l-title">{{ n.title }}</p>
+							<p ng-if="news_type=='special'" class="l-title">{{ n.title_special }}</p>
+							<p class="l-date">{{ n.date }}</p>
+						</span>
+					</div>
+				</div>
+			</a>
+			<button class="expand-button" ng-show="linked_other && !expand_linked" ng-click="expand_linked = !expand_linked">Хочу больше новостей</button>
+			<div ng-if="expand_linked">
+				<a href="/post/{{ n._id }}" ng-repeat="n in linked_other">
+					<div class="each-linked-news mini" >
+						<div ng-if="news_type=='normal' || !news_type" class="l-photo" style="background-image: url({{ n.image }})"></div>
+						<div ng-if="news_type=='special'" class="l-photo" style="background-image: url({{ n.image_special }})"></div>
+						<div class="l-info">
+							<span>
+								<p ng-if="news_type=='normal' || !news_type"  class="l-title">{{ n.title }}</p>
+								<p ng-if="news_type=='special'" class="l-title">{{ n.title_special }}</p>
+								<p class="l-date">{{ n.date }}</p>
+							</span>
+						</div>
+					</div>
+				</a>
+		</div>
 
 	</article>
 	<aside class="list">
