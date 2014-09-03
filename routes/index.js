@@ -96,6 +96,17 @@ function fn(express) {
 		})
 	});
 
+	router.get('/news/many', function(req, res, err) {
+		posts = req.query.posts.split(',');
+		console.log('posts', posts);
+		News.find({_id : { $in : posts } }, {
+			content : 0,
+			content_special : 0
+		}, function(err, results) {
+			res.json(results);
+		})		
+	})
+
 	router.get('/news/:id', function(req, res, next) {
 		News.findById(req.params.id, function(err, result) {
 			if (err) return next(err);
@@ -139,6 +150,26 @@ function fn(express) {
 				res.json(results);
 			})
 	});
+
+	router.get('/linked_news', function(req, res, next) {
+		var query = req.query.search_query;
+		var section = req.query.section;
+		console.log('s', s);
+		News.find({ 
+			$text : { $search : query },
+			section : section
+		}, {
+			content : 0,
+			content_special : 0
+		})
+			.sort({ date : -1})
+			.exec(function(err, results) {
+				if (err) return next(err);
+				res.json(results);
+			})
+	})
+
+
 
 
 	return router;

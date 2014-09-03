@@ -51,13 +51,38 @@
 			<select ng-model="news.section" ng-options="k as v for (k,v) in news_sections"></select>
 			<p class="labels">Связанные новости</p>
 			<!-- .. linked news .. -->
-			<button ng-click="search_linked= !search_linked">Открыть поле поиска</button>
-			<div ng-if="search_linked" class="search-linked-news">
-				<input ng-model="search_linked.query" type="text"/>	
-				<select ng-options="k as v for (k,v) in news_sections" 
-						ng-model="search_linked.section">
-				</select>
-			<div class="search-linked-results"></div>
+			<div class="linked_posts">
+				<div class="each-search-linked-result" 
+					 ng-repeat="post in news.linked_news"
+					 ng-click="selectPostForLink(post)">
+					<div class="linked-search-image" style="background-image: url({{ post.image }})"></div>
+					<div class="linked-search-info">
+						<p class="linked-search-title">{{ post.title }}</p>
+						<p class="linked-search-description">{{ post.decription }}</p>
+					</div>
+				</div>
+			</div>
+			<button ng-click="search_zone = !search_zone">Открыть поле поиска</button>
+			<div ng-show="search_zone" class="search-linked-news">
+				<div class="search-panel">
+					<input ng-model="search_linked.search_query" type="text"/>	
+					<select ng-options="k as v for (k,v) in news_sections" 
+							ng-model="search_linked.section">
+					</select>
+					<button ng-click="getLinkedPosts()" class="search-linked-button fa fa-search"></button>
+				</div>
+			<div class="search-linked-results">
+				<div class="each-search-linked-result" 
+					 ng-repeat="post in linked_news"
+					 ng-click="selectPostForLink(post)">
+					<div class="linked-search-image" style="background-image: url({{ post.image }})"></div>
+					<div class="linked-search-info">
+						<p class="linked-search-title">{{ post.title }}</p>
+						<p class="linked-search-description">{{ post.decription }}</p>
+					</div>
+				</div>
+
+			</div>
 
 
 

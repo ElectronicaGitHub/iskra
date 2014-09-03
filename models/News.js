@@ -12,7 +12,7 @@ var News = new Schema({
 		type: String
 	},
 	image : {
-		type : String
+		type: String
 	},
 	title_special : {
 		type: String
@@ -33,7 +33,7 @@ var News = new Schema({
 		type : String
 	},
 	linked_news : {
-		type : [Array]
+		type : [String]
 	},
 	views : {
 		type : Number,
@@ -44,5 +44,14 @@ var News = new Schema({
 		default : Date.now
 	}
 })
+
+// # или создать в базе индекс сразу
+// # через ensureIndex
+News.index({
+	title : 'text',
+	description : 'text',
+	content : 'text'
+}, {default_language : 'russian'});
+
 
 module.exports = mongoose.model('News', News);

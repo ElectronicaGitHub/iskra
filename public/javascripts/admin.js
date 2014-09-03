@@ -63,9 +63,26 @@ tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
 				console.log(data);
 			})
 	};
+	$scope.getLinkedPosts = function() {
+		// url = '/news/' + '?section=' + $scope.search_linked.section;
+		url = '/linked_news/?search_query=' + 
+			$scope.search_linked.search_query + 
+			'&section=' + $scope.search_linked.section;
+		$http.get(url)
+			.success(function(data) {
+				console.log(data);
+				$scope.linked_news = data;
+			})
+			.error(function(data) {
+				console.log(data);
+			})
+	}
 
 	$scope.postNews = function(news, first_save) {
 		url = first_save ? '/admin' : '/admin/' + news._id;
+		news.linked_news = news.linked_news.map(function(e) {
+			return e._id;
+		});
 		$http.post(url, news)
 			.success(function(data) {
 				console.log(data);
@@ -89,6 +106,14 @@ tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
 				console.log(data);
 				$scope.page = 'create_page';
 				$scope.news = data;
+				$http.get('/news/many?posts=' + $scope.news.linked_news.join(','))
+					.success(function(data) {
+						console.log('linked', data);
+						$scope.news.linked_news = data;
+					})
+					.error(function(data) {
+						console.log(data);
+					});
 			})
 			.error(function(data) {
 				console.log(data);
@@ -106,5 +131,20 @@ tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
 				console.log(data);
 			})
 	};
+
+	$scope.selectPostForLink = function(post) {
+		if (!$scope.news.linked_news || $scope.news.linked_news.length == 0) {
+			$scope.news.linked_news = [];
+			$scope.news.linked_news.push(post);
+		} else {
+			for (i in $scope.news.linked_news) {
+				if ($scope.news.linked_news[i]._id == post._id) {
+					$scope.news.linked_news.splice(i,1);
+					return
+				}
+			}
+			$scope.news.linked_news.push(post);
+		}
+	}
 
 }])
