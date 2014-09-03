@@ -65,7 +65,7 @@
             'accusative': 'воскресенье_понедельник_вторник_среду_четверг_пятницу_субботу'.split('_')
         },
 
-        nounCase = (/\[ ?[Вв] ?(?:прошлую|следующую)? ?\] ?dddd/).test(format) ?
+        nounCase = (/\[ ?[Вв] ?(?:|следующую)? ?\] ?dddd/).test(format) ?
             'accusative' :
             'nominative';
 
@@ -96,15 +96,15 @@
             lastWeek: function () {
                 switch (this.day()) {
                 case 0:
-                    return '[В прошлое] dddd [в] LT';
+                    return '[В ] dddd [в] LT';
                 case 1:
                 case 2:
                 case 4:
-                    return '[В прошлый] dddd [в] LT';
+                    return '[В ] dddd [в] LT';
                 case 3:
                 case 5:
                 case 6:
-                    return '[В прошлую] dddd [в] LT';
+                    return '[В ] dddd [в] LT';
                 }
             },
             sameElse: 'L'

@@ -38,6 +38,18 @@ function fn(express) {
 		}
 	});
 
+	router.get('/contacts', function(req, res, next) {
+		res.render('contacts', {
+			light : true
+		});
+	})
+
+	router.get('/about', function(req, res, next) {
+		res.render('about', {
+			light : true
+		});
+	})
+
 	router.get('/sitemap.xml', function(req, res) {
 		News.find({}, { content : 0, content_special : 0}, function(err, results) {
 			if (err) return next(err);

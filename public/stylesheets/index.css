@@ -5,6 +5,8 @@ p {
 }
 div.feed {
 	overflow: hidden;
+	min-height: 800px;
+	margin-top: 10px;
 }
 div.block {
 	position: relative;
