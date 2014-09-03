@@ -166,9 +166,9 @@ function fn(express) {
 	router.get('/linked_news', function(req, res, next) {
 		var query = req.query.search_query;
 		var section = req.query.section;
-		console.log('s', s);
+		// console.log('s', s);
 		News.find({ 
-			$text : { $search : query },
+			// $text : { $search : query },
 			section : section
 		}, {
 			content : 0,

@@ -80,13 +80,15 @@ tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
 
 	$scope.postNews = function(news, first_save) {
 		url = first_save ? '/admin' : '/admin/' + news._id;
-		news.linked_news = news.linked_news.map(function(e) {
-			return e._id;
-		});
+		if (news.linked_news) {
+			news.linked_news = news.linked_news.map(function(e) {
+				return e._id;
+			});
+		}
 		$http.post(url, news)
 			.success(function(data) {
 				console.log(data);
-				if (data.result) {
+				if (data.save) {
 					$scope.successful_save = true;
 					setTimeout(function() {
 						$scope.successful_save = false;

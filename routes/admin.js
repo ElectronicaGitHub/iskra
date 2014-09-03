@@ -32,9 +32,20 @@ function admin(express, config) {
 		news = new News(req.body);
 		news.save(function(err) {
 			if (err) return next(err);
-		})
-		res.json({
-			result: true
+			save = true;
+			if (news.linked_news.length > 0) {
+				if (saveMultilink(news.linked_news, news._id)) {
+					multisave = true;
+				} else {
+					multisave = false;
+				}
+			} else {
+				multisave = 'no links for other posts for multisave';	
+			}
+			res.json({
+				save: save, 
+				multisave : multisave
+			})
 		})
 	})
 
@@ -44,8 +55,19 @@ function admin(express, config) {
 		delete post._id;
 		News.findByIdAndUpdate(req.params.id, req.body, function(err, result) {
 			if (err) return next(err);
+			save = true;
+			if (post.linked_news.length > 0) {
+				if (saveMultilink(post.linked_news, req.params.id)) {
+					multisave = true;
+				} else {
+					multisave = false;
+				}
+			} else {
+				multisave = 'no links for other posts for multisave';
+			}
 			res.json({
-				result: true
+				save: save, 
+				multisave : multisave
 			})
 		})
 	});
@@ -57,6 +79,17 @@ function admin(express, config) {
 		})
 	});
 
+	function saveMultilink(linked_posts, post) {
+		ll = linked_posts.length;
+		for (i=0; i<ll; i++) {
+			c = linked_posts.slice(0);
+			upd_elem = c.splice(i,1,post)[0];
+			News.findByIdAndUpdate(upd_elem, { linked_news : c }, function(err, res) {
+				if (err) return false;
+			})
+		}
+		return true;
+	}
 	return router;
 }
 
