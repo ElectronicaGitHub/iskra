@@ -118,7 +118,7 @@ button.highlighted {
 }
 .search-linked-news {
 	width: 100%;
-	height: 400px;
+	/*min-height: 400px;*/
 	margin: 10px 0;
 	padding: 15px;
 	border: 1px solid #ddd;
@@ -133,7 +133,7 @@ button.highlighted {
 .search-linked-news .search-linked-results {
 	border: 1px solid #ddd;
 	width: 100%;
-	height: 330px;
+	/*min-height: 330px;*/
 	margin-top: 10px;
 	clear: left;
 	padding: 10px;
@@ -154,6 +154,7 @@ button.highlighted {
 	height: 40px;
 	margin-bottom: 4px;
 	padding: 3px;
+	clear: left;
 }
 .each-search-linked-result p {
 	margin: 2px;
@@ -178,4 +179,8 @@ button.highlighted {
 	width: 50px;
 	height: 40px;
 	float: left;
+}
+.linked-posts {
+	overflow: hidden;
+	margin-bottom: 20px;
 }

@@ -51,7 +51,7 @@
 			<select ng-model="news.section" ng-options="k as v for (k,v) in news_sections"></select>
 			<p class="labels">Связанные новости</p>
 			<!-- .. linked news .. -->
-			<div class="linked_posts">
+			<div class="linked-posts">
 				<div class="each-search-linked-result" 
 					 ng-repeat="post in news.linked_news"
 					 ng-click="selectPostForLink(post)">
