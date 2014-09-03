@@ -71,7 +71,7 @@
 			 class="after-text-advice">{{ generateAfterTextAdvice('special') }} <span ng-click="slideAndChangeMode('normal')">Читай классическую версию.</span>
 		</div>
 
-		<div class='linked-news'>
+		<div class='linked-news' ng-if="linked">
 			<h3 class="tag-title">Новости по теме</h3>
 			<a href="/post/{{ n._id }}" ng-repeat="n in linked">
 				<div class="each-linked-news" >

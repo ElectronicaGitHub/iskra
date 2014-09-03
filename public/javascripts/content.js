@@ -22,26 +22,31 @@
 		});
 
 		$scope.getLinked = function() {
-			var url = '/news/many' + '?posts=' + $scope.post.linked_news.join(',');
-			$http.get(url)
-				.success(function(data) {
-					data = data.filter(function(elem) {
-						elem.date = moment(elem.date).locale('ru').calendar();
-						if (elem._id.toString() != $scope.post._id.toString()) {
-							return elem;
+			if ($scope.post.linked_news.length) {
+				console.log('get linked')
+				var url = '/news/many' + '?posts=' + $scope.post.linked_news.join(',');
+				$http.get(url)
+					.success(function(data) {
+						if (data) {
+							data = data.filter(function(elem) {
+								elem.date = moment(elem.date).locale('ru').calendar();
+								if (elem._id.toString() != $scope.post._id.toString()) {
+									return elem;
+								}
+							})
 						}
+						if (data.length <= 4) {
+							$scope.linked = data;
+						} else {
+							$scope.linked = data.splice(0,4);
+							$scope.linked_other = data;
+						}
+						console.log(data)
 					})
-					if (data.length <= 4) {
-						$scope.linked = data;
-					} else {
-						$scope.linked = data.splice(0,4);
-						$scope.linked_other = data;
-					}
-					console.log(data)
-				})
-				.error(function(data) {
-					console.log(data)
-				})
+					.error(function(data) {
+						console.log(data)
+					})
+			}
 		}
 		$scope.getLast = function() {
 			var url = '/news/' + '?limit=8';
