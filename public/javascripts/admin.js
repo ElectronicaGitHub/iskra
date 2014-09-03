@@ -64,10 +64,11 @@ tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
 			})
 	};
 	$scope.getLinkedPosts = function() {
-		// url = '/news/' + '?section=' + $scope.search_linked.section;
-		url = '/linked_news/?search_query=' + 
-			$scope.search_linked.search_query + 
-			'&section=' + $scope.search_linked.section;
+		data = {
+			search_query : $scope.search_linked.search_query,
+			section : $scope.search_linked.section
+		};
+		url = '/linked_news?' + jQuery.param(data);
 		$http.get(url)
 			.success(function(data) {
 				console.log(data);

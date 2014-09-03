@@ -127,6 +127,7 @@ button.highlighted {
 .search-linked-news .search-panel > select, 
 .search-linked-news .search-panel > button {
 	width: 45%;
+	height: 30px;
 	float: left;
 }
 .search-linked-news .search-linked-results {

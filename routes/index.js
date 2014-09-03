@@ -164,13 +164,18 @@ function fn(express) {
 	});
 
 	router.get('/linked_news', function(req, res, next) {
-		var query = req.query.search_query;
+		var search_phrase = req.query.search_query;
 		var section = req.query.section;
-		// console.log('s', s);
-		News.find({ 
-			// $text : { $search : query },
+		console.log('query', search_phrase);
+		query = search_phrase ? { 
+			$text : { $search : search_phrase },
 			section : section
-		}, {
+		} : {
+			section : section
+		};
+		console.log(query)
+
+		News.find(query, {
 			content : 0,
 			content_special : 0
 		})

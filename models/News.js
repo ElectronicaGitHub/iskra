@@ -47,11 +47,11 @@ var News = new Schema({
 
 // # или создать в базе индекс сразу
 // # через ensureIndex
-News.index({
-	title : 'text',
-	description : 'text',
-	content : 'text'
-}, {default_language : 'russian'});
+// News.index({
+// 	title : 'text',
+// 	description : 'text',
+// 	content : 'text'
+// }, {default_language : 'russian'});
 
 
 module.exports = mongoose.model('News', News);

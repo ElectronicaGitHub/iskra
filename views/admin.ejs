@@ -175,6 +175,7 @@
 					<!-- // -->
 					<p class="title" ng-if="news_type=='special'">{{ news.title_special }}</p>
 					<p ng-if="news_type=='special'">{{ news.description_special }}</p>
+					<p>{{ news_sections[news.section] }}</p>
 
 				<span class="button-block">
 					<button ng-click="deleteNews(news._id)">Удалить</button>
