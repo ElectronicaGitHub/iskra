@@ -83,11 +83,11 @@ function fn(express) {
 			if (md.phone()) {
 				var d = new Date();
 				d.setDate(d.getDate() - 7);
-				News.find({ date : { $gte : d}}, {
+				News.find({}, {
 					content : 0,
 					content_special: 0
-				}, { limit : 5})
-					.sort({ views : -1})
+				}, { limit : 7})
+					.sort({ date : -1})
 					.exec(function(err, results) {
 						if (err) return next(err);
 						res.render('content-mobile', {

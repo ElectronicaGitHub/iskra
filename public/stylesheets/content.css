@@ -174,6 +174,35 @@ div.after-text-advice span {
 	font-family: inherit;
 }
 
+.social-buddies {
+	padding: 10px 20px;
+	text-align: center;
+}
+
+.social-buddies .tag-title {
+	font-size: 20px;
+	padding: 0;
+	margin-bottom: 0;
+}
+
+.social-buddies .socials {
+	height: 50px;
+	line-height: 50px;
+}
+.social-buddies .socials span {
+	height: 20px;
+	line-height: 20px;
+	display: inline-block;
+	vertical-align: middle;
+}
+.social-buddies .socials span > * {
+	float: left;
+	margin-right: 20px;
+}
+.social-buddies .socials span > #vk_subscribe {
+	width: 70px !important;
+}
+
 /*// linked news*/
 
 .each-linked-news {
@@ -232,5 +261,4 @@ div.after-text-advice span {
 	padding: 0px 10px;
 	font-size: 18px;
 	border: 1px solid #555;
-
 }

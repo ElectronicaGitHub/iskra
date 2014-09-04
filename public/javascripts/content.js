@@ -49,7 +49,7 @@
 			}
 		}
 		$scope.getLast = function() {
-			var url = '/news/' + '?limit=8';
+			var url = '/news/' + '?limit=5';
 			$http.get(url)
 				.success(function(data) {
 					data = data.filter(function(elem) {
@@ -65,7 +65,7 @@
 				})
 		}
 		$scope.getPopular = function() {
-			var url = '/popular/' + '?limit=5';
+			var url = '/popular/' + '?limit=8';
 			$http.get(url)
 				.success(function(data) {
 					data = data.filter(function(elem) {
