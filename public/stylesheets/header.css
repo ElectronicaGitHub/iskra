@@ -4,8 +4,6 @@
 	width: 100%;
 	background: url(/images/header-image.jpg) no-repeat;
 	background-size: 100%;
-	/*background-position-x: center;*/
-	/*background-attachment: fixed;*/
 }
 .top > span {
 	line-height: 60px;
@@ -145,7 +143,4 @@ p.type-name {
 }
 .mini-top.showed {
 	top: 0;
-}
-.top.showed {
-	height: 200px;
 }
