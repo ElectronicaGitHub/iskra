@@ -1,5 +1,7 @@
 var News = require('../models/News'),
     sm = require('sitemap'),
+    RSS = require('rss'),
+    xml = require('xml'),
     moment = require('moment'),
 	MobileDetect = require('mobile-detect');
 
@@ -48,6 +50,45 @@ function fn(express) {
 		res.render('about', {
 			light : true
 		});
+	})
+
+	router.get('/rss', function(req, res, next) {
+		var feed = new RSS({
+		    title: 'Твой Космос | Новостное научно-популярное издание о науке и космосе',
+		    description: 'Современное интернет издание, ежедневно выпускающее эксклюзивные научно-популярные новости',
+		    feed_url: 'http://tvoykosmos.ru/rss',
+		    site_url: 'http://tvoykosmos.ru',
+		    image_url: 'http://tvoykosmos.ru/images/tk.png',
+		    // docs: 'http://example.com/rss/docs.html',
+		    // author: 'Dylan Greene',
+		    managingEditor: 'Самсонов Дмитрий',	
+		    webMaster: 'Антонов Филипп',
+		    copyright: '2014 Твой Космос',
+		    language: 'ru',
+		    // categories: ['Category 1','Category 2','Category 3'],
+		    // pubDate: 'May 20, 2012 04:00:00 GMT',
+		    ttl: '120'
+		});
+
+		News.find({}, {
+			content : 0, 
+			content_special : 0 
+		}, { limit : 10 }, function(err, results) {
+			for (i in results) {
+				feed.item({
+				    title:  results[i].title,
+				    description: results[i].description,
+				    url: 'http://tvoykosmos.ru/post/' + results[i]._id,
+				    // guid: '1123', // optional - defaults to url
+				    // categories: ['Category 1','Category 2','Category 3','Category 4'], // optional - array of item categories
+				    // author: 'Guest Author', // optional - defaults to feed author property
+				    date: results[i].date
+				});
+			}
+			var xmlString = feed.xml();
+			res.header('Content-Type', 'application/xml');
+			res.send(xmlString);
+		})
 	})
 
 	router.get('/sitemap.xml', function(req, res) {

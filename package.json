@@ -16,9 +16,12 @@
     "mongoose": "^3.8.13",
     "morgan": "~1.0.0",
     "nconf": "^0.6.9",
+    "node-rss": "^1.0.1",
+    "passport": "~0.2.1",
+    "rss": "^0.3.2",
     "sitemap": "^0.7.4",
     "static-favicon": "^1.0.2",
     "winston": "^0.7.3",
-    "passport": "~0.2.1"
+    "xml": "0.0.12"
   }
 }
