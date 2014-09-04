@@ -114,7 +114,9 @@ function fn(express) {
 		News.find({_id : { $in : posts } }, {
 			content : 0,
 			content_special : 0
-		}, function(err, results) {
+		})
+		.sort({date: -1})
+		.exec(function(err, results) {
 			res.json(results);
 		})		
 	})
