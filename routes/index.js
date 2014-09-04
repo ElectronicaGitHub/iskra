@@ -82,7 +82,9 @@ function fn(express) {
 				    // guid: '1123', // optional - defaults to url
 				    // categories: ['Category 1','Category 2','Category 3','Category 4'], // optional - array of item categories
 				    // author: 'Guest Author', // optional - defaults to feed author property
-				    date: results[i].date
+				    date: results[i].date,
+				    enclosure: {url: results[i].image},
+				    categories : [results[i].section] // optional enclosure
 				});
 			}
 			var xmlString = feed.xml();
