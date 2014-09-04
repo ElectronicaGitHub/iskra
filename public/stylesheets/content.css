@@ -246,6 +246,7 @@ div.after-text-advice span {
 .each-linked-news .l-info .l-title {
 	font-family: 'RobCondBold';
 	font-size: 18px;
+	padding-bottom: 2px;
 }
 .each-linked-news .l-info .l-date {
 	font-family: 'RobCondLight';
