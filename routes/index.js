@@ -73,7 +73,7 @@ function fn(express) {
 		News.find({}, {
 			content : 0, 
 			content_special : 0 
-		}, { limit : 10 }, function(err, results) {
+		}, { limit : 15 }).sort({ date : -1 }).exec(function(err, results) {
 			for (i in results) {
 				feed.item({
 				    title:  results[i].title,
