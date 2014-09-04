@@ -79,10 +79,11 @@ function fn(express) {
 	router.get('/post/:id', function(req, res, next) {
 		var update = { $inc : { views : 1}};
 		News.findByIdAndUpdate(req.params.id, update, function(err, result) {
+			if (err) return next(err);
 			md = new MobileDetect(req.headers['user-agent']);
 			if (md.phone()) {
-				var d = new Date();
-				d.setDate(d.getDate() - 7);
+				// var d = new Date();
+				// d.setDate(d.getDate() - 7);
 				News.find({}, {
 					content : 0,
 					content_special: 0
@@ -103,7 +104,6 @@ function fn(express) {
 					user : req.user
 				});
 			}
-			if (err) return next(err);
 			
 		})
 	});
