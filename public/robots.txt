@@ -1,3 +1,5 @@
 User-Agent: *
+Allow: /rss
+
 Host: www.tvoykosmos.ru
 Sitemap: http://www.tvoykosmos.ru/sitemap.xml

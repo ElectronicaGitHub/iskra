@@ -53,6 +53,12 @@ function fn(express) {
 	})
 
 	router.get('/rss', function(req, res, next) {
+		var cat_map = {
+			'physics': 'Физика',
+			'space': 'Космос',
+			'tech': 'Технологии'
+		}
+
 		var feed = new RSS({
 		    title: 'Твой Космос | Новостное научно-популярное издание о науке и космосе',
 		    description: 'Современное интернет издание, ежедневно выпускающее эксклюзивные научно-популярные новости',
@@ -71,7 +77,6 @@ function fn(express) {
 		});
 
 		News.find({}, {
-			content : 0, 
 			content_special : 0 
 		}, { limit : 15 }).sort({ date : -1 }).exec(function(err, results) {
 			for (i in results) {
@@ -84,7 +89,10 @@ function fn(express) {
 				    // author: 'Guest Author', // optional - defaults to feed author property
 				    date: results[i].date,
 				    enclosure: {url: results[i].image},
-				    categories : [results[i].section] // optional enclosure
+				    categories : [cat_map[results[i].section]], // optional enclosure
+				    'yandex:full-text' : results[i].content,
+				    'yandex:genre' : 'acticle'
+
 				});
 			}
 			var xmlString = feed.xml();
