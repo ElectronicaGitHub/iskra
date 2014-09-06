@@ -199,7 +199,14 @@ function fn(express) {
 	})
 
 	router.get('/news/', function(req, res, next) {
-		var options = req.query;
+		var limit = req.query.limit || 12;
+		var page = req.query.page - 1 || 0;
+		console.log(req.query)
+		var options = {
+			limit : limit,
+			skip : page * limit
+		}
+		console.log(options)
 		var section = req.query.section;
 		var find_query = section ? 
 			{

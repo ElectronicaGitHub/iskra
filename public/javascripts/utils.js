@@ -16,11 +16,20 @@ var UTILS = (function() {
 				local_block = null;
 			}	
 			blockFormEnding = function() {
-				sort_way = Math.random() > .5;
+				if (local_block.number != block_size) {
+					sort_way = false;
+				} else {
+					sort_way = Math.random() > .5;
+				}
 				local_block.feed_elements.sort(function(a,b) {
 					return sort_way ? a._size-b._size : b._size-a._size
 				})
-				blocks.push(local_block);
+
+				if (!exact_element) {
+					blocks.push(local_block);
+				} else {
+					exact_element = false;
+				}
 				setDefault();
 			}
 			addNewsToBlock = function() {
@@ -40,6 +49,14 @@ var UTILS = (function() {
 			    if (add_flag) addNewsToBlock();
 			}
 			// lloooopp
+
+			if (blocks[blocks.length-1] && blocks[blocks.length-1].number != block_size) {
+				exact_element = true;
+				local_block = blocks[blocks.length-1];
+			} else {
+				exact_element = false;
+			}
+
 			for (i in feeds) {
 				if (!local_block) createBlock();
 

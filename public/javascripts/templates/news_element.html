@@ -1,6 +1,6 @@
  <a class="inner-container" href="/post/{{ news._id }}">
 
- 	<div ng-if="type=='normal'"
+ 	<div ng-if="type=='normal' || !type"
  		 class="picture" 
  		 style="background-image: url( {{ news.image }} )">
 		<div class="views">
@@ -14,7 +14,7 @@
 	<div class="hover-stater"></div>
 
  	<div ng-if="news.special" class="special_mark">{{ news.special }}</div>
-	<div ng-if="type=='normal'"
+	<div ng-if="type=='normal' || !type"
 		 class="text-container">
  		<div class='news_title'>
 	 		<p>{{ news.title }}</p>
