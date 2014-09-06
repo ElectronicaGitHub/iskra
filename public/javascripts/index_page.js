@@ -17,7 +17,7 @@ tk.controller('Index', [ '$scope', '$http', '$rootScope', '$location',
 	}
 	$scope.getNews = function(param) {
 		if (param) {
-			news_loader = true;
+			$scope.news_loader = true;
 		}
 		if (section) {
 			url = '/news/?section=' + section + '&page=' + page;
@@ -27,7 +27,10 @@ tk.controller('Index', [ '$scope', '$http', '$rootScope', '$location',
 		$http.get(url)
 			.success(function(data) {
 				page++;
-				news_loader = false;
+				$scope.news_loader = false;
+				if ( data.length < 12) {
+					$scope.no_more_news = true;
+				} 
 				$scope.feeds = data;
 				$scope.feed_blocks = UTILS.blocks_former($scope.feeds, $scope.feed_blocks);
 				console.log($scope.feed_blocks);
