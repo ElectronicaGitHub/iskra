@@ -37,7 +37,10 @@ tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
         toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent",
         toolbar2: "print preview media | forecolor backcolor emoticons | link image",
         image_advtab: true,
-		height : '500px'
+		height : '500px',
+		style_formats : [
+			{ title : 'Описание картинки', selector : 'p', classes : 'img_description'}
+		]
 	};
 
 	$scope.loadForPage = function(render_blocks) {
