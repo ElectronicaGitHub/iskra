@@ -10,10 +10,11 @@ footer > div {
 	float: left;
 }
 footer .info {
-	width: 50%;
+	width: 40%;
+	padding: 0px 80px;
 }
 footer .metric, footer .nav {
-	width: 25%;
+	width: 30%;
 	height: 150px;
 	line-height: 150px;
 }
@@ -33,9 +34,6 @@ footer .info p {
 	margin: 0;
 	line-height: 25px;
 	font-family: 'RobCondBold';
-}
-footer .info {
-	padding: 0px 130px;
 }
 footer .nav > span > span {
 	padding: 3px 10px;
