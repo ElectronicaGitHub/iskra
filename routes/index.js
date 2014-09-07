@@ -135,7 +135,7 @@ function fn(express) {
 			if (md.phone()) {
 				// var d = new Date();
 				// d.setDate(d.getDate() - 7);
-				News.find({}, {
+				News.find({ _id : { $ne : req.params.id }}, {
 					content : 0,
 					content_special: 0
 				}, { limit : 7})
