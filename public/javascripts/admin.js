@@ -39,7 +39,8 @@ tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
         image_advtab: true,
 		height : '500px',
 		style_formats : [
-			{ title : 'Описание картинки', selector : 'p', classes : 'img_description'}
+			{ title : 'Описание картинки', selector : 'p', classes : 'img_description'},
+			{ title : 'Заголовок раздела', block : 'h2'}
 		]
 	};
 
