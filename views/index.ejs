@@ -20,11 +20,16 @@
 	</div>
 
 	<div class="after-feed">
-		<span class="news-load" ng-click="getNews(true)">
-			<span ng-if="!no_more_news" class="fa fa-refresh" ng-class="{ 'fa-spin' : news_loader }"></span>
-			<span ng-if="!no_more_news && !news_loader">Больше новостей</span>
-			<span ng-if="!no_more_news && news_loader">Загружаем</span>
-			<span ng-if="no_more_news">Новостей больше нет</span>
+		<span class="news-load" 
+			  ng-if="!no_more_news"
+			  ng-click="getNews(true)">
+			<span class="fa fa-refresh" ng-class="{ 'fa-spin' : news_loader }"></span>
+			<span ng-if="!news_loader">Больше новостей</span>
+			<span ng-if="news_loader">Загружаем</span>
+		</span>
+		<span class="news-load" 
+			  ng-if="no_more_news">
+			<span>Новостей больше нет</span>
 		</span>
 	</div>
 </div>
