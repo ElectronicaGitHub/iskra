@@ -84,6 +84,7 @@ tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
 	}
 
 	$scope.postNews = function(news, first_save) {
+		$scope.post_loading = true;
 		url = first_save ? '/admin' : '/admin/' + news._id;
 		if (news.linked_news) {
 			news.linked_news = news.linked_news.map(function(e) {
@@ -92,6 +93,7 @@ tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
 		}
 		$http.post(url, news)
 			.success(function(data) {
+				$scope.post_loading = false;
 				console.log(data);
 				if (data.save) {
 					$scope.successful_save = true;
@@ -103,6 +105,7 @@ tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
 				}
 			})
 			.error(function(data) {
+				$scope.post_loading = false;
 				console.log(data);
 			})
 	};

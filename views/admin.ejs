@@ -11,7 +11,7 @@
 <div class="admin-page" ng-controller="Admin" ng-init="init()">
 
 	<div class="promises" ng-if="successful_save" ng-class="{ success : successful_save }">
-		<p>Новость успешно сохранена</p>
+		<p><span class="fa fa-thumbs-up"></span> Новость успешно сохранена</p>
 	</div>
 
 	<div class="button-top-panel">
@@ -119,13 +119,16 @@
 
 			<div class="button-top-panel">
 				<button class="normal-button" 
-						ng-if="!news._id" 
+						ng-if="!post_loading && !news._id" 
 						ng-click="postNews(news, true)">Сохранить
 				</button>
+
 				<button class="normal-button" 
-						ng-if="news._id" 
+						ng-if="!post_loading && news._id" 
 						ng-click="postNews(news)">Изменить
 				</button>
+
+				<button class="normal-button" ng-if="post_loading"><span class="fa fa-gear fa-spin"></span> Идет сохранение</button>
 			</div>
 		</div>
 		<div class="output">
