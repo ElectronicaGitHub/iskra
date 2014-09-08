@@ -3,14 +3,13 @@
 	window.post = <%- JSON.stringify(post) %>
 </script>
 <% script("/libs/moment/min/moment-with-locales.min.js") -%>
-<% script("/javascripts/utils.js") -%>
-<% script("/javascripts/content.js") -%>
-<% script("/javascripts/share.js") -%>
+<% script("/build/js/utils.js") -%>
+<% script("/build/js/content.js") -%>
+<% script("/build/js/share.js") -%>
 <% block('meta', partial('meta')) -%>
 <% block('title', post.title) -%>
 
 <% stylesheet("/stylesheets/content.css") -%>
-<% stylesheet("/libs/fontawesome/css/font-awesome.min.css") -%>
 
 <div id="fb-root"></div>
 
@@ -64,11 +63,17 @@
 		    <span class="social_share fa fa-twitter" data-type="tw"></span>
 		</div>
 
-		<div ng-if="news_type=='normal' || !news_type" 
-			 class="after-text-advice">{{ generateAfterTextAdvice('normal') }} <span ng-click="slideAndChangeMode('special')">Читай что попроще.</span>
-		</div>
-		<div ng-if="news_type=='special'" 
-			 class="after-text-advice">{{ generateAfterTextAdvice('special') }} <span ng-click="slideAndChangeMode('normal')">Читай классическую версию.</span>
+		<div class="other-mode">
+			<span ng-if="news_type=='normal' || !news_type" 
+				 class="after-text-advice">
+				 <p>{{ generateAfterTextAdvice('normal') }}</p>
+				 <p class="read" ng-click="slideAndChangeMode('special')">Читай облегченный вариант.</p>
+			</span>
+			<span ng-if="news_type=='special'" 
+				 class="after-text-advice">
+				 <p>{{ generateAfterTextAdvice('special') }}</p>
+				 <p class="read" ng-click="slideAndChangeMode('normal')">Читай классическую версию.</p>
+			</span>
 		</div>
 
 		<div class="social-buddies gray">

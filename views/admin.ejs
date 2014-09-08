@@ -1,11 +1,11 @@
 <%- layout('base.ejs')%>
 <% script("/libs/tinymce/tinymce.min.js") -%>
-<% script("/javascripts/utils.js") -%>
-<% script("/javascripts/admin.js") -%>
+<% script("/build/js/utils.js") -%>
+<% script("/build/js/admin.js") -%>
 <% script("/javascripts/directives/news_element.js") -%>
-<% stylesheet("/stylesheets/fonts.css") -%>
-<% stylesheet("/stylesheets/index.css") -%>
-<% stylesheet("/stylesheets/admin.css") -%>
+<% stylesheet("/build/css/fonts.css") -%>
+<% stylesheet("/build/css/index.css") -%>
+<% stylesheet("/build/css/admin.css") -%>
 <% stylesheet("/libs/fontawesome/css/font-awesome.min.css") -%>
 
 <div class="admin-page" ng-controller="Admin" ng-init="init()">

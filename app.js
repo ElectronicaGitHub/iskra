@@ -21,9 +21,9 @@ mongoose.connection.on('open', function () {
     
 // view engine setup
 app.engine('ejs', require('ejs-locals'));
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
 app.set('env', 'production');
+app.set('views', path.join(__dirname, app.get('env') == 'production' ? 'views/build' : 'views'));
+app.set('view engine', 'ejs');
 
 app.use(favicon());
 app.use(logger('dev'));
