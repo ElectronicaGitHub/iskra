@@ -54,26 +54,32 @@
 			<%- post.content_special %>
 		</div>
 
-		<div class="social_share_buttons">
-			<% if (user && user.name == 'Gendalf') { %>
-		    	<a href="/admin"><span class="update_button fa fa-key"></span></a>
-		    <% } %>
-		    <span class="social_share fa fa-vk" data-type="vk"></span>
-		    <span class="social_share fa fa-facebook" data-type="fb"></span>
-		    <span class="social_share fa fa-twitter" data-type="tw"></span>
-		</div>
-
 		<div class="other-mode">
-			<span ng-if="news_type=='normal' || !news_type" 
-				 class="after-text-advice">
-				 <p>{{ generateAfterTextAdvice('normal') }}</p>
-				 <p class="read" ng-click="slideAndChangeMode('special')">Читай облегченный вариант.</p>
-			</span>
-			<span ng-if="news_type=='special'" 
-				 class="after-text-advice">
-				 <p>{{ generateAfterTextAdvice('special') }}</p>
-				 <p class="read" ng-click="slideAndChangeMode('normal')">Читай классическую версию.</p>
-			</span>
+			<div class="left">
+				<span>
+					<p>Поделись с друзьями:</p>
+				    <p class="share-bottom-buttons">
+						<% if (user && user.name == 'Gendalf') { %>
+					    	<a href="/admin"><span class="update_button fa fa-key"></span></a>
+					    <% } %>
+					    <span class="social_share fa fa-vk" data-type="vk"></span>
+					    <span class="social_share fa fa-facebook" data-type="fb"></span>
+					    <span class="social_share fa fa-twitter" data-type="tw"></span>
+				    </p>
+				</span>
+			</div>
+			<div class="right">
+				<span ng-if="news_type=='normal' || !news_type" 
+					 class="after-text-advice">
+					 <p>{{ generateAfterTextAdvice('normal') }}</p>
+					 <p class="read" ng-click="slideAndChangeMode('special')">Читай облегченный вариант.</p>
+				</span>
+				<span ng-if="news_type=='special'" 
+					 class="after-text-advice">
+					 <p>{{ generateAfterTextAdvice('special') }}</p>
+					 <p class="read" ng-click="slideAndChangeMode('normal')">Читай классическую версию.</p>
+				</span>
+			</div>
 		</div>
 
 		<div class="social-buddies gray">
