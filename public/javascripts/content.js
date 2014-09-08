@@ -93,6 +93,7 @@
 			}, 300)
 			$location.path(type);
 			$rootScope.news_type = type;
+			ga('send', 'event', 'click', 'change_mode', 'bottom', 1);
 		}
 
 		var special = [ 'Слишком сложно для тебя, умник?', 

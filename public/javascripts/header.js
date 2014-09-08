@@ -22,6 +22,7 @@ tk.controller('HeaderCtrl',
 		$rootScope.news_type = $rootScope.news_type == 'normal' ? 'special' : 'normal';
 		localStorageService.set('tvoyKosmos_MODE', $rootScope.news_type);
 		$location.path($rootScope.news_type);
+		ga('send', 'event', 'click', 'change_mode', 'top', 1);
 	}
 	$scope.goToRoot = function() {
 		window.location.href = '/';
