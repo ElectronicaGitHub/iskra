@@ -28,7 +28,7 @@
 	</div>
 
 	<div ng-show="page=='auth'">
-		<form action="/login" method="post">
+		<form class="auth" action="/login" method="post">
 		    <div>
 		        <label>Username:</label>
 		        <input type="text" name="username"/>
@@ -37,8 +37,8 @@
 		        <label>Password:</label>
 		        <input type="password" name="password"/>
 		    </div>
-		    <div>
-		        <input type="submit" value="Log In"/>
+		    <div class="button-top-panel">
+		        <input class="btn btn-primary normal-button" type="submit" value="Log In"/>
 		    </div>
 		</form>
 	</div>
