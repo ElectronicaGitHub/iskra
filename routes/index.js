@@ -3,7 +3,8 @@ var News = require('../models/News'),
     RSS = require('rss'),
     xml = require('xml'),
     moment = require('moment'),
-	MobileDetect = require('mobile-detect');
+	MobileDetect = require('mobile-detect'),
+	sanitizeHtml = require('sanitize-html');
 
 function fn(express) {
 	var router = express.Router();
@@ -90,9 +91,10 @@ function fn(express) {
 				    date: results[i].date,
 				    enclosure: {url: results[i].image},
 				    categories : [cat_map[results[i].section]], // optional enclosure
-				    'yandex:full-text' : results[i].content,
+				    'yandex:full-text' : sanitizeHtml(results[i].content, {
+				    	allowedTags : []
+				    }),
 				    'yandex:genre' : 'acticle'
-
 				});
 			}
 			var xmlString = feed.xml();
