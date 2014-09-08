@@ -1,0 +1,85 @@
+<%- layout('base-mobile') %><% script("/libs/jquery/dist/jquery.min.js") -%><% script("/libs/owl-carousel/owl-carousel/owl.carousel.min.js") -%><% stylesheet("/libs/fontawesome/css/font-awesome.min.css") -%><% stylesheet("/libs/owl-carousel/owl-carousel/owl.carousel.css") -%><% stylesheet("/libs/owl-carousel/owl-carousel/owl.theme.css") -%><% block('meta', partial('meta')) -%><script>$(document).ready(function() {
+   	    $("#slider").owlCarousel();
+	});</script><div class="post"><div class="image-title" style="background-image: url(<%- post.image %>)"></div><h1 class="title"><%- post.title %></h1><div class="content"><%- post.content %></div></div><div class="popular"><p class="title-tag">Последние новости</p><div id="slider" class="owl-carousel"><% L = posts.length; for (var i=0; i< L; i++) { %><a href="/post/<%- posts[i]._id%>"><div class="each-post"><div class="image" style="background-image: url(<%- posts[i].image %>)"></div><div class="title"><%- posts[i].title %></div></div></a> <% } %></div></div><style>div.post {
+		/*padding: 10px 20px;*/
+	}
+	h1.title {
+		font: 22px/24px 'RobCondBold';
+		padding: 10px 20px;
+		background: white;
+		margin-top: 0;
+		box-shadow: 0 2px 3px rgba(0,0,0,.13);
+	}
+	div.content {
+		font: 16px/20px 'RobCondLight';
+		position: relative;
+		z-index: 9;
+		margin: 10px 0 0;
+		padding: 0 20px 20px;
+		box-shadow: 0 2px 3px rgba(0,0,0,.13);
+	}
+	.post .content p {
+		margin: 10px 0;
+	}
+	.post .content p.img_description {
+		font-size: 14px;
+		line-height: 18px;
+		margin-bottom: 15px;
+	}
+	.post h2, .post h3 {
+		font: 18px/22px 'RobCondBold';
+		margin-bottom: 5px;
+	}
+	.post img {
+		width: 280px !important;
+		/*height: 230px;*/
+	}
+	.post .image-title {
+		height: 260px;
+		width: 320px;
+		background-position: center center;
+		background-size: cover;
+	}
+	.post .info {
+		font-family: 'RobCondBold';
+		padding: 0 5px;
+		height: 30px;
+		line-height: 30px;
+		background-color: white;
+	}
+	.post .info .views {
+		padding-left: 10px;
+	}
+	.popular {
+		background-color: white;
+		padding: 10px 20px 40px;
+	}
+	.popular .title-tag {
+		color: #4D42FF;
+		margin: 0;
+		padding: 0;
+		font: 24px/28px 'RobCondBold';
+	}
+	/*.popular .each-post {
+		border-radius: 4px;
+	}*/
+	.popular a {
+		color: #000;
+		text-decoration: none;
+	}
+	.popular #slider {
+		margin-top: 20px;
+		border-radius: 4px;
+		overflow: hidden;
+	}
+	.popular .each-post .image {
+		background-size: cover;
+		background-position: center center;
+		height: 200px;
+		margin-bottom: 10px;
+		border-bottom: 4px solid #FFB52E;
+	}
+	.popular .each-post .title {
+		font: 20px/24px 'RobCondBold';
+		padding: 3px 10px;
+	}</style>
