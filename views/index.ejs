@@ -12,9 +12,11 @@
 	<div class="feed">
 		<div ng-repeat="block in feed_blocks"
 			 class="block">
-			<news class="anim" ng-if="element._size" 
+			<news class="anim" 
+				  ng-if="element._size" 
 				  ng-repeat="element in block.feed_elements"
-	 			  ng-class="{ s11 : element._size == 1, s21 : element._size == 2 , s22 : element._size == 4}"type="news_type"  
+	 			  ng-class="{ s11 : element._size == 1, s21 : element._size == 2 , s22 : element._size == 4}" 
+	 			  type="news_type"  
 				  ng-model="element"></news>
 		</div>
 	</div>
