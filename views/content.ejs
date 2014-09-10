@@ -23,9 +23,12 @@
 				 src="<%- post.image_special %>">
 			<div class="black-postphoto"></div>
 			<span> 
-				<span ng-if="news_type=='normal' || !news_type"><%- post.title %>
-				</span ng-if="news_type=='special'">
-				<%- post.title_special %>
+				<span ng-if="news_type=='normal' || !news_type">
+					<%- post.title %>
+				</span>
+				<span ng-if="news_type=='special'">
+					<%- post.title_special %>
+				</span>
 				<p ng-if="news_type=='normal' || !news_type"><%- post.description %></p>
 				<p ng-if="news_type=='special'"><%- post.description_special %></p>
 				<div class="info-panel"></div>
