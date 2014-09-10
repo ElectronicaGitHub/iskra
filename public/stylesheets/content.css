@@ -33,22 +33,79 @@ div.page .misc {
 .list a, .misc a {
 	text-decoration: none;
 }
-.post .title {
+.post .title-image {
+	position: relative;
+	border-radius: 2px;
+	overflow: hidden;
+}
+.post .title-image .black-postphoto {
+	position: absolute;
+	top: 0;right: 0;bottom: 0;left: 0;
+	margin:auto;
+	z-index: 10;
+	background-color: rgba(0,0,0,.3);
+}
+.post .title-image img {
+	background-position: center center;
+	background-size: cover;
+	width: 100%;
+}
+.post .title-image > span {
+	position: absolute;
+	padding: 0 40px;
+	width: 100%;
+	top: 50%;
+	left: 0;
+	z-index: 15;
+}
+.post .title-image > span > span {
+	color: transparent;
+	font-size: 36px;
+	line-height: 35px;
 	font-family: 'RobCondBold';
+}
+
+.post .title-image > span > p { 
+	margin-top: 10px;
+	color: transparent;
+}
+.post .title-image > span p {
+	line-height: 22px;
+	font-size: 18px;
+	padding: 0px 20px;
+	font-family: 'RobCondBold';
+} 
+
+.post .title {
 	font-size: 30px;
 	line-height: 35px;
+	margin-top: 0;
+	left: 40px;
+	right: 40px;
+	padding: 3% 10px;
+	position: absolute;
+	text-align: center;
+	top: -62%;
+}
+.post .title > h1 > span, .post .title > p {
+	font-family: 'RobCondBold';
+	color: white;
 	margin-top: 0px;
+	text-shadow: 0 1px 3px rgba(0,0,0,.5);
+}
+.post .title > h1 > span {
+	color : #FFB52E;
 }
 .post .info-panel {
 	height: 30px;
 	line-height: 30px;
-	background-color: rgba(0,0,0,.2);
+	/*background-color: rgba(0,0,0,.2);*/
 	padding: 0 10px;
 	display: inline-block;
-	float: left;
+	/*float: left;*/
 }
 .post .info-panel .date {
-	color: #555;
+	color: white;
 	font-size: 15px;
 	line-height: 30px;
 	height: 30px;
@@ -59,6 +116,9 @@ div.page .misc {
 	height: 30px;
 	line-height: 30px;
 	padding-left: 20px;
+}
+.post .info-panel .views > span {
+	color: white;
 }
 .post .info-panel .views .view-count {
 	padding-left: 2px;

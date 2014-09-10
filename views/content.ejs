@@ -16,36 +16,37 @@
 <div class="page" ng-controller="contentCtrl" ng-init="init()">
 	<article class="post">
 
-		<h1 ng-if="news_type=='normal' || !news_type" class="title">
-			<%- post.title %>
-		</h1>
-		<h1 ng-if="news_type=='special'" class="title"><%- post.title_special %>
-		</h1>
-
-		<div class="social_share_buttons">
-			<% if (user && user.name == 'Gendalf') { %>
-		    	<a href="/admin?post_id=<%- post._id %>"><span class="update_button fa fa-key"></span></a>
-		    <% } %>
-		    <span class="social_share fa fa-vk" data-type="vk"></span>
-		    <span class="social_share fa fa-facebook" data-type="fb"></span>
-		    <span class="social_share fa fa-twitter" data-type="tw"></span>
-			
-			<span class="info-panel">
-				<span class="date">Редактор произвел новость <%- moment(post.date).locale('ru').calendar().toLowerCase() %></span>
-				<span class="views">
-					<span class="fa fa-eye"></span>
-					<span class="view-count"><%- post.views %></span>
+		<div class="title-image">
+			<img ng-if="news_type=='normal' || !news_type" 
+				 src="<%- post.image %>">
+			<img ng-if="news_type=='special'" 
+				 src="<%- post.image_special %>">
+			<div class="black-postphoto"></div>
+			<span> 
+				<span ng-if="news_type=='normal' || !news_type"><%- post.title %>
+				</span ng-if="news_type=='special'">
+				<%- post.title_special %>
+				<p ng-if="news_type=='normal' || !news_type"><%- post.description %></p>
+				<p ng-if="news_type=='special'"><%- post.description_special %></p>
+				<div class="info-panel"></div>
+				<span class="title">
+					<h1>
+						<span ng-if="news_type=='normal' || !news_type"><%- post.title %></span>
+						<span ng-if="news_type=='special'"><%- post.title_special %></span>
+					</h1>
+					<p ng-if="news_type=='normal' || !news_type"><%- post.description %></p>
+					<p ng-if="news_type=='special'"><%- post.description_special %></p>
+					
+					<div class="info-panel">
+						<span class="date">Редактор произвел новость <%- moment(post.date).locale('ru').calendar().toLowerCase() %></span>
+						<span class="views">
+							<span class="fa fa-eye"></span>
+							<span class="view-count"><%- post.views %></span>
+						</span>
+					</div>
 				</span>
-				
 			</span>
 		</div>
-
-		<div class="description" ng-if="news_type=='normal' || !news_type">
-			<%- post.description %>
-		</div>
-		<div class="description" ng-if="news_type=='special'">
-			<%- post.description_special %>
-		</div>	
 
 		<div class="content" ng-if="news_type=='normal' || !news_type">
 			<%- post.content %>
