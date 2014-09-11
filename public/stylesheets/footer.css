@@ -42,32 +42,29 @@ footer .nav > span > span a {
 	color: #fff;
 	text-decoration: none
 }
-footer .tk-rss {
+footer .tk-rss, footer .tk-archive {
 	font-size: 20px;
 	padding-right: 10px;
 	color: #FFB52A;
 	text-decoration: none;
-	height: 35px;
-	line-height: 38px;
-}
-footer .metric > span {
-	display: inline-block;
-	line-height: 35px;
 	vertical-align: middle;
 }
-footer .metric > span > * {
-	float: left;
+footer .tk-archive {
+	font-size: 14px;
+	color: #fff;
+	padding-left: 10px;
+}
+footer .metric > span {
+	text-align: center;
+	display: inline-block;
+	line-height: 45px;
+	vertical-align: middle;
+}
+footer .metric > span > p {
+	width: 100%;
+}
+footer .metric > span > p > * {
+	/*float: left;*/
 	padding-right: 15px;
 }
 
-/*footer span {
-	padding: 20px;
-	font-size: 30px;
-	height: 150px;
-	font-family: 'RobCondBold';
-	cursor: pointer;
-	color: rgba(44, 85, 205, 1);
-}
-footer span:hover {
-	color: rgba(44, 85, 205, .8);
-}*/

@@ -53,6 +53,10 @@ function fn(express) {
 		});
 	})
 
+	router.get('/archive', function(req, res, next) {
+		res.render('archive');
+	})
+
 	router.get('/rss', function(req, res, next) {
 		var cat_map = {
 			'physics': 'Физика',
