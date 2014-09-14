@@ -68,9 +68,9 @@ var UTILS = (function() {
 						   local_block.number == 3) {
 					generateSize([1], true);
 				} 
-				if (i == feeds.length - 1) {
-					if (local_block) blockFormEnding();
-				}
+				// if (i == feeds.length - 1) {
+				// 	if (local_block) blockFormEnding();
+				// }
 			}
 
 			return blocks;

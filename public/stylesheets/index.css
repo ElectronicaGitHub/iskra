@@ -40,8 +40,9 @@ news.s22 {
 	width: 100%;
 	color: #101010;
 	text-decoration: none;
-	background-color: rgba(47, 90, 153, .2);
+	background-color: #fff;
 	overflow: hidden;
+	box-shadow: 0px 1px 3px rgba(0,0,0,.3);
 	-webkit-transition: 0.2s;
 	-moz-transition: 0.2s;
 	transition: 0.2s;
@@ -66,9 +67,6 @@ news.s22 {
 .inner-container:hover {
 	text-decoration: none;
 	color: black;
-	-webkit-transform: scale(1.01);
-	-moz-transform: scale(1.01);
-	transform: scale(1.01);
 	box-shadow: 0px 1px 3px rgba(0,0,0,.5);
 }
 .inner-container .views {
