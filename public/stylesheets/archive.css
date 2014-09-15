@@ -84,6 +84,9 @@
 	font-family: 'RobCondLight';
 	font-size: 16px;
 	line-height: 18px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 .feed .info span .date {
 	font-family: 'RobCondItal';
