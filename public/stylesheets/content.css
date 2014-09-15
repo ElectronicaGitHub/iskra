@@ -257,6 +257,7 @@ span.fa-key {
 	border-top: 1px solid #ddd;
 	margin-top: 20px;
 	overflow: hidden;
+	clear: both;
 }
 .other-mode > div {
 	float: left;
