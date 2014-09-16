@@ -141,6 +141,10 @@ div.page .misc {
 .post .content a {
 	color: #4D42FF !important;
 }
+.post .author {
+	clear: both;
+	font-style: italic;
+}
 .tag-title {
 	font-family: 'RobCondBold';
 	font-size: 25px;

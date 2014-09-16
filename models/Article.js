@@ -1,7 +1,7 @@
 var mongoose = require('../configs/mongoose.js');
 Schema = mongoose.Schema;
 
-var News = new Schema({
+var Article = new Schema({
 	title : {
 		type: String
 	},
@@ -14,26 +14,8 @@ var News = new Schema({
 	image : {
 		type: String
 	},
-	title_special : {
-		type: String
-	},
-	description_special : {
-		type: String
-	},
-	content_special : {
-		type: String
-	},
-	image_special : {
-		type : String
-	},
-	section : {
-		type : String
-	},
 	special : {
 		type : String
-	},
-	linked_news : {
-		type : [String]
 	},
 	author : {
 		type : String
@@ -57,4 +39,4 @@ var News = new Schema({
 // }, {default_language : 'russian'});
 
 
-module.exports = mongoose.model('News', News);
+module.exports = mongoose.model('Article', Article);

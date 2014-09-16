@@ -3,17 +3,15 @@ tk.controller('Archive', ['$scope', '$http', function ($scope, $http) {
 	$scope.section = 'space';
 	$scope.search_query = '';
 
-	$scope.sections = {
-		"space": 'Космос',
-		"physics": 'Физика',
-		"tech": 'Технологии'
-	};
+	$scope.sections = info.sections;
+	$scope.sections['all'] = 'Все разделы';
+	$scope.authors = info.authors;
 
 	$scope.getNews = function() {
 		$scope.load = true;
 		data = {
 			search_query : $scope.search_query,
-			section : $scope.section
+			section : $scope.section == 'all' ? undefined : $scope.section
 		};
 		url = '/linked_news?' + jQuery.param(data);
 		$http.get(url)

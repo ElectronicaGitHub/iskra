@@ -119,12 +119,17 @@ button.highlighted {
 .image-info {
 	background-size: cover;
 	background-position: center center;
-	height: 50px;
-	width: 50px;
+	height: 130px;
+	width: 200px;
+	margin-right: 20px;
+}
+.info .text-crop {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 .search-linked-news {
 	width: 100%;
-	/*min-height: 400px;*/
 	margin: 10px 0;
 	padding: 15px;
 	border: 1px solid #ddd;
@@ -139,7 +144,6 @@ button.highlighted {
 .search-linked-news .search-linked-results {
 	border: 1px solid #ddd;
 	width: 100%;
-	/*min-height: 330px;*/
 	margin-top: 10px;
 	clear: left;
 	padding: 10px;

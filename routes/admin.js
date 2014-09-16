@@ -30,21 +30,36 @@ function admin(express, config) {
 
 	router.post('/', function(req, res, next) {
 		news = new News(req.body);
-		news.save(function(err) {
-			if (err) return next(err);
-			save = true;
-			if (news.linked_news.length > 0) {
-				if (saveMultilink(news.linked_news, news._id)) {
-					multisave = true;
-				} else {
-					multisave = false;
+		console.log('news.linked_news[0]', news.linked_news[0]);
+		News.findById(news.linked_news[0], function(err, result) {
+			if (result) {
+				console.log(result);
+				if (result.linked_news) {
+					news.linked_news = news.linked_news.concat(result.linked_news);
 				}
-			} else {
-				multisave = 'no links for other posts for multisave';	
+				console.log(news.linked_news);
+
+				news.linked_news = news.linked_news.filter(function(item, pos) {
+			    	return news.linked_news.indexOf(item) == pos;
+				})
 			}
-			res.json({
-				save: save, 
-				multisave : multisave
+			console.log('news.linked_news', news.linked_news);
+			news.save(function(err) {
+				if (err) return next(err);
+				save = true;
+				if (news.linked_news.length > 0) {
+					if (saveMultilink(news.linked_news, news._id)) {
+						multisave = true;
+					} else {
+						multisave = false;
+					}
+				} else {
+					multisave = 'no links for other posts for multisave';	
+				}
+				res.json({
+					save: save, 
+					multisave : multisave
+				})
 			})
 		})
 	})
@@ -53,21 +68,33 @@ function admin(express, config) {
 	router.post('/:id', function(req, res, next) {
 		var post = req.body;
 		delete post._id;
-		News.findByIdAndUpdate(req.params.id, req.body, function(err, result) {
-			if (err) return next(err);
-			save = true;
-			if (post.linked_news.length > 0) {
-				if (saveMultilink(post.linked_news, req.params.id)) {
-					multisave = true;
-				} else {
-					multisave = false;
+		console.log('post.linked_news[0]', post.linked_news[0]);
+		News.findById(post.linked_news[0], function(err, result) {
+			if (result) {
+				if (result.linked_news) {
+					post.linked_news = post.linked_news.concat(result.linked_news);
 				}
-			} else {
-				multisave = 'no links for other posts for multisave';
+
+				post.linked_news = post.linked_news.filter(function(item, pos) {
+			    	return post.linked_news.indexOf(item) == pos;
+				})
 			}
-			res.json({
-				save: save, 
-				multisave : multisave
+			News.findByIdAndUpdate(req.params.id, req.body, function(err, result) {
+				if (err) return next(err);
+				save = true;
+				if (post.linked_news.length > 0) {
+					if (saveMultilink(post.linked_news, req.params.id)) {
+						multisave = true;
+					} else {
+						multisave = false;
+					}
+				} else {
+					multisave = 'no links for other posts for multisave';
+				}
+				res.json({
+					save: save, 
+					multisave : multisave
+				})
 			})
 		})
 	});

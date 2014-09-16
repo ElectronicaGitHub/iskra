@@ -1,11 +1,13 @@
 <% layout('base') -%>
 <% block('title', 'Твой Космос | Архив новостей') -%>
+<% script("/build/js/info.js") -%>
 <% script("/build/js/archive.js") -%>
 <% script("/libs/moment/min/moment-with-locales.min.js") -%>
 <% stylesheet("/build/css/archive.css") -%>
 
 <div class="archive" 
-	 ng-controller="Archive">
+	 ng-controller="Archive"
+	 ng-init="getNews()">
 	
 	<div class='search'>
 		<div class="search-p">

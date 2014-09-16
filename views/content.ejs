@@ -41,7 +41,7 @@
 					<p ng-if="news_type=='special'"><%- post.description_special %></p>
 					
 					<div class="info-panel">
-						<span class="date">Редактор произвел новость <%- moment(post.date).locale('ru').calendar().toLowerCase() %></span>
+						<span class="date">Новость опубликована {{ post.date }}</span>
 						<span class="views">
 							<span class="fa fa-eye"></span>
 							<span class="view-count"><%- post.views %></span>
@@ -57,6 +57,11 @@
 		<div class="content" ng-if="news_type=='special'">
 			<%- post.content_special %>
 		</div>
+		<% if (post.author) { %>
+		<p class="author">
+			Автор <%- post.author %>
+		</p>
+		<% } %>
 
 		<div class="other-mode">
 			<div class="left">

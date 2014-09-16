@@ -16,13 +16,10 @@ tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
 
 	// значение для превью новости
 	$scope.new_type = 'normal';
+	$scope.authors = info.authors;
+	$scope.news_sections = info.sections;
 	$scope.search_linked = {};
 
-	$scope.news_sections = {
-		space : 'Космос', 
-		physics : 'Физика', 
-		tech : 'Технологии'
-	};
 	// значения для всех новостей админки
 	$scope.news_type = 'normal';
 	$scope.feed_blocks = [];
@@ -58,6 +55,10 @@ tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
 		url = '/news/';
 		$http.get(url)
 			.success(function(data) {
+				data = data.map(function(el) {
+					el.date = moment(el.date).locale('ru').calendar();
+					return el;
+				})
 				$scope.feeds = data;
 				if (render_blocks) {
 					$scope.feed_blocks = UTILS.blocks_former($scope.feeds, $scope.feed_blocks);

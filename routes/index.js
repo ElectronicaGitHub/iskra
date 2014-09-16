@@ -233,12 +233,14 @@ function fn(express) {
 		var search_phrase = req.query.search_query;
 		var section = req.query.section;
 		console.log('query', search_phrase);
-		query = search_phrase ? { 
+		query = search_phrase && section ? { 
 			$text : { $search : search_phrase },
 			section : section
-		} : {
+		} : section ? {
 			section : section
-		};
+		} : search_phrase ? {
+			$text : { $search : search_phrase }
+		} : {};
 		console.log(query)
 
 		News.find(query, {

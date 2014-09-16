@@ -1,8 +1,10 @@
 <%- layout('base.ejs')%>
 <% script("/libs/tinymce/tinymce.min.js") -%>
+<% script("/build/js/info.js") -%>
 <% script("/build/js/utils.js") -%>
 <% script("/build/js/admin.js") -%>
 <% script("/javascripts/directives/news_element.js") -%>
+<% script("/libs/moment/min/moment-with-locales.min.js") -%>
 <% stylesheet("/build/css/fonts.css") -%>
 <% stylesheet("/build/css/index.css") -%>
 <% stylesheet("/build/css/admin.css") -%>
@@ -117,6 +119,9 @@
 			<p class="labels">Спешл новость, Лейбл для спешл новости</p>
 			<input type="text" ng-model="news.special">
 
+			<p class="labels">Автор</p>
+			<select ng-model="news.author" ng-options="a as a for a in authors"></select>
+
 			<div class="button-top-panel">
 				<button class="normal-button" 
 						ng-if="!post_loading && !news._id" 
@@ -128,7 +133,9 @@
 						ng-click="postNews(news)">Изменить
 				</button>
 
-				<button class="normal-button" ng-if="post_loading"><span class="fa fa-gear fa-spin"></span> Идет сохранение</button>
+				<button class="normal-button" ng-if="post_loading">
+					<span class="fa fa-gear fa-spin"></span> Идет сохранение
+				</button>
 			</div>
 		</div>
 		<div class="output">
@@ -170,18 +177,18 @@
 		<div ng-repeat="news in feeds" class="news-in-list">
 			
 			<div ng-if="news_type=='normal'" class="image-info" style="background-image: url({{ news.image }})"></div>
-			<!-- // -->
 			<div ng-if="news_type=='special'" class="image-info" style="background-image: url({{ news.image_special }})"></div>
 			<span class="info">
-					<p class="title" ng-if="news_type=='normal'">{{ news.title }}</p>
-					<p ng-if="news_type=='normal'">{{ news.description }}</p>
-					<!-- // -->
-					<p class="title" ng-if="news_type=='special'">{{ news.title_special }}</p>
-					<p ng-if="news_type=='special'">{{ news.description_special }}</p>
-					<p>{{ news_sections[news.section] }}</p>
+					<p class="title text-crop" ng-if="news_type=='normal'">{{ news.title }}</p>
+					<p class="title text-crop" ng-if="news_type=='special'">{{ news.title_special }}</p>
+					<p class="description text-crop" ng-if="news_type=='normal'">{{ news.description }}</p>
+					<p class="description text-crop" ng-if="news_type=='special'">{{ news.description_special }}</p>
+					<p>Тема : {{ news_sections[news.section] }}</p>
+					<p>Новость выложена : {{ news.date }}</p>
+					<p>Автор : {{ news.author }}</p>
 
 				<span class="button-block">
-					<!-- <button ng-click="deleteNews(news._id)">Удалить</button> -->
+					<button ng-click="deleteNews(news._id)">Удалить</button>
 					<button ng-click="loadToFormForUpdate(news)">Редактировать</button>
 					<button><a href="/post/{{ news._id }}">Перейти в новость</a></button>
 				</span>
