@@ -30,20 +30,11 @@ function admin(express, config) {
 
 	router.post('/', function(req, res, next) {
 		news = new News(req.body);
-		console.log('news.linked_news[0]', news.linked_news[0]);
+		// ищем уже имеющиеся новости, чтобы вынуть связанные
 		News.findById(news.linked_news[0], function(err, result) {
-			if (result) {
-				console.log(result);
-				if (result.linked_news) {
-					news.linked_news = news.linked_news.concat(result.linked_news);
-				}
-				console.log(news.linked_news);
-
-				news.linked_news = news.linked_news.filter(function(item, pos) {
-			    	return news.linked_news.indexOf(item) == pos;
-				})
-			}
-			console.log('news.linked_news', news.linked_news);
+			// обьединяем уже имеющиеся связанные новости с добавленными
+			news.linked_news = concatAndFilter(news.linked_news, result);
+			// сохраняем сущность
 			news.save(function(err) {
 				if (err) return next(err);
 				save = true;
@@ -68,17 +59,11 @@ function admin(express, config) {
 	router.post('/:id', function(req, res, next) {
 		var post = req.body;
 		delete post._id;
-		console.log('post.linked_news[0]', post.linked_news[0]);
+		// ищем уже имеющиеся новости, чтобы вынуть связанные
 		News.findById(post.linked_news[0], function(err, result) {
-			if (result) {
-				if (result.linked_news) {
-					post.linked_news = post.linked_news.concat(result.linked_news);
-				}
-
-				post.linked_news = post.linked_news.filter(function(item, pos) {
-			    	return post.linked_news.indexOf(item) == pos;
-				})
-			}
+			// обьединяем уже имеющиеся связанные новости с добавленными
+			post.linked_news = concatAndFilter(post.linked_news, result);
+			// апдейтим сущность
 			News.findByIdAndUpdate(req.params.id, req.body, function(err, result) {
 				if (err) return next(err);
 				save = true;
@@ -105,6 +90,18 @@ function admin(express, config) {
 			res.json('deleted');
 		})
 	});
+
+	function concatAndFilter(arr ,result) {
+		if (result) {
+			if (result.linked_news) {
+				arr = arr.concat(result.linked_news);
+			}
+			arr = arr.filter(function(item, pos) {
+		    	return arr.indexOf(item) == pos;
+			})
+		}
+		return arr;
+	}
 
 	function saveMultilink(linked_posts, post) {
 		ll = linked_posts.length;

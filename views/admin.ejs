@@ -12,6 +12,14 @@
 
 <div class="admin-page" ng-controller="Admin" ng-init="init()">
 
+	<div class="warning" ng-show="show_warning">
+		<span class="warning-message">
+			<p>В ТЕКСТЕ НОВОСТИ АВТОР НЕ ПИШЕМ!</p>
+			<p>ВЫБИРАЕМ В КОНЦЕ В СПЕЦИАЛЬНОМ ОКНЕ</p>
+		</span>
+		<span class="close" ng-click="show_warning = false">X</span>
+	</div>
+
 	<div class="promises" ng-if="successful_save" ng-class="{ success : successful_save }">
 		<p><span class="fa fa-thumbs-up"></span> Новость успешно сохранена</p>
 	</div>
@@ -165,7 +173,6 @@
 						</div>
 
 					</div>
-					
 				</news>
 			</div>
 		</div>
@@ -188,7 +195,7 @@
 					<p>Автор : {{ news.author }}</p>
 
 				<span class="button-block">
-					<button ng-click="deleteNews(news._id)">Удалить</button>
+					<!-- <button ng-click="deleteNews(news._id)">Удалить</button> -->
 					<button ng-click="loadToFormForUpdate(news)">Редактировать</button>
 					<button><a href="/post/{{ news._id }}">Перейти в новость</a></button>
 				</span>

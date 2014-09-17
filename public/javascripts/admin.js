@@ -20,6 +20,8 @@ tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
 	$scope.news_sections = info.sections;
 	$scope.search_linked = {};
 
+	$scope.show_warning = true;
+
 	// значения для всех новостей админки
 	$scope.news_type = 'normal';
 	$scope.feed_blocks = [];
