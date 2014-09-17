@@ -50,6 +50,13 @@ tk.directive('forceAnimationScope', function() {
 	};
 });
 
+$(document).ready(function() {
+    $("#slider").owlCarousel({
+    	items : 2,
+    	itemsDesktop : [1199,2]
+    });
+});
+
 
 
 

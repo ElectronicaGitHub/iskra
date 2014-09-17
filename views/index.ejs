@@ -1,15 +1,69 @@
 <%- layout('base.ejs') %>
 <% script("/build/js/utils.js") -%>
-<% script("/build/js/index_page.js") -%>
 <% script("/javascripts/directives/news_element.js") -%>
+<% script("/libs/owl-carousel/owl-carousel/owl.carousel.min.js") -%>
+<% stylesheet("/libs/owl-carousel/owl-carousel/owl.carousel.css") -%>
+<% stylesheet("/libs/owl-carousel/owl-carousel/owl.theme.css") -%>
 <% stylesheet("/build/css/index.css") -%>
 <% stylesheet("/libs/fontawesome/css/font-awesome.min.css") -%>
+<% script("/build/js/index_page.js") -%>
 
 <% block('meta', partial('meta_index')) -%>
 <% block('title', 'Твой Космос | Новостное научно-популярное издание о науке и космосе') -%>
 
 <div ng-app="tvoyKosmos" ng-controller="Index" ng-init="init()">	
 	<div class="feed">
+		<div class="block padded">
+			<div class="events">
+				<div id="slider" class="owl-carousel">	
+					<div class="each-event">
+						<div class="event-image" style="background-image: url(https://s3-eu-west-1.amazonaws.com/tvoykosmos/imgs/02_09_14_laser1.jpg)"></div>
+						<div class="event-info-top">
+							<span>
+								<p>Это самое пиздатое в мире описание</p>
+							</span>
+						</div>
+						<div class="event-info">
+							<span>
+								<p>Это самое пиздатое в мире описание</p>
+							</span>
+						</div>
+					</div>
+					<div class="each-event">
+						<div class="event-image" style="background-image: url(https://s3-eu-west-1.amazonaws.com/tvoykosmos/imgs/02_09_14_laser1.jpg)"></div>
+						<div class="event-info-top">
+							<span>
+								<p>Это самое пиздатое в мире описание</p>
+							</span>
+						</div>
+						<div class="event-info">
+							<span>
+								<p>Это самое пиздатое в мире описание</p>
+							</span>
+						</div>
+					</div>
+					<div class="each-event">
+						<div class="event-image" style="background-image: url(https://s3-eu-west-1.amazonaws.com/tvoykosmos/imgs/02_09_14_laser1.jpg)"></div>
+						<div class="event-info">
+							<span>
+								<p>Это самое пиздатое в мире описание</p>
+								<p><span class="fa fa-eye"></span>246</p>
+							</span>
+						</div>
+					</div>
+					<div class="each-event">
+						<div class="event-image" style="background-image: url(https://s3-eu-west-1.amazonaws.com/tvoykosmos/imgs/02_09_14_laser1.jpg)"></div>
+						<div class="event-info">
+							<span>
+								<p>Это самое пиздатое в мире описание</p>
+								<p><span class="fa fa-eye"></span>246</p>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="article"></div>
+		</div>
 		<div ng-repeat="block in feed_blocks"
 			 class="block">
 			<news class="anim" 
