@@ -10,7 +10,7 @@ tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
 				$scope.loadToFormForUpdate(post);
 			}
 		} else {
-			$scope.page = 'list_page';
+			$scope.page = 'news_list';
 		}
 	}
 

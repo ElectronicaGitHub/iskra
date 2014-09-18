@@ -52,10 +52,13 @@ news.s22 {
 .button-top-panel {
 	padding: 20px 10px;
 }
-.button-top-panel > * {
-	padding: 5px 10px;
-	margin-right: 10px;
-	font-size: 18px;
+.button-top-panel p {
+	margin-bottom: 5px;
+}
+.button-top-panel button {
+	padding: 5px 5px;
+	width: 180px;
+	font-size: 14px;
 	font-family: 'RobCondBold';
 	outline: none;
 	border: 2px solid transparent;
@@ -72,6 +75,8 @@ news.s22 {
 .selected {
 	border: 2px solid black;
 	box-shadow: 0 2px 10px rgba(0,0,0,.9);
+	background-color: #137A29 !important;
+	color: white;
 }
 p.labels {
 	margin: 10px 0 0;
@@ -99,6 +104,13 @@ button.highlighted {
 }
 .list-page, .create-page {
 	padding: 0px 10px;
+}
+.each-event {
+	width: 290px;
+}
+.each-event:hover .event-image {
+	height: 175px;
+	width: 290px;
 }
 .news-in-list {
 	clear: both;

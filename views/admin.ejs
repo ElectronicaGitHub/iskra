@@ -25,17 +25,42 @@
 	</div>
 
 	<div class="button-top-panel">
-		<button ng-class="{ selected : page=='create_page' }" class="normal-button" ng-click="page='create_page'; news = {};">СОЗДАНИЕ</button>
-		<button ng-class="{ selected : page=='feed_page' }" class="normal-button" ng-click="page='feed_page'">ВИД ГЛАВНОЙ СТРАНИЦЫ</button>
-		<button ng-class="{ selected : page=='list_page' }" class="normal-button" ng-click="page='list_page'">СПИСОК</button>
-		<button ng-class="{ selected : page=='auth' }" 
-				ng-click="page='auth'">АВТОРИЗАЦИЯ</button>
+		<p>
+			<button ng-class="{ selected : page=='create_news' }" 
+					class="normal-button" 
+					ng-click="page='create_news'; news = {};">СОЗДАНИЕ НОВОСТИ</button>
+			<button class="normal-button"
+					ng-class="{ selected : page=='create_events'}"
+					ng-click="page='create_events'; events = {};">СОЗДАНИЕ СОБЫТИЯ</button>
+			
+			<button class="normal-button"
+					ng-class="{ selected : page=='create_articles'}"
+					ng-click="page='create_articles'; articles = {};">СОЗДАНИЕ СТАТЬИ</button>
+			<button class="normal-button" 
+					ng-class="{ selected : news_type=='normal' }" 
+					ng-click="news_type='normal'">НОРМАЛЬНЫЙ РЕЖИМ</button>
+		</p>
+		<p>
+			<button ng-class="{ selected : page=='news_list'}" class="normal-button" ng-click="page='news_list'">СПИСОК НОВОСТЕЙ</button>
+			
+			<button class="normal-button"
+					ng-class="{ selected : page=='events_list'}"
+					ng-click="page='events_list'">СПИСОК СОБЫТИЙ</button>
+			
+			<button class="normal-button"
+					ng-class="{ selected : page=='articles_list'}"
+					ng-click="page='articles_list'">СПИСОК СТАТЕЙ</button>	
+			<button class="special-button" 
+					ng-class="{ selected : news_type=='special' }" 
+					ng-click="news_type='special'">СПЕЦИАЛЬНЫЙ РЕЖИМ</button>
+		</p>
+		<p>
+			<button ng-class="{ selected : page=='auth' }" 
+					ng-click="page='auth'">АВТОРИЗАЦИЯ</button>
+			<!-- <button ng-class="{ selected : page=='feed_page' }" class="normal-button" ng-click="page='feed_page'">ВИД ГЛАВНОЙ СТРАНИЦЫ</button> -->
+		</p>		
 	</div>
 
-	<div class="button-top-panel">
-		<button class="normal-button" ng-class="{ selected : news_type=='normal' }" ng-click="news_type='normal'">НОРМАЛЬНЫЙ РЕЖИМ</button>
-		<button class="special-button" ng-class="{ selected : news_type=='special' }" ng-click="news_type='special'">СПЕЦИАЛЬНЫЙ РЕЖИМ</button>
-	</div>
 
 	<div ng-show="page=='auth'">
 		<form class="auth" action="/login" method="post">
@@ -53,7 +78,7 @@
 		</form>
 	</div>
 
-	<div ng-show="page=='create_page'" class="create-page">
+	<div ng-show="page=='create_news'" class="create-page">
 		<h1>СОЗДАНИЕ/РЕДАКТИРОВАНИЕ НОВОСТИ</h1>
 
 		<div class="input">
@@ -133,12 +158,12 @@
 			<div class="button-top-panel">
 				<button class="normal-button" 
 						ng-if="!post_loading && !news._id" 
-						ng-click="postNews(news, true)">Сохранить
+						ng-click="postNews(news, true)">Сохранить новость
 				</button>
 
 				<button class="normal-button" 
 						ng-if="!post_loading && news._id" 
-						ng-click="postNews(news)">Изменить
+						ng-click="postNews(news)">Изменить новость
 				</button>
 
 				<button class="normal-button" ng-if="post_loading">
@@ -152,7 +177,7 @@
 			<news ng-model="news" type="news_type" class="s22"></news>
 		</div>
 	</div>
-	<div ng-if="page=='feed_page'" ng-init="loadForPage(true)">
+	<!-- <div ng-if="page=='feed_page'" ng-init="loadForPage(true)">
 		<h1 style='padding-left : 10px'>НОВОСТНОЙ ФИД</h1>
 		
 		<div class="feed">
@@ -169,16 +194,59 @@
 						</div>
 						<div class="row2">
 							<span class="update" ng-click="loadToFormForUpdate(element)">Редактировать</span>
-							<!-- <span class="delete" ng-click="deleteNews(element._id, true)">Удалить</span> -->
+							<span class="delete" ng-click="deleteNews(element._id, true)">Удалить</span>
 						</div>
 
 					</div>
 				</news>
 			</div>
 		</div>
+	</div> -->
+
+	<div ng-if="page=='create_events'" class="create-page">
+		<div class="input">	
+			<h1>СОЗДАНИЕ И РЕДАКТИРОВАНИЕ СОБЫТИЯ</h1>
+			<p class="labels">Заголовок события</p>
+			<input type="text" ng-model="events.title">
+			<p class="labels">Описание события</p>
+			<input type="text" ng-model="events.description">
+			<p class="labels">Картинка для превью</p>
+			<input type="text" ng-model="events.image_preview">
+			<p class="labels">Картинка фулл( икс на игрек )</p>
+			<input type="text" ng-model="events.image_full">
+
+			<button class="normal-button" 
+						ng-if="!post_loading && !events._id" 
+						ng-click="postEvents(events, true)">Сохранить событие
+				</button>
+
+				<button class="normal-button" 
+						ng-if="!post_loading && events._id" 
+						ng-click="postEvents(events)">Изменить событие
+				</button>
+
+				<button class="normal-button" ng-if="post_loading">
+					<span class="fa fa-gear fa-spin"></span> Идет сохранение
+				</button>
+		</div>
+		<div class="output">
+			<div class="each-event">
+				<div class="event-image" style="background-image: url({{ events.image_preview }})"></div>
+				<div class="event-info-top">
+					<span>
+						<p>{{ events.title }}</p>
+					</span>
+				</div>
+				<div class="event-info">
+					<span>
+						<p>{{ events.title }}</p>
+					</span>
+				</div>
+			</div>
+		</div>
 	</div>
 
-	<div class="list-page" ng-if="page=='list_page'" ng-init="loadForPage()"> 
+	<div class="list-page" ng-if="page=='news_list'" ng-init="loadForPage()"> 
 		<h1>СПИСОК ВСЕХ НОВОСТЕЙ</h1>
 
 		<div ng-repeat="news in feeds" class="news-in-list">
