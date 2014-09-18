@@ -278,3 +278,118 @@ news.s22 .inner-container .text-container .description {
 @keyframes scale {
 	from { opacity : 0; -webkit-transform: scale(.5); -moz-transform: scale(.5); transform: scale(.5);}
 	to { opacity : 1; -webkit-transform: scale(1); -moz-transform: scale(1); transform: scale(1);}}
+
+
+
+/*//events*/
+.padded {
+	padding: 10px;
+}
+.events {
+	width: 100%;
+	height: 200px;
+}
+.article {
+	width: 100%;
+	height: 400px;
+}
+.events .each-event {
+	width: 100%;
+	height: 200px;
+	text-align: center;
+}
+.each-event .event-image {
+	display: inline-block;
+	background-position: center center;
+	background-size: cover;
+	border-radius: 50%;
+	width: 100px;
+	height: 100px;
+	border: 3px solid black;
+	margin: 20px 0 0 0;
+	-webkit-transition: all .4s;
+	-moz-transition: all .4s;
+	transition: all .4s;
+	
+}
+.each-event:hover .event-image {
+	height: 200px;
+	width: 200px;
+	margin: 0;
+	border: 0;
+}
+.each-event .event-info {
+	font-family: 'RobCondBold';
+	position: relative;
+	top: 0;
+	color: #000;
+	-webkit-transition: all .4s;
+	-moz-transition: all .4s;
+	transition: all .4s;
+}
+.each-event:hover .event-info {
+	top: 100px;
+}
+.each-event .event-info span {
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 20px;
+}
+.each-event .event-info span {
+	font-size: 16px;
+}
+.each-event .event-info-top {
+	font-family: 'RobCondBold';
+	position: absolute;
+	height: 200px;
+	width: 100%;
+	color: #000;
+	line-height: 200px;
+	top: 0;
+	padding: 0 50px;
+	-webkit-transition: all .4s;
+	-moz-transition: all .4s;
+	transition: all .4s;
+	-webkit-transform: translateY(-100%);
+	-moz-transform: translateY(-100%);
+	transform: translateY(-100%);
+}
+.each-event:hover .event-info-top {
+	-webkit-transform: translateY(0%);
+	-moz-transform: translateY(0%);
+	transform: translateY(0%);
+}
+
+.each-event .event-info-top span {
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 25px;
+	font-size: 20px;
+}
+.each-event .event-info-top span p {
+	font-size: 20px;
+	color: #fff;
+	text-shadow: 0px 1px 2px rgba(0,0,0,.5);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
