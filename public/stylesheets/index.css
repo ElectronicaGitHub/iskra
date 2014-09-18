@@ -287,36 +287,30 @@ news.s22 .inner-container .text-container .description {
 }
 .events {
 	width: 100%;
-	height: 200px;
-}
-.article {
-	width: 100%;
-	height: 400px;
+	height: 195px;
 }
 .events .each-event {
 	width: 100%;
-	height: 200px;
+	height: 175px;
 	text-align: center;
 }
 .each-event .event-image {
 	display: inline-block;
 	background-position: center center;
 	background-size: cover;
-	border-radius: 50%;
-	width: 100px;
+	width: 140px;
 	height: 100px;
-	border: 3px solid black;
-	margin: 20px 0 0 0;
+	margin: 0;
 	-webkit-transition: all .4s;
 	-moz-transition: all .4s;
 	transition: all .4s;
+	border-radius: 4px;
+	overflow: hidden;
 	
 }
 .each-event:hover .event-image {
-	height: 200px;
-	width: 200px;
-	margin: 0;
-	border: 0;
+	height: 175px;
+	width: 100%;
 }
 .each-event .event-info {
 	font-family: 'RobCondBold';
@@ -341,10 +335,10 @@ news.s22 .inner-container .text-container .description {
 .each-event .event-info-top {
 	font-family: 'RobCondBold';
 	position: absolute;
-	height: 200px;
+	height: 175px;
 	width: 100%;
 	color: #000;
-	line-height: 200px;
+	line-height: 175px;
 	top: 0;
 	padding: 0 50px;
 	-webkit-transition: all .4s;
@@ -371,23 +365,52 @@ news.s22 .inner-container .text-container .description {
 	color: #fff;
 	text-shadow: 0px 1px 2px rgba(0,0,0,.5);
 }
+.owl-page.active span {
+	background: #FFB52E !important;
+}
 
 /*// arcticle*/
 
 .article {
-	padding: 15px;
+	width: 100%;
+	height: 385px;
+	/*padding: 15px;*/
 }
-.arcticle-image {
+.article-image {
+	position: relative;
 	background-position: center center;
 	background-size: cover;
 	width: 100%;
 	height: 100%;
-	line-height: 300px;
+	line-height: 385px;
+	text-align: center;
+	border-radius: 5px;
+	overflow: hidden;
 }
 .article-info {
 	display: inline-block;
 	vertical-align: middle;
 	line-height: 30px;
+	font-family: 'RobCondBold';
+	font-size: 18px;
+	color: #fff;
+	z-index: 9999;
+	position: relative;
+}
+.article .fader {
+	position: absolute;
+	top: 0;right: 0;bottom: 0;left: 0;
+	background-color: rgba(0,0,0,.4);
+}
+.article-type {
+	font-size: 16px;
+}
+.article-title {
+	font-size: 20px;
+	color: #FFB52E;
+}
+.article-misc {
+	font-size: 14px;
 }
 
 
