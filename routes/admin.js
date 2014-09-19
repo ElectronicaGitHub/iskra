@@ -1,4 +1,6 @@
-var News = require('../models/News');
+var News = require('../models/News'),
+	Events = require('../models/Event'),
+	Articles = require('../models/Article');
 
 function admin(express, config) {
 	var router = express.Router();
@@ -28,7 +30,49 @@ function admin(express, config) {
 		res.render('admin');
 	});
 
-	router.post('/', function(req, res, next) {
+	router.post('/articles/', function(req, res, next) {
+		articles = new Articles(req.body);
+		articles.save(function(err) {
+			if (err) return next(err);
+			res.json({
+				save: true
+			})
+		})
+	})
+
+	router.post('/articles/:id', function(req, res, next) {
+		var articles = req.body;
+		delete articles._id;
+		Articles.findByIdAndUpdate(req.params.id, articles, function(err, result) {
+			if (err) return next(err);
+			res.json({
+				save: true
+			})
+		})
+	})
+
+	router.post('/events/', function(req, res, next) {
+		events = new Events(req.body);
+		events.save(function(err) {
+			if (err) return next(err);
+			res.json({
+				save: true
+			})
+		})
+	})
+
+	router.post('/events/:id', function(req, res, next) {
+		var events = req.body;
+		delete events._id;
+		Events.findByIdAndUpdate(req.params.id, events, function(err, result) {
+			if (err) return next(err);
+			res.json({
+				save: true
+			})
+		})
+	})
+
+	router.post('/news/', function(req, res, next) {
 		news = new News(req.body);
 		// ищем уже имеющиеся новости, чтобы вынуть связанные
 		News.findById(news.linked_news[0], function(err, result) {
@@ -55,8 +99,7 @@ function admin(express, config) {
 		})
 	})
 
-
-	router.post('/:id', function(req, res, next) {
+	router.post('/news/:id', function(req, res, next) {
 		var post = req.body;
 		delete post._id;
 		// ищем уже имеющиеся новости, чтобы вынуть связанные
@@ -84,10 +127,24 @@ function admin(express, config) {
 		})
 	});
 
-	router.delete('/:id', function(req, res, next) {
+	// Удаление сущностией
+
+	router.delete('/news/:id', function(req, res, next) {
 		News.findByIdAndRemove(req.params.id, function(err, result) {
 			if (err) return next(err);
-			res.json('deleted');
+			res.json('news deleted');
+		})
+	});
+	router.delete('/events/:id', function(req, res, next) {
+		Events.findByIdAndRemove(req.params.id, function(err, result) {
+			if (err) return next(err);
+			res.json('event deleted');
+		})
+	});
+	router.delete('/articles/:id', function(req, res, next) {
+		Articles.findByIdAndRemove(req.params.id, function(err, result) {
+			if (err) return next(err);
+			res.json('article deleted');
 		})
 	});
 

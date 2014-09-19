@@ -14,15 +14,17 @@ tk.controller('Index', [ '$scope', '$http', '$rootScope', '$location',
 
 	$scope.init = function() {
 		$scope.getNews();
+		$scope.getEvents();
+		$scope.getArticle();
 	}
 	$scope.getNews = function(param) {
 		if (param) {
 			$scope.news_loader = true;
 		}
 		if (section) {
-			url = '/news/?section=' + section + '&page=' + page;
+			var url = '/news/?section=' + section + '&page=' + page;
 		} else {
-			url = '/news/?page=' + page;
+			var url = '/news/?page=' + page;
 		}
 		$http.get(url)
 			.success(function(data) {
@@ -39,6 +41,50 @@ tk.controller('Index', [ '$scope', '$http', '$rootScope', '$location',
 				console.log(data);
 			})
 	}
+	$scope.getEvents = function() {
+		var url = '/events/';
+		$http.get(url)
+			.success(function(data) {
+				$scope.event_list = data;
+				console.log($scope.event_list);
+				setTimeout(function() {
+				    $("#slider").owlCarousel({
+				    	items : 2,
+				    	itemsDesktop : [1199,2],
+				    	lazyLoad : true,
+				    	pagination : false,
+				    	autoPlay : true,
+				    	stopOnHover : true
+				    });
+				})
+			})
+			.error(function(data) {
+				console.log(data);
+			})
+	}
+
+	$scope.getArticle = function() {
+		var url = '/articles/?limit=1';
+		$http.get(url)
+			.success(function(data) {
+				$scope.last_article = data[0];
+				console.log($scope.last_article);
+				// setTimeout(function() {
+				//     $("#slider").owlCarousel({
+				//     	items : 2,
+				//     	itemsDesktop : [1199,2],
+				//     	lazyLoad : true,
+				//     	pagination : false,
+				//     	autoPlay : true,
+				//     	stopOnHover : true
+				//     });
+				// })
+			})
+			.error(function(data) {
+				console.log(data);
+			})
+	}
+
 }])
 tk.directive('forceAnimationScope', function() {
 	return {
@@ -49,24 +95,4 @@ tk.directive('forceAnimationScope', function() {
 		}
 	};
 });
-
-$(document).ready(function() {
-    $("#slider").owlCarousel({
-    	items : 2,
-    	itemsDesktop : [1199,2],
-    	lazyLoad : true,
-    	pagination : false,
-    	autoPlay : true,
-    	stopOnHover : true
-    });
-});
-
-
-
-
-
-
-
-
-
 

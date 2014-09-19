@@ -112,7 +112,7 @@ button.highlighted {
 	height: 175px;
 	width: 290px;
 }
-.news-in-list {
+.news-in-list, .events-in-list {
 	clear: both;
 	background-color: #ddd;
 	border: 1px solid #bbb;
@@ -120,7 +120,7 @@ button.highlighted {
 	overflow: hidden;
 	margin-bottom: 10px;
 }
-.news-in-list p.title {
+div[class*=-in-list] p.title  {
 	font-family: 'RobCondBold';
 	font-size: 18px;
 }

@@ -20,7 +20,7 @@ tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
 	$scope.news_sections = info.sections;
 	$scope.search_linked = {};
 
-	$scope.show_warning = true;
+	// $scope.show_warning = true;
 
 	// значения для всех новостей админки
 	$scope.news_type = 'normal';
@@ -70,6 +70,29 @@ tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
 				console.log(data);
 			})
 	};
+	$scope.getEvents = function() {
+		url = '/events?show_description=1';
+		$http.get(url)
+			.success(function(data) {
+				$scope.event_list = data;
+				console.log($scope.event_list);
+			})
+			.error(function(data) {
+				console.log(data);
+			})
+	};
+	$scope.getArticles = function() {
+		url = '/articles';
+		$http.get(url)
+			.success(function(data) {
+				$scope.article_list = data;
+				console.log($scope.article_list);
+			})
+			.error(function(data) {
+				console.log(data);
+			});
+	};
+
 	$scope.getLinkedPosts = function() {
 		data = {
 			search_query : $scope.search_linked.search_query,
@@ -88,7 +111,7 @@ tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
 
 	$scope.postNews = function(news, first_save) {
 		$scope.post_loading = true;
-		url = first_save ? '/admin' : '/admin/' + news._id;
+		var url = first_save ? '/admin/news/' : '/admin/news/' + news._id;
 		if (news.linked_news) {
 			news.linked_news = news.linked_news.map(function(e) {
 				return e._id;
@@ -104,7 +127,7 @@ tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
 						$scope.successful_save = false;
 						$scope.$apply();
 					}, 1500);
-					$scope.page = 'list_page';
+					$scope.page = 'news_list';
 				}
 			})
 			.error(function(data) {
@@ -113,32 +136,106 @@ tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
 			})
 	};
 
-	$scope.loadToFormForUpdate = function(news) {
-		$http.get('/news/' + news._id)
+	$scope.postEvents = function(events, first_save) {
+		$scope.post_loading = true;
+		var url = first_save ? '/admin/events/' : '/admin/events/' + events._id;
+
+		$http.post(url, events)
+			.success(function(data) {
+				$scope.post_loading = false;
+				console.log(data);
+				if (data.save) {
+					$scope.successful_save = true;
+					setTimeout(function() {
+						$scope.successful_save = false;
+						$scope.$apply();
+					}, 1500);
+					$scope.page = 'events_list';
+				}
+			})
+			.error(function(data) {
+				$scope.post_loading = false;
+				console.log(data);
+			})
+	};
+
+	$scope.postArticles = function(articles, first_save) {
+		$scope.post_loading = true;
+		var url = first_save ? '/admin/articles/' : '/admin/articles/' + articles._id;
+
+		$http.post(url, articles)
+			.success(function(data) {
+				$scope.post_loading = false;
+				console.log(data);
+				if (data.save) {
+					$scope.successful_save = true;
+					setTimeout(function() {
+						$scope.successful_save = false;
+						$scope.$apply();
+					}, 1500);
+					$scope.page = 'articles_list';
+				}
+			})
+			.error(function(data) {
+				$scope.post_loading = false;
+				console.log(data);
+			})
+	};
+
+	$scope.loadToFormForUpdate = function(obj, what_to_load) {
+		if (what_to_load == 'news') {
+			var url = '/news/' + obj._id; 
+			var goToLink = 'create_news';
+		} 
+		if (what_to_load == 'events') {
+			var url = '/events/' + obj._id; 
+			var goToLink = 'create_events';
+		}
+		if (what_to_load == 'articles') {
+			var url = '/articles/' + obj._id; 
+			var goToLink = 'create_articles';
+		}
+		$http.get(url)
 			.success(function(data) {
 				console.log(data);
-				$scope.page = 'create_page';
-				$scope.news = data;
-				$http.get('/news/many?posts=' + $scope.news.linked_news.join(','))
-					.success(function(data) {
-						console.log('linked', data);
-						$scope.news.linked_news = data;
-					})
-					.error(function(data) {
-						console.log(data);
-					});
+				// куда переходим для открытия
+				$scope.page = goToLink;
+				console.log($scope.page);
+				// что необходимо редактировать
+				$scope[what_to_load] = data;
+				if (what_to_load == 'news') {
+					$http.get('/news/many?posts=' + $scope.news.linked_news.join(','))
+						.success(function(data) {
+							console.log('linked', data);
+							$scope.news.linked_news = data;
+						})
+						.error(function(data) {
+							console.log(data);
+						});
+				}
 			})
 			.error(function(data) {
 				console.log(data);
 			})
 	};
 
-	$scope.deleteNews = function(news_id, render_blocks) {
-		url = '/admin/' + news_id;
+	$scope.deleteThing = function(id, what_to_load) {
+		if (what_to_load == 'news') {
+			var url = '/admin/news/' + id;
+			var afterload = $scope.getNews;
+		}
+		if (what_to_load == 'events') {
+			var url = '/admin/events/' + id;
+			var afterload = $scope.getEvents;
+		}
+		if (what_to_load == 'articles') {
+			var url = '/admin/articles/' + id;
+			var afterload = $scope.getArticles;
+		}
 		$http.delete(url)
 			.success(function(data) {
 				console.log(data);
-				$scope.setDefaultAndGet(render_blocks);
+				afterload();
 			})
 			.error(function(data) {
 				console.log(data);

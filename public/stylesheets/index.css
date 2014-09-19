@@ -407,13 +407,17 @@ news.s22 .inner-container .text-container .description {
 }
 .article-type {
 	font-size: 16px;
+	margin-bottom: 10px;
 }
 .article-title {
 	font-size: 20px;
+	line-height: 26px;
 	color: #FFB52E;
+	padding: 0px 40px;
 }
 .article-misc {
 	font-size: 14px;
+	margin-top: 10px;
 }
 
 

@@ -14,7 +14,7 @@ var Article = new Schema({
 	image : {
 		type: String
 	},
-	special : {
+	type_label : {
 		type : String
 	},
 	author : {

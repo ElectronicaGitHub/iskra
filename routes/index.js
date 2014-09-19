@@ -1,4 +1,6 @@
 var News = require('../models/News'),
+	Events = require('../models/Event'),
+	Articles = require('../models/Article'),
     sm = require('sitemap'),
     RSS = require('rss'),
     xml = require('xml'),
@@ -254,8 +256,50 @@ function fn(express) {
 			})
 	})
 
+	router.get('/articles', function(req, res, next) {
+		params = req.query;
+		Articles.find({}, {
+			content : 0
+		}, params).sort({ date : -1 })
+			.exec(function(err, results) {
+				if (err) return next(err);
+				res.json(results)
+			})
+	})
 
+	router.get('/articles/:id', function(req, res, next) {
+		Articles.findById(req.params.id, function(err, result) {
+			if (err) return next(err);
+			res.json(result);
+		})
+	});
 
+	router.get('/events', function(req, res, next) {
+		var show_description = parseInt(req.query.show_description);
+		if (show_description) {
+			excluding = {
+				image_full : 0
+			}
+		} else excluding = {
+			description : 0,
+			image_full : 0
+		}
+		Events.find({}, excluding, {
+			limit : 8
+		})
+			.sort({ date: -1 })
+			.exec(function(err, results) {
+				if (err) return next(err);
+				res.json(results);
+			})
+	})
+
+	router.get('/events/:id', function(req, res, next) {
+		Events.findById(req.params.id, function(err, result) {
+			if (err) return next(err);
+			res.json(result);
+		})
+	});
 
 	return router;
 }

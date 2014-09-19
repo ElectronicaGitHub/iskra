@@ -21,7 +21,7 @@
 	</div>
 
 	<div class="promises" ng-if="successful_save" ng-class="{ success : successful_save }">
-		<p><span class="fa fa-thumbs-up"></span> Новость успешно сохранена</p>
+		<p><span class="fa fa-thumbs-up"></span> Успешное сохранение</p>
 	</div>
 
 	<div class="button-top-panel">
@@ -41,7 +41,9 @@
 					ng-click="news_type='normal'">НОРМАЛЬНЫЙ РЕЖИМ</button>
 		</p>
 		<p>
-			<button ng-class="{ selected : page=='news_list'}" class="normal-button" ng-click="page='news_list'">СПИСОК НОВОСТЕЙ</button>
+			<button ng-class="{ selected : page=='news_list'}" 
+					class="normal-button" 
+					ng-click="page='news_list'">СПИСОК НОВОСТЕЙ</button>
 			
 			<button class="normal-button"
 					ng-class="{ selected : page=='events_list'}"
@@ -175,7 +177,7 @@
 			<news ng-model="news" type="news_type" class="s11"></news>
 			<news ng-model="news" type="news_type" class="s21"></news>
 			<news ng-model="news" type="news_type" class="s22"></news>
-		</div>
+		</div>1
 	</div>
 	<!-- <div ng-if="page=='feed_page'" ng-init="loadForPage(true)">
 		<h1 style='padding-left : 10px'>НОВОСТНОЙ ФИД</h1>
@@ -203,6 +205,54 @@
 		</div>
 	</div> -->
 
+	<div ng-if="page=='create_articles'" class="create-page">
+		<div class="input">
+			<p class="labels">Мини заголовок указывающий тип статьи</p>
+			<input type="text" ng-model="articles.type_label">
+			<p class="labels">Заголовок статьи</p>
+			<input type="text" ng-model="articles.title">
+			<p class="labels">Описание статьи</p>
+			<input type="text" ng-model="articles.description">
+			<p class="labels">Картинка статьи</p>
+			<input type="text" ng-model="articles.image">
+			<p class="labels">Контент статьи</p>
+			<textarea ui-tinymce="tinymce_options"
+				   	  ng-model="articles.content">
+			</textarea>
+			<p class="labels">Автор</p>
+			<select ng-model="articles.author" 
+					ng-options="a as a for a in authors">
+			</select>
+			<div class="button-top-panel">
+				<button class="normal-button" 
+						ng-if="!post_loading && !articles._id" 
+						ng-click="postArticles(articles, true)">Сохранить статью
+				</button>
+
+				<button class="normal-button" 
+						ng-if="!post_loading && articles._id" 
+						ng-click="postArticles(articles)">Изменить статью
+				</button>
+
+				<button class="normal-button" ng-if="post_loading">
+					<span class="fa fa-gear fa-spin"></span> Идет сохранение статьи
+				</button>
+			</div>
+		</div>
+		<div class="output">
+			<div class="article">
+				<div class="article-image" style="background-image: url({{ articles.image }})">
+					<div class="fader"></div>
+					<span class="article-info">
+						<p class="article-type">{{ articles.type_label }}</p>
+						<p class="article-title">{{ articles.title }}</p>
+						<p class="article-misc"><span class="fa fa-eye"></span> <span>260</span></p>
+					</span>
+				</div>	
+			</div>
+		</div>
+	</div>
+
 	<div ng-if="page=='create_events'" class="create-page">
 		<div class="input">	
 			<h1>СОЗДАНИЕ И РЕДАКТИРОВАНИЕ СОБЫТИЯ</h1>
@@ -215,7 +265,8 @@
 			<p class="labels">Картинка фулл( икс на игрек )</p>
 			<input type="text" ng-model="events.image_full">
 
-			<button class="normal-button" 
+			<div class="button-top-panel">
+				<button class="normal-button" 
 						ng-if="!post_loading && !events._id" 
 						ng-click="postEvents(events, true)">Сохранить событие
 				</button>
@@ -228,6 +279,7 @@
 				<button class="normal-button" ng-if="post_loading">
 					<span class="fa fa-gear fa-spin"></span> Идет сохранение
 				</button>
+			</div>
 		</div>
 		<div class="output">
 			<div class="each-event">
@@ -247,10 +299,7 @@
 	</div>
 
 	<div class="list-page" ng-if="page=='news_list'" ng-init="loadForPage()"> 
-		<h1>СПИСОК ВСЕХ НОВОСТЕЙ</h1>
-
 		<div ng-repeat="news in feeds" class="news-in-list">
-			
 			<div ng-if="news_type=='normal'" class="image-info" style="background-image: url({{ news.image }})"></div>
 			<div ng-if="news_type=='special'" class="image-info" style="background-image: url({{ news.image_special }})"></div>
 			<span class="info">
@@ -263,11 +312,47 @@
 					<p>Автор : {{ news.author }}</p>
 
 				<span class="button-block">
-					<!-- <button ng-click="deleteNews(news._id)">Удалить</button> -->
-					<button ng-click="loadToFormForUpdate(news)">Редактировать</button>
+					<!-- <button ng-click="deleteThing(news._id, 'news')">Удалить</button> -->
+					<button ng-click="loadToFormForUpdate(news, 'news')">Редактировать</button>
 					<button><a href="/post/{{ news._id }}">Перейти в новость</a></button>
 				</span>
 			</span>
 		</div>
 	</div>
+
+	<div class="list-page" ng-if="page=='events_list'" ng-init="getEvents();">
+		<div class="events-in-list" ng-repeat="evt in event_list">
+			<div class="image-info" style="background-image: url({{ evt.image_preview }})">
+			</div>
+			<div class="info">
+				<p class="title text-crop">{{ evt.title }}</p>
+				<p class="description text-crop">{{ evt.description }}</p>
+				<span class="button-block">
+					<!-- <button ng-click="deleteThing(evt._id, 'events')">Удалить</button> -->
+					<button ng-click="loadToFormForUpdate(evt, 'events')">Редактировать</button>
+					<button><a href="/event/{{ evt._id }}">Перейти в новость</a></button>
+				</span>	
+			</div>
+		</div>
+	</div>
+
+	<div class="list-page" ng-if="page=='articles_list'" ng-init="getArticles();">
+		<div class="events-in-list" ng-repeat="art in article_list">
+			<div class="image-info" style="background-image: url({{ art.image }})">
+			</div>
+			<div class="info">
+				<p class="title text-crop">{{ art.title }}</p>
+				<p class="description text-crop">{{ art.description }}</p>
+				<p>Автор: {{ art.author }}</p>
+				<p>Тип: {{ art.type_label }}</p>
+				<span class="button-block">
+					<button ng-click="deleteThing(art._id, 'articles')">Удалить</button>
+					<button ng-click="loadToFormForUpdate(art, 'articles')">Редактировать</button>
+					<button><a href="/event/{{ art._id }}">Перейти в новость</a></button>
+				</span>	
+			</div>
+		</div>
+	</div>
+
+
 </div>

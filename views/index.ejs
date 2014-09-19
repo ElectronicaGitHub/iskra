@@ -15,71 +15,35 @@
 	<div class="feed">
 		<div class="block padded">
 			<div class="events">
-				<div id="slider" class="owl-carousel">	
-					<div class="each-event">
-						<div class="event-image" style="background-image: url(https://s3-eu-west-1.amazonaws.com/tvoykosmos/imgs/02_09_14_laser1.jpg)"></div>
+				<div id="slider" 
+					 class="owl-carousel">	
+					<div class="each-event" 
+						 ng-repeat="evt in event_list">
+						<div class="event-image" 
+							 style="background-image: url({{ evt.image_preview }})">
+						</div>
 						<div class="event-info-top">
 							<span>
-								<p>Это самое пиздатое в мире описание</p>
+								<p>{{ evt.title }}</p>
 							</span>
 						</div>
 						<div class="event-info">
 							<span>
-								<p>Это самое пиздатое в мире описание</p>
-							</span>
-						</div>
-					</div>
-					<div class="each-event">
-						<div class="event-image" style="background-image: url(https://s3-eu-west-1.amazonaws.com/tvoykosmos/imgs/02_09_14_laser1.jpg)"></div>
-						<div class="event-info-top">
-							<span>
-								<p>Это самое пиздатое в мире описание</p>
-							</span>
-						</div>
-						<div class="event-info">
-							<span>
-								<p>Это самое пиздатое в мире описание</p>
-							</span>
-						</div>
-					</div>
-					<div class="each-event">
-						<div class="event-image" style="background-image: url(https://s3-eu-west-1.amazonaws.com/tvoykosmos/imgs/02_09_14_laser1.jpg)"></div>
-						<div class="event-info-top">
-							<span>
-								<p>Это самое пиздатое в мире описание</p>
-							</span>
-						</div>
-						<div class="event-info">
-							<span>
-								<p>Это самое пиздатое в мире описание</p>
-							</span>
-						</div>
-					</div>
-					<div class="each-event">
-						<div class="event-image" style="background-image: url(https://s3-eu-west-1.amazonaws.com/tvoykosmos/imgs/02_09_14_laser1.jpg)"></div>
-						<div class="event-info-top">
-							<span>
-								<p>Это самое пиздатое в мире описание</p>
-							</span>
-						</div>
-						<div class="event-info">
-							<span>
-								<p>Это самое пиздатое в мире описание</p>
+								<p>{{ evt.title }}</p>
 							</span>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="article">
-				<div class="article-image" style="background-image: url(http://i.space.com/images/i/000/041/418/iFF/klingon-approach-axanar.jpg?1408050537)">
+				<div class="article-image" style="background-image: url({{ last_article.image }})">
 					<div class="fader"></div>
 					<span class="article-info">
-						<p class="article-type">Обзор</p>
-						<p class="article-title">Топ 10 кинорежиссеров снявших фильмы о космосе</p>
-						<p class="article-misc"><span class="fa fa-eye"></span> <span>260</span></p>
+						<p class="article-type">{{ last_article.type_label }}</p>
+						<p class="article-title">{{ last_article.title}}</p>
+						<p class="article-misc"><span class="fa fa-eye"></span> <span>{{ last_article.views }}</span></p>
 					</span>
-				</div>
-				
+				</div>	
 			</div>
 		</div>
 		<div ng-repeat="block in feed_blocks"
