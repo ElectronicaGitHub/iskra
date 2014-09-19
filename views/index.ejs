@@ -5,6 +5,7 @@
 <% stylesheet("/libs/owl-carousel/owl-carousel/owl.carousel.css") -%>
 <% stylesheet("/libs/owl-carousel/owl-carousel/owl.theme.css") -%>
 <% stylesheet("/build/css/index.css") -%>
+<% stylesheet("/build/css/event-line.css") -%>
 <% stylesheet("/libs/fontawesome/css/font-awesome.min.css") -%>
 <% script("/build/js/index_page.js") -%>
 
@@ -16,22 +17,24 @@
 		<div class="block padded">
 			<div class="events">
 				<div id="slider" 
-					 class="owl-carousel">	
+					 class="owl-carousel">
 					<div class="each-event" 
 						 ng-repeat="evt in event_list">
-						<div class="event-image" 
-							 style="background-image: url({{ evt.image_preview }})">
-						</div>
-						<div class="event-info-top">
-							<span>
-								<p>{{ evt.title }}</p>
-							</span>
-						</div>
-						<div class="event-info">
-							<span>
-								<p>{{ evt.title }}</p>
-							</span>
-						</div>
+						<a href="/event/{{ evt._id }}">
+							<div class="event-image" 
+								 style="background-image: url({{ evt.image_preview }})">
+							</div>
+							<div class="event-info-top">
+								<span>
+									<p>{{ evt.title }}</p>
+								</span>
+							</div>
+							<div class="event-info">
+								<span>
+									<p>{{ evt.title }}</p>
+								</span>
+							</div>
+						</a>	
 					</div>
 				</div>
 			</div>

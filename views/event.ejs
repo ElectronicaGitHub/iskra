@@ -1,0 +1,93 @@
+<%- layout('base.ejs') %>
+
+<script>
+	window.event_ = <%- JSON.stringify(event_) %>
+</script>
+
+<% script("/libs/moment/min/moment-with-locales.min.js") -%>
+<% script("/build/js/share.js") -%>
+<% script("/build/js/event.js") -%>
+<% script("/libs/owl-carousel/owl-carousel/owl.carousel.min.js") -%>
+<% stylesheet("/libs/owl-carousel/owl-carousel/owl.carousel.css") -%>
+<% stylesheet("/libs/owl-carousel/owl-carousel/owl.theme.css") -%>
+<% stylesheet("/build/css/content-columns.css") -%>
+<% stylesheet("/build/css/event-line.css") -%>
+<% stylesheet("/build/css/events.css") -%>
+
+<div class="page" ng-controller="eventCtrl" ng-init="init()">
+	<article class="post">
+		<div class="image">
+			<img src="<%- event_.image_preview %>">
+		</div>
+		<div class="info">
+			<p class="title"><%- event_.title %></p>
+			<p class='date gray'>Событие выложено {{ event_.date }}</p>
+			<p class="description"><%- event_.description %></p>
+		</div>
+	</article>
+
+	<aside class="events-column">
+		<div class="events">
+			<div id="slider" 
+				 class="owl-carousel">
+				<div class="each-event" 
+					 ng-repeat="evt in event_list">
+					<a href="/event/{{ evt._id }}">
+						<div class="event-image" 
+							 style="background-image: url({{ evt.image_preview }})">
+						</div>
+						<div class="event-info-top">
+							<span>
+								<p>{{ evt.title }}</p>
+							</span>
+						</div>
+						<div class="event-info">
+							<span>
+								<p>{{ evt.title }}</p>
+							</span>
+						</div>
+					</a>	
+				</div>
+			</div>
+		</div>
+	</aside>
+
+
+	<aside class="list">
+		<div class="posts-list gray">
+			<h3 class="tag-title popular">Последние новости</h3>
+			<a href="/post/{{ news._id }}" ng-repeat="news in last">
+				<div ng-if="news_type=='normal'" class="each-post">
+					<div class="image" style="background-image : url({{ news.image }})"></div>
+					<div class="title">{{news.title}}</div>
+					<div class="description">{{news.description}}</div>
+				</div>
+				<div ng-if="news_type=='special'" class="each-post">
+					<div class="image" style="background-image : url({{ news.image_special }})"></div>
+					<div class="title">{{news.title_special}}</div>
+					<div class="description">{{news.description_special}}</div>
+				</div>
+			</a>
+		</div>
+
+		<div id="vk_groups" style="margin: 0 auto"></div>
+	</aside>
+	<aside class="misc">
+		<div class="posts-list">
+			<h3 class="tag-title">Популярное за неделю</h3>
+			<a href="/post/{{ news._id }}" ng-repeat="news in popular">
+				<div ng-if="news_type=='normal'" class="each-post">
+					<div class="title">{{news.title}}</div>
+					<div class="description">{{news.description}}</div>
+				</div>
+				<div ng-if="news_type=='special'" class="each-post">
+					<div class="title">{{news.title_special}}</div>
+					<div class="description">{{news.description_special}}</div>
+				</div>
+			</a>
+		</div>
+		<a class="twitter-timeline" href="https://twitter.com/tvoykosmosbaby" data-widget-id="500006500979331072"></a>
+
+		<div class="fb-like-box" data-href="https://www.facebook.com/tvoyredaktor" data-width="272" data-height="200" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
+	</aside>
+</div>

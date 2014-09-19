@@ -167,6 +167,16 @@ function fn(express) {
 		})
 	});
 
+	router.get('/event/:id', function(req, res, next) {
+		var update = { $inc : { views : 1}};
+		Events.findByIdAndUpdate(req.params.id, update, function(err, result) {
+			if (err) return next(err);
+			res.render('event', {
+				event_ : result
+			})
+		})
+	})
+
 	router.get('/news/many', function(req, res, err) {
 		posts = req.query.posts.split(',');
 		console.log('posts', posts);
