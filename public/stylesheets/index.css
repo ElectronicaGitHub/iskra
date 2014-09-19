@@ -58,7 +58,7 @@ news.s22 {
 	-webkit-transition: 0.2s;
 	-moz-transition: 0.2s;
 	transition: 0.2s;
-	z-index: 9999;	
+	z-index: 999;	
 }
 .inner-container:hover .hover-stater {
 	border-top: 4px solid #FFB52E;

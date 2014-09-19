@@ -285,6 +285,11 @@ function fn(express) {
 	});
 
 	router.get('/events', function(req, res, next) {
+		if (req.query.limit) {
+			var limit = req.query.limit;
+		} else {
+			var limit = 6;
+		}
 		var show_description = parseInt(req.query.show_description);
 		if (show_description) {
 			excluding = {
@@ -295,7 +300,7 @@ function fn(express) {
 			image_full : 0
 		}
 		Events.find({}, excluding, {
-			limit : 8
+			limit : limit
 		})
 			.sort({ date: -1 })
 			.exec(function(err, results) {
