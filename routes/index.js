@@ -190,10 +190,10 @@ function fn(express) {
 	router.get('/popular/', function(req, res, next) {
 		if (req.query.range == 'month') {
 			var d = new Date();
-			d.setDate(d.getDate() - 7);
+			d.setMonth(d.getMonth() - 1);
 		} else {
 			var d = new Date();
-			d.setMonth(d.getMonth() - 1);
+			d.setDate(d.getDate() - 7);
 		}
 		News.find({ date : { $gte : d }}, {
 			content : 0,
