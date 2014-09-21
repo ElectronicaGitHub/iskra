@@ -15,7 +15,16 @@ function fn(express) {
 
 		console.log('req.user', req.user)
 
-		function FindNewsAndRespond(limit, render_view) {
+		function FindNewsAndRespond(limit, render_view, include_article) {
+			article = {};
+			if (include_article) {
+				Articles.find({})
+					.sort({ date : -1})
+					.exec(function(err, results) {
+						if (err) return next(err);
+						article = results[0];
+					})
+			}
 			News.find({}, {
 				content: 0,
 				content_special: 0
@@ -25,7 +34,8 @@ function fn(express) {
 					if (err) return next(err);
 					res.render(render_view, {
 						news : results,
-						ajax : false
+						ajax : false,
+						article : article
 					})
 				})
 		}
@@ -34,7 +44,7 @@ function fn(express) {
 		} else {
 			md = new MobileDetect(req.headers['user-agent']);
 			if (md.phone()) {
-				FindNewsAndRespond(20, 'index-mobile');
+				FindNewsAndRespond(20, 'index-mobile', true);
 			} else {
 				res.render('index', {
 					ajax : true
@@ -141,8 +151,6 @@ function fn(express) {
 			if (err) return next(err);
 			md = new MobileDetect(req.headers['user-agent']);
 			if (md.phone()) {
-				// var d = new Date();
-				// d.setDate(d.getDate() - 7);
 				News.find({ _id : { $ne : req.params.id }}, {
 					content : 0,
 					content_special: 0
@@ -171,10 +179,72 @@ function fn(express) {
 		var update = { $inc : { views : 1}};
 		Events.findByIdAndUpdate(req.params.id, update, function(err, result) {
 			if (err) return next(err);
-			res.render('event', {
-				event_ : result
-			})
+			md = new MobileDetect(req.headers['user-agent']);
+			if (md.phone()) {
+				News.find({}, {
+					content : 0,
+					content_special: 0
+				}, { limit : 7})
+					.sort({ date : -1})
+					.exec(function(err, results) {
+						if (err) return next(err);
+						res.render('event-mobile', {
+							event_ : result,
+							posts : results,
+							moment : moment
+						});
+					})
+			} else {
+				res.render('event', {
+					event_ : result,
+					moment : moment,
+					user : req.user
+				});
+			}	
 		})
+		// Events.findByIdAndUpdate(req.params.id, update, function(err, result) {
+		// 	if (err) return next(err);
+		// 	res.render('event', {
+		// 		event_ : result,
+		// 		user : req.user
+		// 	})
+		// })
+	})
+
+	router.get('/article/:id', function(req, res, next) {
+		var update = { $inc : { views : 1}};
+		Articles.findByIdAndUpdate(req.params.id, update, function(err, result) {
+			if (err) return next(err);
+			md = new MobileDetect(req.headers['user-agent']);
+			if (md.phone()) {
+				News.find({}, {
+					content : 0,
+					content_special: 0
+				}, { limit : 7})
+					.sort({ date : -1})
+					.exec(function(err, results) {
+						if (err) return next(err);
+						res.render('article-mobile', {
+							article : result,
+							posts : results,
+							moment : moment
+						});
+					})
+			} else {
+				res.render('article', {
+					article : result,
+					moment : moment,
+					user : req.user
+				});
+			}	
+		})
+		// Articles.findByIdAndUpdate(req.params.id, update, function(err, result) {
+		// 	if (err) return next(err);
+		// 	res.render('article', {
+		// 		article : result,
+		// 		user : req.user
+		// 	})
+		// })
 	})
 
 	router.get('/news/many', function(req, res, err) {

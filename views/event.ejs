@@ -15,15 +15,17 @@
 <% stylesheet("/build/css/content-columns.css") -%>
 <% stylesheet("/build/css/event-line.css") -%>
 <% stylesheet("/build/css/events.css") -%>
+<% block('meta', partial('meta-events')) -%>
+
 
 <div class="page" ng-controller="eventCtrl" ng-init="init()">
 	<article class="post">
 		<div class="image">
-			<img src="<%- event_.image_preview %>">
+			<img src="<%- event_.image_full %>">
 		</div>
 		<div class="info">
 			<p class="title"><%- event_.title %></p>
-			<p class='date gray'>Событие выложено {{ event_.date }}</p>
+			<p class='date gray'>Выложено {{ event_.date }}</p>
 			<p class="description"><%- event_.description %></p>
 
 			<div class="other-mode">
@@ -44,14 +46,16 @@
 	<aside class="article-and-news">
 	
 		<div class="article">
-			<div class="article-image" style="background-image: url({{ last_article.image }})">
-				<div class="fader"></div>
-				<span class="article-info">
-					<p class="article-type">{{ last_article.type_label }}</p>
-					<p class="article-title">{{ last_article.title}}</p>
-					<p class="article-misc"><span class="fa fa-eye"></span> <span>{{ last_article.views }}</span></p>
-				</span>
-			</div>	
+			<a href="/article/{{ last_article._id }}">
+				<div class="article-image" style="background-image: url({{ last_article.image }})">
+					<div class="fader"></div>
+					<span class="article-info">
+						<p class="article-type">{{ last_article.type_label }}</p>
+						<p class="article-title">{{ last_article.title}}</p>
+						<p class="article-misc"><span class="fa fa-eye"></span> <span>{{ last_article.views }}</span></p>
+					</span>
+				</div>	
+			</a>
 		</div>
 
 		<news class="s11" 

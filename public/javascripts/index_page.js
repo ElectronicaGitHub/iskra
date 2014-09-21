@@ -51,10 +51,11 @@ tk.controller('Index', [ '$scope', '$http', '$rootScope', '$location',
 				    $("#slider").owlCarousel({
 				    	items : 2,
 				    	itemsDesktop : [1199,2],
+				    	itemsDesktopSmall : [979,2],
+						itemsTablet : [768,2],
 				    	lazyLoad : true,
 				    	pagination : false,
-				    	autoPlay : true,
-				    	stopOnHover : true
+				    	autoPlay : true
 				    });
 				})
 			})

@@ -1,0 +1,15 @@
+<meta name="robots" content="index,follow" />
+<meta name="title" content="<%- article.title %>" />
+<meta name="description" content="<%- article.description %>" />
+<% if (article.description) { %>
+	<meta name="keywords" content="<%- article.description.split(' ').filter(function(elem) { return elem.length>5 ? elem : ''}).join(',') %>" />
+<% } %>
+
+<link rel="image_src" href=" <%- article.image %>" />
+
+<meta property="og:title" content="<%- article.title %>" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://tvoykosmos.ru/article/<%- article._id %>" />
+<meta property="og:image" content="<%- article.image %>" />
+<meta property="og:description" content="<%- article.description %>" />
+<meta property="og:site_name" content="Твой Космос" />

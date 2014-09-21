@@ -2,6 +2,14 @@
 <% block('meta', partial('meta_index')) -%>
 
 <div class="content">
+	<div class="each-post-big">
+		<a href="/article/<%= article._id%>">	
+			<div class="photo" style="background-image:url(<%= article.image %>)"></div>
+			<div class="text">
+				<span class="_title"><%= article.title %></span>
+			</div>
+		</a>
+	</div>
 	<% var arr = [true, true, true, false]; L = news.length; for (var i=0; i< L; i++) { %>
 	<% var small = arr[~~(Math.random() * arr.length)] %>
 		<% if (small) { %>

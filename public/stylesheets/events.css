@@ -34,13 +34,15 @@ div.page .post {
 .info .description {
 	font-size: 16px;
 	line-height: 22px;
+	font-family: 'RobCondLight';
 }
 .info .date {
 	height: 30px;
+	font-family: 'RobCondLight';
 	font-size: 14px;
 	padding-left: 5px;
 	line-height: 30px;
-	margin-bottom: 15px;
+	margin: 15px 0;
 }
 .other-mode > div.left {
 	width: 100%;

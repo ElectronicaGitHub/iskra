@@ -7,7 +7,7 @@
 <% stylesheet("/libs/owl-carousel/owl-carousel/owl.theme.css") -%>
 <% stylesheet("/build/css/content-mobile.css") -%>
 
-<% block('meta', partial('meta')) -%>
+<% block('meta', partial('meta-events')) -%>
 
 
 <script>
@@ -17,9 +17,9 @@
 </script>
 
 <div class="post">
-	<div class="image-title" style="background-image: url(<%- post.image %>)"></div>
-	<h1 class='title'><%- post.title %></h1>
-	<div class="content"><%- post.content %></div>
+	<div class="image-title" style="background-image: url(<%- event_.image_preview %>)"></div>
+	<h1 class='title'><%- event_.title %></h1>
+	<div class="content"><%- event_.content %></div>
 </div>
 <div class="popular">
 	<p class="title-tag">Последние новости</p>
