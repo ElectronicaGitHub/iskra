@@ -48,8 +48,10 @@
 	<aside class="article-and-news">
 	
 		<div class="article">
-			<div class="article-loader fa fa-cog fa-spin" ng-if="article_loading"></div>
-			<a ng-if="!article_loading" href="/article/{{ last_article._id }}">
+			<div class="article-loader" ng-show="article_loading">
+					<span class="fa fa-cog fa-spin"></span>
+				</div>
+			<a href="/article/{{ last_article._id }}">
 				<div class="article-image" style="background-image: url({{ last_article.image }})">
 					<div class="fader"></div>
 					<span class="article-info-big">
