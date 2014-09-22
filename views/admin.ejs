@@ -7,6 +7,7 @@
 <% script("/libs/moment/min/moment-with-locales.min.js") -%>
 
 <% stylesheet("/build/css/event-line.css") -%>
+<% stylesheet("/build/css/article-line.css") -%>
 <% stylesheet("/build/css/fonts.css") -%>
 <% stylesheet("/build/css/index.css") -%>
 <% stylesheet("/build/css/admin.css") -%>
@@ -243,14 +244,27 @@
 		</div>
 		<div class="output">
 			<div class="article">
-				<div class="article-image" style="background-image: url({{ articles.image }})">
-					<div class="fader"></div>
-					<span class="article-info">
-						<p class="article-type">{{ articles.type_label }}</p>
-						<p class="article-title">{{ articles.title }}</p>
-						<p class="article-misc"><span class="fa fa-eye"></span> <span>260</span></p>
-					</span>
-				</div>	
+				<div class="article-loader" ng-show="article_loading">
+					<span class="fa fa-cog fa-spin"></span>
+				</div>
+				<a href="/article/{{ articles._id }}">
+					<div class="article-image" style="background-image: url({{ articles.image }})">
+						<div class="fader"></div>
+						<span class="article-info-big">
+							<p class="article-type">{{ articles.type_label }}</p>
+							<p class="article-title">{{ articles.title }}</p>
+							<p class="article-description">{{ articles.description }}</p>
+							<div class="article-info">
+								<span>	
+									<p class="article-type">{{ articles.type_label }}</p>
+									<p class="article-title">{{ articles.title }}
+										<span class="article-slide-description">{{ articles.description }}</span>
+									</p>
+								</span>
+							</div>
+						</span>
+					</div>	
+				</a>
 			</div>
 		</div>
 	</div>
