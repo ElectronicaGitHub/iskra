@@ -198,17 +198,11 @@ function fn(express) {
 				res.render('event', {
 					event_ : result,
 					moment : moment,
-					user : req.user
+					user : req.user,
+					light : true
 				});
 			}	
 		})
-		// Events.findByIdAndUpdate(req.params.id, update, function(err, result) {
-		// 	if (err) return next(err);
-		// 	res.render('event', {
-		// 		event_ : result,
-		// 		user : req.user
-		// 	})
-		// })
 	})
 
 	router.get('/article/:id', function(req, res, next) {
@@ -234,17 +228,11 @@ function fn(express) {
 				res.render('article', {
 					article : result,
 					moment : moment,
-					user : req.user
+					user : req.user,
+					light : true
 				});
 			}	
 		})
-		// Articles.findByIdAndUpdate(req.params.id, update, function(err, result) {
-		// 	if (err) return next(err);
-		// 	res.render('article', {
-		// 		article : result,
-		// 		user : req.user
-		// 	})
-		// })
 	})
 
 	router.get('/news/many', function(req, res, err) {
@@ -355,6 +343,11 @@ function fn(express) {
 	});
 
 	router.get('/events', function(req, res, next) {
+		if (req.query.excl_event) {
+			var find_query = { _id : { $ne : req.query.excl_event } }
+		} else {
+			var find_query = {};
+		}
 		if (req.query.limit) {
 			var limit = req.query.limit;
 		} else {
@@ -369,7 +362,7 @@ function fn(express) {
 			description : 0,
 			image_full : 0
 		}
-		Events.find({}, excluding, {
+		Events.find(find_query, excluding, {
 			limit : limit
 		})
 			.sort({ date: -1 })

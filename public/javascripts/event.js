@@ -29,7 +29,7 @@ tk.controller('eventCtrl', ['$scope', '$http',
 
 
 	$scope.getEvents = function() {
-		var url = '/events/?limit=3';
+		var url = '/events/?limit=4&excl_event=' + $scope.event_._id;
 		$http.get(url)
 			.success(function(data) {
 				$scope.event_list = data;
@@ -50,10 +50,28 @@ tk.controller('eventCtrl', ['$scope', '$http',
 			})
 	}
 	$scope.getArticle = function() {
+		$scope.article_loading = true;
 		var url = '/articles/?limit=1';
 		$http.get(url)
 			.success(function(data) {
 				$scope.last_article = data[0];
+				setTimeout(function() {
+					par = $('.article-info');
+					child = $('.article-info > span');
+					h = par.height();
+					par.css({
+						height: h,
+						'line-height': h + 'px'
+					})
+					ih = child.height();
+					child.height(ih); 
+					desc_h = h-ih;
+					child.addClass('abs').css({
+						top : desc_h/2 + 'px'
+					})
+					$scope.article_loading = false;
+					$scope.$apply();
+				})
 			})
 			.error(function(data) {
 				console.log(data);

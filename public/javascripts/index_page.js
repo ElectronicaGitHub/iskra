@@ -65,21 +65,29 @@ tk.controller('Index', [ '$scope', '$http', '$rootScope', '$location',
 	}
 
 	$scope.getArticle = function() {
+		$scope.article_loading = true;
 		var url = '/articles/?limit=1';
 		$http.get(url)
 			.success(function(data) {
 				$scope.last_article = data[0];
 				console.log($scope.last_article);
-				// setTimeout(function() {
-				//     $("#slider").owlCarousel({
-				//     	items : 2,
-				//     	itemsDesktop : [1199,2],
-				//     	lazyLoad : true,
-				//     	pagination : false,
-				//     	autoPlay : true,
-				//     	stopOnHover : true
-				//     });
-				// })
+				setTimeout(function() {
+					par = $('.article-info');
+					child = $('.article-info > span');
+					h = par.height();
+					par.css({
+						height: h,
+						'line-height': h + 'px'
+					})
+					ih = child.height();
+					child.height(ih); 
+					desc_h = h-ih;
+					child.addClass('abs').css({
+						top : desc_h/2 + 'px'
+					})
+					$scope.article_loading = false;
+					$scope.$apply();
+				})
 			})
 			.error(function(data) {
 				console.log(data);
