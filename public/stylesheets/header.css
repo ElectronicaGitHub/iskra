@@ -34,12 +34,12 @@
 	letter-spacing: -.15ex;
 }
 .sections._logo a {
-	font-size: 63px;
+	font-size: 55px;
 }
 .sections._logo a:hover {
 	color: #fff !important;
 }
-.top .sections a {
+.top .sections > a, .top .sections > span {
 	color: #fff;
 	text-decoration: none;
 	cursor: pointer;
@@ -48,10 +48,33 @@
 	-moz-transition: color .5s;
 	transition: color .5s;
 }
-.top .sections a:hover {
+.menu-widget {
+	position: relative;
+	height: auto;
+	display: inline-block;
+}
+.menu-widget > ul {
+	position: absolute;
+	z-index: 999;
+	display: none;
+	top: 40px;
+	list-style: none;
+	left: 0px;
+	background-color: #fff;
+	border: 1px solid #555;
+	padding: 10px;
+}
+.menu-widget:hover > ul {
+	display: block;
+}
+.menu-widget > ul > li > a {
+	text-decoration: none;
+	color: #333;
+}
+.top .sections > a:hover {
 	color: #FFB52E;
 }
-.top .sections a.selected {
+.top .sections > a.selected {
 	border-bottom: 5px solid #FFB52E;
 	color: #FFB52E;
 }

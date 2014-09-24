@@ -7,12 +7,19 @@
 		<span>
 			<div class="_nav">	
 				<div class="sections _logo">
-					<a href="/"><span class="tk_color">твой</span>космос</a>
+					<a href="/"><span class="tk_color">ТВОЙ</span>КОСМОС</a>
 				</div>
 				<div class="sections">
-					<a class="space" href="/?section=space">космос</a>
-					<a class="physics" href="/?section=physics">физика</a>
-					<a class="tech" href="/?section=tech">технологии</a>
+					<span class="menu-widget">
+						<span id="news_toggle_menu">новости</span>
+						<ul>
+							<li><a class="space" href="/?section=space">космос</a></li>
+							<li><a class="physics" href="/?section=physics">физика</a></li>
+							<li><a class="tech" href="/?section=tech">технологии</a></li>	
+						</ul>
+					</span>
+					<a href="/?section=article">статьи</a>
+					<a href="/?section=event">события</a>
 				</div>
 			</div>
 			<div class="_regime" ng-click="toggle_news_type()" ng-show="news_type">
@@ -24,7 +31,7 @@
 	</nav>
 	<nav class="mini-top">
 		<span>
-			<span class="__logo"><a href="/">ТВОЙ КОСМОС</a></span>
+			<span class="__logo"><a href="/"><span class="tk_color">ТВОЙ</span>КОСМОС</a></span>
 			<div class="_regime" ng-click="toggle_news_type()">
 				<p class="usn regime">MODE</p>
 				<p class="usn type-name" ng-if="news_type=='normal'">НОРМАЛ</p>
