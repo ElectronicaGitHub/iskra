@@ -26,7 +26,7 @@
 			<img src="<%- event_.image_full %>">
 		</div>
 		<div class="info">
-			<p class="title"><%- event_.title %></p>
+			<p class="title tk_color"><%- event_.title %></p>
 			<p class='date gray'>Опубликовано {{ event_.date }}</p>
 			<p class="description"><%- event_.description %></p>
 
@@ -35,6 +35,9 @@
 					<span>
 						<p>Поделись с друзьями:</p>
 					    <p class="share-bottom-buttons">
+					    	<% if (user && user.name == 'Gendalf') { %>
+					    		<a href="/admin/?event_id={{ post._id }}"><span class="update_button fa fa-key"></span></a>
+					    	<% } %>
 						    <span class="social_share fa fa-vk" data-type="vk"></span>
 						    <span class="social_share fa fa-facebook" data-type="fb"></span>
 						    <span class="social_share fa fa-twitter" data-type="tw"></span>
@@ -73,29 +76,8 @@
 
 		<news class="s11" 
 			  ng-model="n" 
-			   type="news_type"  
+			  type="news_type"  
 			  ng-repeat="n in news">
-			<a class="inner-container" href="/post/{{ n._id }}">
-			 	<div class="picture" 
-			 		 style="background-image: url({{ n.image }})">
-					<div class="views">
-						<span>	
-							<span class="fa fa-eye"></span>
-							<span>{{ n.views }}</span>
-						</span>
-					</div>
-			 	</div>
-				<div class="hover-stater"></div>
-			 		<div ng-show="n.special" class="special_mark">{{ n.special }}</div>
-				<div class="text-container">
-			 		<div class='news_title'>
-				 		<p>{{ n.title }}</p>
-			 		</div>	
-				 	<div class="description">
-				 		<p>{{ n.description }}</p>
-				 	</div>
-				</div>
-			</a>
 		</news>	
 	</aside>
 	<aside class="list">

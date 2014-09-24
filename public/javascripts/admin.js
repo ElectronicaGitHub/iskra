@@ -3,11 +3,24 @@ tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
 	// init //
 	$scope.init = function() {
 		if (location.search) {
-			if (location.search.split('=')[0].slice(1) == 'post_id') {
+			q = location.search.split('=')[0].slice(1);
+			if (q == 'post_id') {
 				post = {
 					_id : location.search.split('=')[1]
 				}
-				$scope.loadToFormForUpdate(post);
+				$scope.loadToFormForUpdate(post, 'news');
+			}
+			if (q == 'event_id') {
+				event_ = {
+					_id : location.search.split('=')[1]
+				}
+				$scope.loadToFormForUpdate(event_, 'events');
+			}
+			if (q == 'article_id') {
+				article = {
+					_id : location.search.split('=')[1]
+				}
+				$scope.loadToFormForUpdate(article, 'articles');
 			}
 		} else {
 			$scope.page = 'news_list';

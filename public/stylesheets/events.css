@@ -1,3 +1,10 @@
+body {
+	background-color: #3a3a3a;
+}
+.container {
+	background-color: #252525;
+}
+
 div.page .post {
 	width: 100%;
 	padding: 0 10px ;
@@ -30,11 +37,13 @@ div.page .post {
 	font-family: 'RobCondBold';
 	font-size: 24px;
 	line-height: 28px;
+	color: #ddd;
 }
 .info .description {
 	font-size: 16px;
 	line-height: 22px;
 	font-family: 'RobCondLight';
+	color: #ddd;
 }
 .info .date {
 	height: 30px;
@@ -43,9 +52,12 @@ div.page .post {
 	padding-left: 5px;
 	line-height: 30px;
 	margin: 15px 0;
+	background-color: #555;
+	color: #ddd;
 }
 .other-mode > div.left {
 	width: 100%;
+	color: #ddd;
 }
 news.s11 {
 	width: 33.33333%;
@@ -60,4 +72,25 @@ news.s11 {
 	float: left;
 	padding: 10px;
 	background-color: inherit;
+}
+.posts-list {
+	background-color: #252525;
+}
+.posts-list .each-post > div {
+	color: #ddd;
+}
+.inner-container {
+	background-color: #333;
+}
+.inner-container .news_title {
+	color: #FFB52E;
+}
+.inner-container:hover .news_title {
+	color: #FFB52E;
+}
+.inner-container .description {
+	color: #ddd;
+}
+.inner-container:hover .description {
+	color: #eee;
 }

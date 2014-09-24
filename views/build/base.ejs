@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="en" prefix="og: http://ogp.me/ns#"><head><title><%- blocks.title %></title><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><meta name="yandex-verification" content="6a84d93f583861d0"><meta name="google-site-verification" content="fIuECLlWuqQ7kWDa8qMxb4Rx0-jfkgJampGxvkrKJ1k"><%- blocks.meta %><script src="/libs/angular/angular.min.js"></script><script src="/libs/angular-animate.js"></script><script src="/libs/jquery/dist/jquery.min.js"></script><script src="/libs/angular-local-storage/angular-local-storage.min.js"></script><script>tk = angular.module('tvoyKosmos',['ui.tinymce', 'LocalStorageModule']);</script><%- scripts%><script src="/libs/angular-ui-tinymce/src/tinymce.js"></script><link rel="stylesheet" href="/build/css/fonts.css"><link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css"><style>html, body {
-			height: 100%;
+			/*height: 100%;*/
 			width: 100%;
 			background-color: #fff;
 		}
@@ -12,6 +12,12 @@
 			z-index: 1;
 			border-top: 4px solid #FFB52E;
 			border-bottom: 4px solid #FFB52E;
+		}
+		.tk_color {
+			color: #FFB52E !important;
+		}
+		.tk_bg {
+			background-color: #FFB52E !important;
 		}
 		*[ng-click] {
 			cursor: pointer;
