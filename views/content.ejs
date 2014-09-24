@@ -16,14 +16,13 @@
 
 <div class="page" ng-controller="contentCtrl" ng-init="init()">
 	<article class="post">
-
 		<div class="title-image">
 			<img ng-if="news_type=='normal' || !news_type" 
 				 src="<%- post.image %>">
 			<img ng-if="news_type=='special'" 
 				 src="<%- post.image_special %>">
 			<div class="black-postphoto"></div>
-			<span> 
+			<span class="sel_non"> 
 				<span ng-if="news_type=='normal' || !news_type">
 					<%- post.title %>
 				</span>
@@ -33,7 +32,7 @@
 				<p ng-if="news_type=='normal' || !news_type"><%- post.description %></p>
 				<p ng-if="news_type=='special'"><%- post.description_special %></p>
 				<div class="info-panel"></div>
-				<span class="title">
+				<span class="title sel_ini">
 					<h1>
 						<span ng-if="news_type=='normal' || !news_type"><%- post.title %></span>
 						<span ng-if="news_type=='special'"><%- post.title_special %></span>

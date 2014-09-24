@@ -54,6 +54,9 @@
 	text-align: center;
 	top: -62%;
 }
+.post .title > h1 {
+	margin-top: 5px;
+}
 .post .title > h1 > span, .post .title > p {
 	font-family: 'RobCondBold';
 	color: white;
