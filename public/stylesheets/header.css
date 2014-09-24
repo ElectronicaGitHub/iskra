@@ -34,16 +34,25 @@
 	letter-spacing: -.15ex;
 }
 .sections._logo a {
-	font-size: 55px;
+	font-size: 51px;
 }
 .sections._logo a:hover {
 	color: #fff !important;
 }
-.top .sections > a, .top .sections > span {
+.top .sections > a, 
+.top .sections > span {
 	color: #fff;
 	text-decoration: none;
 	cursor: pointer;
 	margin: 0 5px;
+	-webkit-transition: color .5s;
+	-moz-transition: color .5s;
+	transition: color .5s;
+}
+.nav-item {
+	font-size: 23px;
+}
+#news_toggle_menu {
 	-webkit-transition: color .5s;
 	-moz-transition: color .5s;
 	transition: color .5s;
@@ -60,18 +69,31 @@
 	top: 40px;
 	list-style: none;
 	left: 0px;
+	padding: 5px 0;
 	background-color: #fff;
-	border: 1px solid #555;
-	padding: 10px;
+	/*border: 1px solid #555;*/
+	border-top: 4px solid #FFB52E;
+	border-bottom: 4px solid #FFB52E;
+	box-shadow: 0 2px 4px rgba(0,0,0,.5);
 }
 .menu-widget:hover > ul {
 	display: block;
 }
+.menu-widget > ul > li {
+	padding: 0 10px;
+	height: 30px;
+	font-size: 20px;
+	line-height: 30px;
+}
+.menu-widget > ul > li:hover {
+	background-color: #FFB52E;
+}
 .menu-widget > ul > li > a {
+	height: 100%;
 	text-decoration: none;
 	color: #333;
 }
-.top .sections > a:hover {
+.top .sections > a:hover, .top .sections #news_toggle_menu:hover {
 	color: #FFB52E;
 }
 .top .sections > a.selected {
@@ -88,20 +110,6 @@
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-}
-.top-squares {
-	float: left;
-	height: 60px;
-}
-div.top-squares:nth-of-type(2) {
-	margin-right: 10px;
-}
-.news_type {
-	height: 60px;
-	width: 160px;
-	padding: 5px;
-	box-shadow: 0 2px 4px rgba(0,0,0,.5);
-	background-color: #FFB52E;
 }
 ._regime p {
 	float: left;
