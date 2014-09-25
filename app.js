@@ -1,12 +1,12 @@
 var express = require('express');
 var path = require('path');
-var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('./configs/mongoose');
 var log = require('./configs/logger')(module);
 var config = require('./configs/config_file');
+var favicon = require('serve-favicon');
 var passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy;
 
@@ -25,7 +25,7 @@ app.set('env', 'production');
 app.set('views', path.join(__dirname, app.get('env') == 'production' ? 'views/build' : 'views'));
 app.set('view engine', 'ejs');
 
-app.use(favicon());
+app.use(favicon(__dirname + '/public/images/tk_site_avatar.png'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
