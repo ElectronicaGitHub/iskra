@@ -3,6 +3,15 @@
 	line-height: 100px;
 	width: 100%;
 	background-color: #222;
+	position: relative;
+}
+.__stars__ {
+	position: absolute;
+	left: 25px;
+	top: 0;
+	height: 100%;
+	width: 70px;
+	overflow: hidden;
 }
 .top > span {
 	line-height: 60px;
@@ -39,6 +48,7 @@
 	animation: bg_move 6s infinite;
 }
 div[class*=__star__] {
+	z-index: 80;
 	position: absolute;
 	width: 3px;
 	top: 100px;
@@ -46,10 +56,10 @@ div[class*=__star__] {
 	background-color: #fff;
 	z-index: 90;
 	border-radius: 50%;
+	box-shadow: 0 0 3px rgba(255,255,255,.5);
 	-webkit-animation-name : star_move;
 	-o-animation-name : star_move;
 	animation-name : star_move;
-	/*-webkit-animation-duration: 6s; -o-animation-duration: 6s; animation-duration: 6s;*/
 	-webkit-animation-iteration-count: infinite;
 	-o-animation-iteration-count: infinite;
 	animation-iteration-count: infinite;
