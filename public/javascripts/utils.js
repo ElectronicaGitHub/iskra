@@ -53,6 +53,7 @@ var UTILS = (function() {
 			// start
 			if (last_block) {
 				blocks.push(last_block);
+				last_block = null;
 			}
 			if (blocks[blocks.length-1] && blocks[blocks.length-1].number != block_size) {
 				exact_element = true;
