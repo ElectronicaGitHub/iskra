@@ -4,26 +4,29 @@
 <% script('/build/js/misc.js') -%>
 <div ng-controller="HeaderCtrl">
 	<nav class="top">
+		<div class="__stars__">
+			<div class="__star__1"></div>
+			<div class="__star__2"></div>
+			<div class="__star__3"></div>
+			<div class="__star__4"></div>
+			<div class="__star__5"></div>
+			<div class="__star__6"></div>
+			<div class="__star__7"></div>
+			<div class="__star__8"></div>
+			<div class="__star__9"></div>
+			<div class="__star__10"></div>
+		</div>
 		<span>
-			<div class="_nav">	
-				<div class="sections _logo">
-					<a href="/"><span class="tk_color">ТВОЙ</span>КОСМОС</a>
-				</div>
-				<div class="sections">
-					<!-- <span class="menu-widget">
-						<span id="news_toggle_menu">новости</span>
-						<ul>
-							<li><a class="space" href="/?section=space">космос</a></li>
-							<li><a class="physics" href="/?section=physics">физика</a></li>
-							<li><a class="tech" href="/?section=tech">технологии</a></li>	
-						</ul>
-					</span> -->
-					<!-- <a href="/?section=article">статьи</a> -->
-					<!-- <a href="/?section=event">события</a> -->
-					<a class="nav-item space" href="/?section=space">космос</a>
-					<a class="nav-item physics" href="/?section=physics">физика</a>
-					<a class="nav-item tech" href="/?section=tech">технологии</a>
-				</div>
+			<div class="tk_logo">
+				<a href="/">	
+					<div class="underlogo"></div>
+					<img src="/images/tk_logo_prs.png">
+				</a>
+			</div>
+			<div class="menu">
+				<a class="nav-item space" href="/?section=space">космос</a>
+				<a class="nav-item physics" href="/?section=physics">физика</a>
+				<a class="nav-item tech" href="/?section=tech">технологии</a>
 			</div>
 			<div class="_regime" ng-click="toggle_news_type()" ng-show="news_type">
 				<p class="usn regime">MODE</p>
@@ -34,7 +37,22 @@
 	</nav>
 	<nav class="mini-top">
 		<span>
-			<span class="__logo"><a href="/"><span class="tk_color">ТВОЙ</span>КОСМОС</a></span>
+			<div class="tk_logo">
+				<a href="/">	
+					<div class="underlogo"></div>
+					<div class="__star__1"></div>
+					<div class="__star__2"></div>
+					<div class="__star__3"></div>
+					<div class="__star__4"></div>
+					<div class="__star__5"></div>
+					<div class="__star__6"></div>
+					<div class="__star__7"></div>
+					<div class="__star__8"></div>
+					<div class="__star__9"></div>
+					<div class="__star__10"></div>
+					<img src="/images/tk_logo_prs.png">
+				</a>
+			</div>
 			<div class="_regime" ng-click="toggle_news_type()">
 				<p class="usn regime">MODE</p>
 				<p class="usn type-name" ng-if="news_type=='normal'">НОРМАЛ</p>

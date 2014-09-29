@@ -1,7 +1,8 @@
 var UTILS = (function() {
 
 	var block_size = 4,
-		local_block = null;
+		local_block = null,
+		last_block = null;
 
 	return {
 		blocks_former : function(feeds, blocks) {
@@ -48,8 +49,12 @@ var UTILS = (function() {
 				local_element.orient = local_element._size == 2 ? randomOrient() : null;
 			    if (add_flag) addNewsToBlock();
 			}
-			// lloooopp
 
+			// start
+			if (last_block) {
+				blocks.push(last_block);
+				last_block = null;
+			}
 			if (blocks[blocks.length-1] && blocks[blocks.length-1].number != block_size) {
 				exact_element = true;
 				local_block = blocks[blocks.length-1];
@@ -57,6 +62,7 @@ var UTILS = (function() {
 				exact_element = false;
 			}
 
+			// lloooopp
 			for (i in feeds) {
 				if (!local_block) createBlock();
 
@@ -72,6 +78,12 @@ var UTILS = (function() {
 				// 	if (local_block) blockFormEnding();
 				// }
 			}
+
+
+			var blocks_length = blocks.length;
+			if (blocks_length % 2 == 0) {
+				last_block = blocks.pop();
+			} 
 
 			return blocks;
 		},
