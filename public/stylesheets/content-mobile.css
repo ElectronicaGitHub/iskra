@@ -33,6 +33,10 @@ div.content {
 	width: 280px !important;
 	/*height: 230px;*/
 }
+.post iframe {
+	width: 280px !important;
+	height: 180px !important;
+}
 .post .image-title {
 	height: 260px;
 	width: 320px;
