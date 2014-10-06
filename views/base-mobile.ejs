@@ -28,8 +28,33 @@
 		border-top: 2px solid #FFB52E;
 		border-bottom: 2px solid #FFB52E;
 	}	
+	.tk_loader {
+		background-color: #222;
+		position: fixed;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		z-index: 9999;
+		/*-webkit-transition: all 0.7s;*/
+		/*-o-transition: all 0.7s;*/
+		/*transition: all 0.7s;*/
+	}
+	.tk_loader img {
+		position: absolute;
+		top: 0;
+		height: 50px;
+		width: 50px;
+		right: 0; 
+		bottom: 0; 
+		left: 0; 
+		margin: auto;
+	}
 </style>
 <body>
+	<div class="tk_loader">
+		<img src="/images/tk_logo.png">
+	</div>
 	<%- partial('header-mobile') %>
 	<%- body %>
 	<%- partial('footer-mobile') %>
@@ -38,6 +63,17 @@
 	
 </body>
 	<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-54121517-1', 'auto');ga('send', 'pageview',{'page':location.pathname+location.search+location.hash});</script>
+	<script>
+		$(window).load(function() {
+			$('.tk_loader').animate({
+				opacity : 0
+			}, 600, function() {
+				$('.tk_loader').css({
+					display: 'none'
+				})
+			})
+		})
+	</script>
 
 
 
