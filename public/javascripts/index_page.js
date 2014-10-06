@@ -7,8 +7,13 @@ tk.controller('Index', [ '$scope', '$http', '$rootScope', '$location',
 	if (key == 'section') {
 		var section = query.split('=')[1];
 		console.log(section);
-		$('.' + section).addClass('selected')
+		$('.' + section).addClass('selected');
+		$('.menu').addClass('slide-menu-visible');
 	}
+
+	$('.news').on('click', function() {
+		$('.menu').toggleClass('slide-menu-visible');
+	});
 
 	$scope.feed_blocks = [];
 
@@ -42,7 +47,7 @@ tk.controller('Index', [ '$scope', '$http', '$rootScope', '$location',
 			})
 	}
 	$scope.getEvents = function() {
-		var url = '/events/';
+		var url = '/events_list/';
 		$http.get(url)
 			.success(function(data) {
 				$scope.event_list = data;
@@ -66,7 +71,7 @@ tk.controller('Index', [ '$scope', '$http', '$rootScope', '$location',
 
 	$scope.getArticle = function() {
 		$scope.article_loading = true;
-		var url = '/articles/?limit=1';
+		var url = '/articles_list/?limit=1';
 		$http.get(url)
 			.success(function(data) {
 				$scope.last_article = data[0];

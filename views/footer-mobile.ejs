@@ -3,7 +3,7 @@
 	footer {
 		height: 180px;
 		line-height: 30px;
-		margin: 10px 0 45px 0;
+		margin: 10px 0 0 0;
 	}
 	footer .info, footer > span {
 		padding: 0 20px;
@@ -14,60 +14,8 @@
 		-webkit-box-sizing: border-box;
 		width: 100%
 	}
-	.footer-fixed {
-		position: fixed;
-		bottom: 0;
-		left: 0;
-		height: 50px;
-		width: 100%;
-		z-index: 999;
-	} 
-	.footer-fixed .bar {
-		position: relative;
-		z-index: 999;
-		height: 100%;
-		background-color: #222;
-		border-bottom: 4px solid #FFB52E;
-		-webkit-box-sizing: border-box;
-		   -moz-box-sizing: border-box;
-		        box-sizing: border-box;
-	}
-	.footer-fixed .menu {
-		position: absolute;
-		z-index: 888;
-		bottom: -116px;
-		left: 0;
-		width: 100%;
-		background-color: #222;
-		overflow: hidden;
-		-webkit-transition: all 0.4s;
-		-o-transition: all 0.4s;
-		transition: all 0.4s;
-	}
-	.footer-fixed .menu p {
-		height: 25px;
-		font-size: 14px;
-		text-align: center;
-		color: #fff;
-		margin: 0;
-		font-family: 'RobCondBold';
-		padding: 6px 0;
-	}
-	.footer-fixed .menu.tk_visible {
-		/*height: initial;*/
-		bottom: 50px;
-	}
-
+	
 </style>
-
-<div class="footer-fixed">
-	<div class="bar"></div>
-	<div class="menu">
-		<p>Новости</p>
-		<p>Статьи</p>
-		<p>События</p>
-	</div>
-</div>
 
 <footer>
 	
@@ -98,10 +46,3 @@
 
 
 </footer>
-
-<script>
-	$('.footer-fixed').on('click', function() {
-		$('.menu').toggleClass('tk_visible');
-	})
-
-</script>

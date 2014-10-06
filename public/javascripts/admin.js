@@ -84,7 +84,7 @@ tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
 			})
 	};
 	$scope.getEvents = function() {
-		url = '/events?show_description=1';
+		url = '/events_list?show_description=1';
 		$http.get(url)
 			.success(function(data) {
 				$scope.event_list = data;
@@ -95,7 +95,7 @@ tk.controller('Admin', ['$scope', '$http', function($scope, $http) {
 			})
 	};
 	$scope.getArticles = function() {
-		url = '/articles';
+		url = '/articles_list';
 		$http.get(url)
 			.success(function(data) {
 				$scope.article_list = data;

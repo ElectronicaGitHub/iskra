@@ -324,7 +324,7 @@ function fn(express) {
 			})
 	})
 
-	router.get('/articles', function(req, res, next) {
+	router.get('/articles_list', function(req, res, next) {
 		params = req.query;
 		Articles.find({}, {
 			content : 0
@@ -342,7 +342,7 @@ function fn(express) {
 		})
 	});
 
-	router.get('/events', function(req, res, next) {
+	router.get('/events_list', function(req, res, next) {
 		if (req.query.excl_event) {
 			var find_query = { _id : { $ne : req.query.excl_event } }
 		} else {

@@ -52,7 +52,7 @@
 		}
 
 		$scope.getEvents = function() {
-			var url = '/events/';
+			var url = '/events_list/';
 			$http.get(url)
 				.success(function(data) {
 					$scope.event_list = data;

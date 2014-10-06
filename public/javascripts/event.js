@@ -29,7 +29,7 @@ tk.controller('eventCtrl', ['$scope', '$http',
 
 
 	$scope.getEvents = function() {
-		var url = '/events/?limit=4&excl_event=' + $scope.event_._id;
+		var url = '/events_list/?limit=4&excl_event=' + $scope.event_._id;
 		$http.get(url)
 			.success(function(data) {
 				$scope.event_list = data;
@@ -51,7 +51,7 @@ tk.controller('eventCtrl', ['$scope', '$http',
 	}
 	$scope.getArticle = function() {
 		$scope.article_loading = true;
-		var url = '/articles/?limit=1';
+		var url = '/articles_list/?limit=1';
 		$http.get(url)
 			.success(function(data) {
 				$scope.last_article = data[0];

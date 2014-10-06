@@ -139,7 +139,7 @@
 	</article>
 	<aside class="list">
 		<div class="posts-list gray">
-			<h3 class="tag-title popular">Последние новости</h3>
+			<h3 class="tag-title">Последние новости</h3>
 			<a href="/post/{{ news._id }}" ng-repeat="news in last">
 				<div ng-if="news_type=='normal'" class="each-post">
 					<div class="image" style="background-image : url({{ news.image }})"></div>
@@ -158,7 +158,7 @@
 	</aside>
 	<aside class="misc">
 		<div class="posts-list">
-			<h3 class="tag-title">Популярное за неделю</h3>
+			<h3 class="tag-title popular">Популярное за неделю</h3>
 			<a href="/post/{{ news._id }}" ng-repeat="news in popular">
 				<div ng-if="news_type=='normal'" class="each-post">
 					<div class="title">{{news.title}}</div>
