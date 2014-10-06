@@ -4,6 +4,7 @@
 	width: 100%;
 	background-color: #222;
 	position: relative;
+	box-shadow: 0 0 1px #222;
 }
 .__stars__ {
 	position: absolute;

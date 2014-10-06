@@ -1,7 +1,7 @@
 <% stylesheet('/build/css/footer.css') -%><style>footer {
 		height: 180px;
 		line-height: 30px;
-		margin-top: 10px;
+		margin: 10px 0 45px 0;
 	}
 	footer .info, footer > span {
 		padding: 0 20px;
@@ -11,4 +11,49 @@
 		-moz-box-sizing: border-box;
 		-webkit-box-sizing: border-box;
 		width: 100%
-	}</style><footer><div class="info"><span><p style="margin-bottom:5px">ТВОЙ КОСМОС</p><span>&copy; 2014 Твой Космос. Научно-популярное интернет-издание о событиях в сфере физики, космоса и технологии. Все права на тексты принадлежат изданию.</span></span></div><span><a href="https://metrika.yandex.ru/stat/?id=26010921&amp;from=informer" target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/26010921/3_0_FFD54EFF_FFB52EFF_0_pageviews" style="width:88px; height:31px; border:0" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)"></a>  <script type="text/javascript">document.write("<a href='//www.liveinternet.ru/click' target=_blank><img src='//counter.yadro.ru/hit?t12.6;r" + escape(document.referrer) + ((typeof(screen)=="undefined")?"":";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?screen.colorDepth:screen.pixelDepth)) + ";u" + escape(document.URL) +";h"+escape(document.title.substring(0,80)) +  ";" + Math.random() + "' border=0 width=88 height=31 alt='' title='LiveInternet: показано число просмотров за 24 часа, посетителей за 24 часа и за сегодня'><\/a>")</script></span></footer>
+	}
+	.footer-fixed {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		height: 50px;
+		width: 100%;
+		z-index: 999;
+	} 
+	.footer-fixed .bar {
+		position: relative;
+		z-index: 999;
+		height: 100%;
+		background-color: #222;
+		border-bottom: 4px solid #FFB52E;
+		-webkit-box-sizing: border-box;
+		   -moz-box-sizing: border-box;
+		        box-sizing: border-box;
+	}
+	.footer-fixed .menu {
+		position: absolute;
+		z-index: 888;
+		bottom: -116px;
+		left: 0;
+		width: 100%;
+		background-color: #222;
+		overflow: hidden;
+		-webkit-transition: all 0.4s;
+		-o-transition: all 0.4s;
+		transition: all 0.4s;
+	}
+	.footer-fixed .menu p {
+		height: 25px;
+		font-size: 14px;
+		text-align: center;
+		color: #fff;
+		margin: 0;
+		font-family: 'RobCondBold';
+		padding: 6px 0;
+	}
+	.footer-fixed .menu.tk_visible {
+		/*height: initial;*/
+		bottom: 50px;
+	}</style><div class="footer-fixed"><div class="bar"></div><div class="menu"><p>Новости</p><p>Статьи</p><p>События</p></div></div><footer><div class="info"><span><p style="margin-bottom:5px">ТВОЙ КОСМОС</p><span>&copy; 2014 Твой Космос. Научно-популярное интернет-издание о событиях в сфере физики, космоса и технологии. Все права на тексты принадлежат изданию.</span></span></div><span><a href="https://metrika.yandex.ru/stat/?id=26010921&amp;from=informer" target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/26010921/3_0_FFD54EFF_FFB52EFF_0_pageviews" style="width:88px; height:31px; border:0" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)"></a>  <script type="text/javascript">document.write("<a href='//www.liveinternet.ru/click' target=_blank><img src='//counter.yadro.ru/hit?t12.6;r" + escape(document.referrer) + ((typeof(screen)=="undefined")?"":";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?screen.colorDepth:screen.pixelDepth)) + ";u" + escape(document.URL) +";h"+escape(document.title.substring(0,80)) +  ";" + Math.random() + "' border=0 width=88 height=31 alt='' title='LiveInternet: показано число просмотров за 24 часа, посетителей за 24 часа и за сегодня'><\/a>")</script></span></footer><script>$('.footer-fixed').on('click', function() {
+		$('.menu').toggleClass('tk_visible');
+	})</script>
