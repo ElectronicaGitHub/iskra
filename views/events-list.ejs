@@ -1,3 +1,40 @@
 <%- layout('base.ejs') %>
 <% stylesheet("/libs/fontawesome/css/font-awesome.min.css") -%>
+<% stylesheet("/build/css/index.css") -%>
+<% stylesheet("/build/css/event-line.css") -%>
+<% stylesheet("/build/css/events.css") -%>
+<% stylesheet("/build/css/event.css") -%>
+
 <% script("/build/js/events_page.js") -%>
+
+<% block('meta', partial('meta_index')) -%>
+<% block('title', 'Твой Космос | Новостное научно-популярное издание о науке и космосе') -%>
+
+<div ng-controller="EventsCtrl" ng-init="init()">
+	<div class="feed">
+		<div class="each-event" 
+			 ng-class="{ 'big-event' :$index==0}"
+			 ng-repeat="evt in event_list">
+			<a href="/event/{{ evt._id }}">
+				<div ng-if="$index!=0"
+					 class="event-image" 
+					 style="background-image: url({{ evt.image_preview }})">
+				</div>
+				<div ng-if="$index==0"
+					 class="event-image" 
+					 style="background-image: url({{ evt.image_full }})">
+				</div>
+				<div class="event-info-top">
+					<span>
+						<p>{{ evt.title }}</p>
+					</span>
+				</div>
+				<div class="event-info" ng-if="$index!=0">
+					<span>
+						<p>{{ evt.title }}</p>
+					</span>
+				</div>
+			</a>	
+		</div>
+	</div>
+</div>

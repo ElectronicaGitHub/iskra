@@ -368,11 +368,11 @@ function fn(express) {
 		var show_description = parseInt(req.query.show_description);
 		if (show_description) {
 			excluding = {
-				image_full : 0
+				// image_full : 0
 			}
 		} else excluding = {
-			description : 0,
-			image_full : 0
+			description : 0
+			// image_full : 0
 		}
 		Events.find(find_query, excluding, {
 			limit : limit

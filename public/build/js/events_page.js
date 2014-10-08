@@ -1,0 +1,1 @@
+tk.controller("EventsCtrl",["$scope","$http",function(a,b){$(".events").addClass("selected"),a.init=function(){a.getEvents()},a.getEvents=function(){var c="/events_list/?limit=10";b.get(c).success(function(b){a.event_list=b}).error(function(a){})}}]);
