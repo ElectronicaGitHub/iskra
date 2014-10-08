@@ -86,9 +86,9 @@
 	color: transparent;
 	right: 0;
 	margin: auto;
-	-webkit-transition: top .4s, color .2s, font-size .2s .4s;
-	-o-transition: top .4s, color .2s, font-size .2s .4s;
-	transition: top .4s, color .2s, font-size .2s .4s;
+	-webkit-transition: top .4s, color .2s, font-size .5s .4s, padding .4s;
+	-o-transition: top .4s, color .2s, font-size .5s .4s, padding .4s;
+	transition: top .4s, color .2s, font-size .5s .4s, padding .4s;
 }
 .article-misc, .article-description {
 	padding: 0px 40px;
@@ -103,7 +103,8 @@
 	display: block;
 	font-size: 16px;
 	line-height: 22px;
-	margin-top: 10px;
+	/*margin-top: 10px;*/
+	padding: 10px 40px;
 	top: 100%;
 	color: #fff;
 	-webkit-transition: top .4s, color .3s;

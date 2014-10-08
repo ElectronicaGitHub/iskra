@@ -1,0 +1,49 @@
+<%- layout('base.ejs') %>
+<% stylesheet("/libs/fontawesome/css/font-awesome.min.css") -%>
+<% stylesheet("/build/css/index.css") -%>
+<% stylesheet("/build/css/article-line.css") -%>
+<% stylesheet("/build/css/event-line.css") -%>
+<% stylesheet("/build/css/articles.css") -%>
+
+<% script("/build/js/articles_page.js") -%>
+
+<% block('meta', partial('meta_index')) -%>
+<% block('title', 'Твой Космос | Новостное научно-популярное издание о науке и космосе') -%>
+
+<div ng-app="tk" ng-controller="ArticlesCtrl" ng-init="init()">
+	
+	<div class="feed">
+
+		<div class="block padded"
+			 ng-repeat="art in articles">
+			<div class="article">
+				<div class="article-loader" ng-show="article_loading">
+					<span class="fa fa-cog fa-spin"></span>
+				</div>
+				<a href="/article/{{ art._id }}">
+					<div class="article-image" style="background-image: url({{ art.image }})">
+						<div class="fader"></div>
+						<span class="article-info-big">
+							<p class="article-type">{{ art.type_label }}</p>
+							<p class="article-title">{{ art.title }}</p>
+							<p class="article-description">{{ art.description }}</p>
+							<div class="article-info">
+								<span>	
+									<p class="article-type">{{ art.type_label }}</p>
+									<p class="article-title">{{ art.title }}
+										<span class="article-slide-description">{{ art.description }}</span>
+									</p>
+								</span>
+							</div>
+						</span>
+					</div>	
+				</a>
+			</div>
+		</div>
+		<div class="block padded odd-articles-count-centering" ng-if="articles.length%2!=0">
+			<div class="article">
+				<span>Наши роботы уже летят с пробой для будущей статьи</span>
+			</div>
+		</div>
+	</div>	
+</div>

@@ -2,6 +2,10 @@ tk.controller('HeaderCtrl',
 	['$scope', '$rootScope', '$location', 'localStorageService',
 	function($scope, $rootScope, $location, localStorageService) {
 
+	$('.news').on('click', function() {
+		$('.menu').toggleClass('slide-menu-visible');
+	});	
+
 	//init page 
 	value = localStorageService.get('tvoyKosmos_MODE');
 	

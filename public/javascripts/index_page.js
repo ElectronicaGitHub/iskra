@@ -11,10 +11,6 @@ tk.controller('Index', [ '$scope', '$http', '$rootScope', '$location',
 		$('.menu').addClass('slide-menu-visible');
 	}
 
-	$('.news').on('click', function() {
-		$('.menu').toggleClass('slide-menu-visible');
-	});
-
 	$scope.feed_blocks = [];
 
 	$scope.init = function() {

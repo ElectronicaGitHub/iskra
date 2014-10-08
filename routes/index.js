@@ -324,6 +324,12 @@ function fn(express) {
 			})
 	})
 
+	router.get('/articles', function(req, res, next) {
+		res.render('articles-list', {
+			ajax : true
+		});
+	});
+
 	router.get('/articles_list', function(req, res, next) {
 		params = req.query;
 		Articles.find({}, {
@@ -331,15 +337,21 @@ function fn(express) {
 		}, params).sort({ date : -1 })
 			.exec(function(err, results) {
 				if (err) return next(err);
-				res.json(results)
+				res.json(results);
 			})
-	})
+	});
 
 	router.get('/articles/:id', function(req, res, next) {
 		Articles.findById(req.params.id, function(err, result) {
 			if (err) return next(err);
 			res.json(result);
 		})
+	});
+
+	router.get('/events', function(req, res, next) {
+		res.render('events-list', {
+			ajax : true
+		});
 	});
 
 	router.get('/events_list', function(req, res, next) {
@@ -370,7 +382,7 @@ function fn(express) {
 				if (err) return next(err);
 				res.json(results);
 			})
-	})
+	});
 
 	router.get('/events/:id', function(req, res, next) {
 		Events.findById(req.params.id, function(err, result) {

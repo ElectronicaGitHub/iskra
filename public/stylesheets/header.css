@@ -188,7 +188,7 @@ p.type-name {
 	color: #ddd;
 }
 .menu.slide-menu-visible .slide-menu {
-	left: 130px;
+	left: 127px;
 	opacity: 1;
 	-webkit-transition: opacity .6s .2s, left .4s;
 	-moz-transition: opacity .6s .2s, left .4s;
