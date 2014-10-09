@@ -1,6 +1,6 @@
 <%- layout('base-mobile') %><% block('meta', partial('meta_index')) -%><div class="content"><div class="each-post-big"><a href="/article/<%= article._id%>"><div class="photo" style="background-image:url(<%= article.image %>)"></div><div class="text"><span class="_title"><%= article.title %></span></div></a></div><% var arr = [true, true, true, false]; L = news.length; for (var i=0; i< L; i++) { %><% var small = arr[~~(Math.random() * arr.length)] %><% if (small) { %><div class="each-post"><a href="/post/<%= news[i]._id%>"><div class="photo" style="background-image:url(<%= news[i].image %>)"></div><div class="text"><span class="_title"><%= news[i].title %></span></div></a></div><% } else { %><div class="each-post-big"><a href="/post/<%= news[i]._id%>"><div class="photo" style="background-image:url(<%= news[i].image %>)"></div><div class="text"><span class="_title"><%= news[i].title %></span></div></a></div><% } %><% } %></div><style>.content {
 		padding: 0 10px;
-		margin-top: 10px;
+		margin-top: 55px;
 		width: 300px;
 	}
 	.each-post {
