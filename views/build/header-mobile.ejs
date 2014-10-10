@@ -1,4 +1,4 @@
-<div class="header-fixed"><header><a href="/"><img class="tk_logo" src="/images/tk_logo.png"> ТВОЙ<span class="tk_color">КОСМОС</span></a> <img class="menu-initer" src="/images/sandwich.png"></header><div class="menu"><a><div class="news">Новости</div></a> <a href="/articles"><div class="articles">Статьи</div></a> <a href="/events"><div class="events">События</div></a></div><div class="submenu"><a href="/"><div>Все</div></a> <a href="/?section=space"><div>Космос</div></a> <a href="/?section=physics"><div>Физика</div></a> <a href="/?section=tech"><div>Технологии</div></a></div></div><style>.header-fixed {
+<div class="header-fixed"><header><a href="/" style="width: 50px"><img class="tk_logo" src="/images/tk_logo.png"></a> <a href="/" style="float:initial">ТВОЙ<span class="tk_color">КОСМОС</span></a><div class="menu-initer"><img src="/images/sandwich.png"></div></header><div class="menu"><a><div class="news">Новости</div></a> <a href="/articles"><div class="articles">Статьи</div></a> <a href="/events"><div class="events">События</div></a></div><div class="submenu"><a href="/"><div>Все</div></a> <a href="/?section=space"><div>Космос</div></a> <a href="/?section=physics"><div>Физика</div></a> <a href="/?section=tech"><div>Технологии</div></a></div></div><style>.header-fixed {
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -9,6 +9,9 @@
 	.header-fixed a {
 		text-decoration: none;
 		color: #fff;
+		height: 100%;
+		float: left;
+		display: inline-block;
 		font-family: 'RobCondBold';
 	}
 	header {
@@ -18,7 +21,7 @@
 		line-height: 50px;
 		background-color: #222;
 		box-shadow: 0 2px 4px rgba(0,0,0,.5);
-		padding: 0px 15px;
+		padding: 0 0 0 5px;
 		text-align: center;
 		-webkit-box-sizing: border-box;
 		   -moz-box-sizing: border-box;
@@ -32,10 +35,13 @@
 		background-repeat: no-repeat;
 	}
 	.tk_logo {
-		float: left;
+		/*float: left;*/
 	}
 	.menu-initer {
 		float: right;
+		height: 50px;
+		width: 50px;
+		display: inline-block;
 	}
 
 	.header-fixed .menu {
