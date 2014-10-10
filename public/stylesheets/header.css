@@ -51,7 +51,7 @@ div[class*=__star__] {
 	z-index: 80;
 	position: absolute;
 	width: 3px;
-	top: 100px;
+	top: 150px;
 	height: 3px;
 	background-color: #fff;
 	z-index: 90;

@@ -1,3 +1,7 @@
+div.feed {
+	margin-top: 0px;
+}
+
 .each-event {
 	width: 33.33333%;
 	height: 260px;
@@ -46,4 +50,7 @@
 }
 .each-event .event-info span p {
 	color: #fff;
+}
+.each-event.big-event .event-info-top span .last-event-label {
+	font-size: 25px;
 }

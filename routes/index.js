@@ -325,9 +325,20 @@ function fn(express) {
 	})
 
 	router.get('/articles', function(req, res, next) {
-		res.render('articles-list', {
-			ajax : true
-		});
+		md = new MobileDetect(req.headers['user-agent']);
+		if (md.phone()) {
+			Articles.find().sort({date : -1}).exec(function(err, results) {
+				if (err) return next(err);
+				res.render('articles-list-mobile', {
+					articles : results,
+					ajax : false
+				})
+			})
+		} else {
+			res.render('articles-list', {
+				ajax : true
+			});
+		}
 	});
 
 	router.get('/articles_list', function(req, res, next) {
@@ -349,9 +360,20 @@ function fn(express) {
 	});
 
 	router.get('/events', function(req, res, next) {
-		res.render('events-list', {
-			ajax : true
-		});
+		md = new MobileDetect(req.headers['user-agent']);
+		if (md.phone()) {
+			Events.find().sort({date : -1}).exec(function(err, results) {
+				if (err) return next(err);
+				res.render('events-list-mobile', {
+					events : results,
+					ajax : false
+				})
+			})
+		} else {
+			res.render('events-list', {
+				ajax : true
+			});
+		}
 	});
 
 	router.get('/events_list', function(req, res, next) {

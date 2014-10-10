@@ -2,19 +2,21 @@
 	<!-- <div class="bar"></div> -->
 	<header>
 		<a href="/">
-			<img src="/images/tk_logo.png">
+			<img class="tk_logo" src="/images/tk_logo.png">
+			ТВОЙКОСМОС
 		</a>
+			<img class="menu-initer" src="/images/sandwich.png">
 	</header>
 	<div class="menu">
-		<div class="news"><a>Новости</a></div>
-		<div class="articles"><a href="/articles">Статьи</a></div>
-		<div class="events"><a href="/events">События</a></div>
+		<a><div class="news">Новости</div></a>
+		<a href="/articles"><div class="articles">Статьи</div></a>
+		<a href="/events"><div class="events">События</div></a>
 	</div>
 	<div class="submenu">
-		<div><a href="/">Все</a></div>
-		<div><a href="/?section=space">Космос</a></div>
-		<div><a href="/?section=physics">Физика</a></div>
-		<div><a href="/?section=tech">Технологии</a></div>
+		<a href="/"><div>Все</div></a>
+		<a href="/?section=space"><div>Космос</div></a>
+		<a href="/?section=physics"><div>Физика</div></a>
+		<a href="/?section=tech"><div>Технологии</div></a>
 	</div>
 </div>
 
@@ -30,11 +32,12 @@
 	} 
 	.header-fixed a {
 		text-decoration: none;
-		color: #222;
+		color: #fff;
+		font-family: 'RobCondBold';
 	}
 	header {
 		position: relative;
-		z-index: 999;
+		z-index: 1100;
 		height: 50px;
 		line-height: 50px;
 		background-color: #222;
@@ -52,23 +55,20 @@
 		background-position: center;
 		background-repeat: no-repeat;
 	}
-/*	.header-fixed .bar {
-		position: relative;
-		z-index: 999;
-		height: 100%;
-		background-color: #222;
-		border-bottom: 4px solid #FFB52E;
-		-webkit-box-sizing: border-box;
-		   -moz-box-sizing: border-box;
-		        box-sizing: border-box;
-	}*/
+	.tk_logo {
+		float: left;
+	}
+	.menu-initer {
+		float: right;
+	}
+
 	.header-fixed .menu {
 		position: absolute;
 		z-index: 888;
 		bottom: 0px;
 		left: 0;
 		width: 100%;
-		height: 145px;
+		/*height: 145px;*/
 		-webkit-transition: all .3s;
 		-o-transition: all .3s;
 		transition: all .3s;
@@ -77,7 +77,7 @@
 		margin: 0;
 		padding: 0;
 	}
-	.header-fixed .menu > div {
+	.header-fixed .menu  div {
 		background-color: #e5e5e5;
 		color: #222;
 		height: 35px;
@@ -90,8 +90,8 @@
 		width: 100%;
 		position: absolute;
 	}
-	.header-fixed .submenu > div{
-		background-color: #bbb;
+	.header-fixed .submenu  div{
+		background-color: #fff;
 		color: #222;
 		height: 35px;
 		line-height: 35px;
@@ -120,6 +120,7 @@
 		-webkit-transition: all .3s;
 		-o-transition: all .3s;
 		transition: all .3s;
+		box-shadow: 0 2px 4px rgba(0,0,0,.5);
 	}
 	.header-fixed .menu .articles {
 		bottom: 51px;
@@ -138,13 +139,14 @@
 		bottom: -188px;
 	}
 	.header-fixed.news_subview .submenu {
+		/*z-index: 99s9;*/
 		top: 144px;
 	}
 
 </style>
 
 <script>
-	$('header').on('click', function() {
+	$('.menu-initer').on('click', function() {
 		if ($('.header-fixed').hasClass('news_subview')) {
 			$('.header-fixed').removeClass('news_subview');
 		}
