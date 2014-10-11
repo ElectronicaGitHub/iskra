@@ -3,7 +3,9 @@
 <% var sections = { space: 'Космос', physics: 'Физика', tech: 'Технологии' } %>
 
 <% block('meta', partial('meta_index')) -%>
+<% if (query && query.section) { %>
 <% block('sectionlabel', '| ' + sections[query.section].toUpperCase() ) %>
+<% } %>
 
 <div class="content">
 	<div class="each-post-big">
