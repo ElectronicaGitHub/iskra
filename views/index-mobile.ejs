@@ -14,7 +14,7 @@
 		</a>
 	</div>
 	<% var arr = [true, true, true, false]; L = news.length; for (var i=0; i< L; i++) { %>
-	<% var small = arr[~~(Math.random() * arr.length)] %>
+		<% var small = arr[~~(Math.random() * arr.length)] %>
 		<% if (small) { %>
 			<div class="each-post">
 				<a href="/post/<%= news[i]._id%>">	

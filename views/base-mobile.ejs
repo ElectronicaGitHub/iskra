@@ -5,6 +5,13 @@
 	<meta charset="UTF-8">
 	<%- blocks.meta %>
 	<link rel="stylesheet" href="/build/css/fonts.css">
+	<script src="/libs/jquery/dist/jquery.min.js"></script>
+	<script src="/libs/fastclick/lib/fastclick.js"></script>
+	<script>
+		$(function() {
+		    FastClick.attach(document.body);
+		});
+	</script>
 	<%- scripts %>
 	<%- stylesheets %>
 
@@ -17,13 +24,6 @@
 	  insertBefore(d,q)}(window,document,'script','_gs');
 
 	  _gs('GSN-754813-N');
-	</script>
-	<script src="/libs/jquery/dist/jquery.min.js"></script>
-	<script src="/libs/fastclick/lib/fastclick.js"></script>
-	<script>
-		$(function() {
-		    FastClick.attach(document.body);
-		});
 	</script>
 </head>
 <style>
