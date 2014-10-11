@@ -4,7 +4,7 @@
 		<a href="/"style="width: 50px">
 			<img class="tk_logo" src="/images/tk_logo.png">
 		</a>
-		<a href="/" style="float:initial">
+		<a href="/" class="tk_phrase">
 			ТВОЙ<span class="tk_color">КОСМОС</span>
 			<%- blocks.sectionlabel %>
 		</a>
@@ -49,6 +49,7 @@
 		z-index: 1100;
 		height: 50px;
 		line-height: 50px;
+		width: 100%;
 		background-color: #222;
 		box-shadow: 0 2px 4px rgba(0,0,0,.5);
 		padding: 0 0 0 5px;
@@ -63,6 +64,13 @@
 		margin-top: 10px;
 		background-position: center;
 		background-repeat: no-repeat;
+	}
+	.tk_phrase {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		text-align: center;
 	}
 	.tk_logo {
 		/*float: left;*/
