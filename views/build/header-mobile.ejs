@@ -1,4 +1,4 @@
-<div class="header-fixed"><header><a href="/" style="width: 50px"><img class="tk_logo" src="/images/tk_logo.png"></a> <a href="/" style="float:initial">ТВОЙ<span class="tk_color">КОСМОС</span></a><div class="menu-initer"><img src="/images/sandwich.png"></div></header><div class="menu"><a><div class="news">Новости</div></a> <a href="/articles"><div class="articles">Статьи</div></a> <a href="/events"><div class="events">События</div></a></div><div class="submenu"><a href="/"><div>Все</div></a> <a href="/?section=space"><div>Космос</div></a> <a href="/?section=physics"><div>Физика</div></a> <a href="/?section=tech"><div>Технологии</div></a></div></div><style>.header-fixed {
+<div class="header-fixed"><header><a href="/" style="width: 50px"><img class="tk_logo" src="/images/tk_logo.png"></a> <a href="/" style="float:initial">ТВОЙ<span class="tk_color">КОСМОС</span> <%- blocks.sectionlabel %></a><div class="menu-initer"><img src="/images/sandwich.png"></div></header><div class="menu"><a><div class="news">Новости</div></a> <a href="/articles"><div class="articles">Статьи</div></a> <a href="/events"><div class="events">События</div></a></div><div class="submenu"><a href="/"><div>Все</div></a> <a href="/?section=space"><div>Космос</div></a> <a href="/?section=physics"><div>Физика</div></a> <a href="/?section=tech"><div>Технологии</div></a></div></div><style>.header-fixed {
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -11,6 +11,7 @@
 		color: #fff;
 		height: 100%;
 		float: left;
+		font-size: 15px;
 		display: inline-block;
 		font-family: 'RobCondBold';
 	}
@@ -41,7 +42,6 @@
 		float: right;
 		height: 50px;
 		width: 50px;
-		display: inline-block;
 	}
 
 	.header-fixed .menu {
@@ -60,7 +60,7 @@
 		padding: 0;
 	}
 	.header-fixed .menu  div {
-		background-color: #e5e5e5;
+		background-color: #fff;
 		color: #222;
 		height: 35px;
 		line-height: 35px;
@@ -72,9 +72,9 @@
 		width: 100%;
 		position: absolute;
 	}
-	.header-fixed .submenu  div{
-		background-color: #fff;
-		color: #222;
+	.header-fixed .submenu  div {
+		background-color: #222;
+		color: #fff;
 		height: 35px;
 		line-height: 35px;
 		font-size: 16px;

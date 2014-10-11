@@ -14,6 +14,11 @@ function fn(express) {
 	router.get('/', function(req, res, next) {
 
 		console.log('req.user', req.user)
+		if (req.query.section) {
+			q = { 
+				section : req.query.section 
+			}
+		} else q = {};
 
 		function FindNewsAndRespond(limit, render_view, include_article) {
 			article = {};
@@ -25,7 +30,7 @@ function fn(express) {
 						article = results[0];
 					})
 			}
-			News.find({}, {
+			News.find(q, {
 				content: 0,
 				content_special: 0
 			}, { limit : limit})
@@ -35,7 +40,8 @@ function fn(express) {
 					res.render(render_view, {
 						news : results,
 						ajax : false,
-						article : article
+						article : article,
+						query : q
 					})
 				})
 		}

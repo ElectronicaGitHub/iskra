@@ -1,4 +1,4 @@
-<%- layout('base-mobile') %><% block('meta', partial('meta_index')) -%><div class="content"><% var L = articles.length; for (var i=0; i< L; i++) { %><div class="each-post-big"><a href="/article/<%= articles[i]._id%>"><div class="photo" style="background-image:url(<%= articles[i].image %>)"></div><div class="text"><span class="_title"><%= articles[i].title %></span></div></a></div><% } %></div><style>.content {
+<%- layout('base-mobile') %><% block('meta', partial('meta_index')) -%><% block('sectionlabel', '| СТАТЬИ') -%><div class="content"><% var L = articles.length; for (var i=0; i< L; i++) { %><div class="each-post-big"><a href="/article/<%= articles[i]._id%>"><div class="photo" style="background-image:url(<%= articles[i].image %>)"></div><div class="text"><span><p class="article-label">Статья</p><p class="_title"><%= articles[i].title %></p></span></div></a></div><% } %></div><style>.content {
 		padding: 0 10px;
 		margin-top: 55px;
 		width: 300px;
@@ -69,10 +69,15 @@
 		text-align: center;
 		padding: 0 10px;
 	}
-	.each-post-big .text span._title {
+	.each-post-big .text span {
 		display: inline-block;
 		font-family: 'RobCondBold';
 		font-size: 18px;
 		line-height: 20px;
 		vertical-align: middle;
+	}
+	.article-label {
+		font-size : 15px;
+		font-family: 'RobCondLight';
+		line-height: 20px;
 	}</style>

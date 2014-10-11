@@ -1,5 +1,6 @@
 <%- layout('base-mobile') %>
 <% block('meta', partial('meta_index')) -%>
+<% block('sectionlabel', '| СОБЫТИЯ') -%>
 
 <div class="content">
 	<% var L = events.length; for (var i=0; i< L; i++) { %>
@@ -7,7 +8,10 @@
 			<a href="/event/<%= events[i]._id%>">	
 				<div class="photo" style="background-image:url(<%= events[i].image_full %>)"></div>
 				<div class="text">
-					<span class="_title"><%= events[i].title %></span>
+					<span>
+						<p class="event-label">Событие</p>
+						<p class="_title"><%= events[i].title %></p>
+					</span>
 				</div>
 			</a>
 		</div>
@@ -86,12 +90,17 @@
 		text-align: center;
 		padding: 0 10px;
 	}
-	.each-post-big .text span._title {
+	.each-post-big .text span {
 		display: inline-block;
 		font-family: 'RobCondBold';
 		font-size: 18px;
 		line-height: 20px;
 		vertical-align: middle;
+	}
+	.event-label {
+		font-size : 15px;
+		font-family: 'RobCondLight';
+		line-height: 20px;
 	}
 
 </style>

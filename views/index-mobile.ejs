@@ -1,5 +1,9 @@
 <%- layout('base-mobile') %>
+
+<% var sections = { space: 'Космос', physics: 'Физика', tech: 'Технологии' } %>
+
 <% block('meta', partial('meta_index')) -%>
+<% block('sectionlabel', '| ' + sections[query.section].toUpperCase() ) %>
 
 <div class="content">
 	<div class="each-post-big">
@@ -29,7 +33,10 @@
 				<a href="/post/<%= news[i]._id%>">	
 					<div class="photo" style="background-image:url(<%= news[i].image %>)"></div>
 					<div class="text">
-						<span class="_title"><%= news[i].title %></span>
+						<span>
+							<p class="news-label">Новость</p>
+							<p class="_title"><%= news[i].title %></p>
+						</span>
 					</div>
 				</a>
 			</div>
@@ -116,9 +123,10 @@
 		line-height: 20px;
 		vertical-align: middle;
 	}
-	.article-label {
+	.article-label, .news-label {
 		font-size : 15px;
 		font-family: 'RobCondLight';
+		line-height: 20px;
 	}
 
 </style>
