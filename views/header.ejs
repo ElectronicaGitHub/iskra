@@ -34,9 +34,9 @@
 				<a class="nav-item articles" href="/articles">Статьи</a>
 				<a class="nav-item events" href="/events">События</a>
 			</div>
-			<div class="_regime" ng-click="toggle_news_type()" ng-show="news_type">
-				<p class="usn regime">MODE</p>
-				<p class="usn type-name" ng-if="news_type=='normal'">НОРМАЛ</p>
+			<div class="_regime" ng-click="toggle_news_type()">
+				<p class="usn regime">РЕЖИМ</p>
+				<p class="usn type-name" ng-if="news_type=='normal' || !news_type">НОРМАЛ</p>
 				<p class="usn type-name" ng-if="news_type=='special'">СПЕШЛ</p>
 			</div>
 		</span>
@@ -60,8 +60,8 @@
 				</a>
 			</div>
 			<div class="_regime" ng-click="toggle_news_type()">
-				<p class="usn regime">MODE</p>
-				<p class="usn type-name" ng-if="news_type=='normal'">НОРМАЛ</p>
+				<p class="usn regime">РЕЖИМ</p>
+				<p class="usn type-name" ng-if="news_type=='normal' || !news_type">НОРМАЛ</p>
 				<p class="usn type-name" ng-if="news_type=='special'">СПЕШЛ</p>
 			</div>
 		</span>

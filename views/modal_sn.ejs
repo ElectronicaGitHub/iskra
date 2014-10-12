@@ -1,0 +1,52 @@
+<% stylesheet('/build/css/modal.css') -%>
+<script>
+    var a = setInterval(function() {
+        try {
+            if (!!VK) {
+                VK.Widgets.Group("vk_groups", {mode: 0, width: "300", height: "200",color1: 'E5E5E5', color2: '2B587A', color3: 'FFB52E'}, 75281223);
+
+                VK.Observer.subscribe("widgets.groups.joined", function(e) {
+                    console.log(e, "JOINED");
+                });
+                VK.Observer.subscribe("widgets.groups.leaved", function(e) {
+                    console.log(e, "LEAVED");
+                });
+
+                console.log('ok')
+                clearInterval(a);
+            }
+        } catch (e) {}      
+    }, 200)
+</script>
+<script>
+    tk.controller('modalCtrl',['$rootScope', '$scope', 'localStorageService', '$timeout', '$location', 
+        function(rSc, sc, lsS, $timeout, $location) {
+
+        sc.chooseType = function(type) {
+            rSc.news_type = type;
+            lsS.set('tvoyKosmos_MODE', type);
+            $location.path(type);
+        }
+    }])
+
+</script>
+
+<div ng-controller="modalCtrl" 
+     class="modal-high"
+     ng-class="{ _show : true }">    
+    <div class="fader"></div>
+    <div class="tk-modal">
+        <div class="modal-_header">
+            <img src="/images/tk_logo.png">
+        </div>
+        <div class="greet">
+            <span>
+                <p class="hello">Приветствуем тебя, попутчик!</p>
+                <p>Подпишись на нашу страницу в Вконтакте, чтобы быть в курсе выхода свежих новостей.</p>
+                <i>А так же там тебя ждут интересные факты!</i>
+            </span>
+        </div>
+        <div id="vk_groups" style="margin: 0 auto"></div>
+        
+    </div>
+</div>

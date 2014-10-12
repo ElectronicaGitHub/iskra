@@ -7,9 +7,9 @@ tk.controller('HeaderCtrl',
 	});	
 
 	//init page 
-	value = localStorageService.get('tvoyKosmos_MODE');
-	
+	value = $rootScope.gotInLs = localStorageService.get('tvoyKosmos_MODE');
 	search_value = $location.path() ? $location.path().slice(1) : null;
+	
 	if (value) {
 		if (search_value && search_value != value) {
 			$location.path(search_value);
@@ -22,8 +22,16 @@ tk.controller('HeaderCtrl',
 		$rootScope.news_type = search_value;
 		$location.path(search_value);
 	}
+	
 	$scope.toggle_news_type = function() {
-		$rootScope.news_type = $rootScope.news_type == 'normal' ? 'special' : 'normal';
+		if ($rootScope.news_type == 'normal' || $rootScope.news_type == null) {
+			$rootScope.news_type = 'special';
+		} else if ($rootScope.news_type == 'special') {
+		 	$rootScope.news_type = 'normal';	
+		};
+		if (!$rootScope.gotInLs) {
+			$rootScope.gotInLs = true;
+		}
 		localStorageService.set('tvoyKosmos_MODE', $rootScope.news_type);
 		$location.path($rootScope.news_type);
 		ga('send', 'event', 'click', 'change_mode', 'top', 1);
