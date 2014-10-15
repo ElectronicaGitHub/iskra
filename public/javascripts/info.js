@@ -7,7 +7,7 @@ var info = {
 	],
 	sections : {
 		space: 'Космос',
-		physics: 'Физика',
+		physics: 'Наука',
 		tech: 'Технологии'
 	}
 }
