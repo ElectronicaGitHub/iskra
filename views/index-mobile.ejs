@@ -8,6 +8,7 @@
 <% } %>
 
 <div class="content">
+	<% if (article && article._id) { %>
 	<div class="each-post-big">
 		<a href="/article/<%= article._id%>">	
 			<div class="photo" style="background-image:url(<%= article.image %>)"></div>
@@ -19,6 +20,7 @@
 			</div>
 		</a>
 	</div>
+	<% } %>
 	<% var arr = [true, true, true, false]; L = news.length; for (var i=0; i< L; i++) { %>
 		<% var small = arr[~~(Math.random() * arr.length)] %>
 		<% if (small) { %>

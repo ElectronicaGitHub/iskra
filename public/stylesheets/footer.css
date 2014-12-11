@@ -35,6 +35,31 @@ footer .info p {
 	line-height: 25px;
 	font-family: 'RobCondBold';
 }
+footer .divider {
+	border-top: 1px solid #444;
+	border-bottom: 1px solid #111;
+	margin-top: 10px !important;
+}
+footer .info p.webTerror {
+	font-size: 13px;
+	margin-top: 10px;
+	font-family: 'RobCondLight';
+}
+footer .info p.webTerror a {
+	color : white;
+	text-decoration: none;
+}
+footer .info p.webTerror b {
+	font-family: 'RobCondBold';
+	font-size: 16px;
+	line-height: 16px;
+	display: block;
+}
+footer .info p.webTerror span {
+	display: block;
+	font-size: 13px;
+	line-height: 13px;
+}
 footer .nav > span > span {
 	padding: 3px 10px;
 }
